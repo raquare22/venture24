@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "additionalProperties": true,
+  "properties": {
+    "u_chk_nbr":            { "type": "string" },
+    "u_clm_nbr":            { "type": "string", "minLength": 1 },
+    "u_data_hst":           { "type": "string" },
+    "u_div":                { "type": "string" },
+    "u_eps_ind":            { "type": "string" },
+    "u_gbl_doc_id":         { "type": "string" },
+    "u_line_of_buss":       { "type": "string" },
+    "u_orig_creation_date": { "type": "string", "minLength": 1 },
+    "u_payee_nm":           { "type": "string" },
+    "u_payer_id":           { "type": "string" },
+    "u_pay_type":           { "type": "string" },
+    "u_pol_nbr":            { "type": "string" },
+    "u_primary_dt":         { "type": "string" },
+    "u_primary_nbr":        { "type": "string" },
+    "u_prov_npi":           { "type": "string" },
+    "u_ra_no":              { "type": "string" },
+    "u_sa_oi":              { "type": "string" },
+    "u_st":                 { "type": "string" },
+    "u_tin":                { "type": "string" },
+    "u_trl_id":             { "type": "string" },
+    "u_trl_nm":             { "type": "string" },
+    "u_vendor_pay_id":      { "type": "string" },
+
+    "subCategory":      { "type": "string", "minLength": 1 },
+    "isPrintSuppressed":{ "type": "string", "enum": ["Y", "N"], "default": "Y", "minLength": 1 },
+    "mpin":             { "type": "string" },
+    "CONFIGKEY":        { "type": "string" },
+    "PassThruData":     { "type": "string" },
+    "MailToAddress1":   { "type": "string" },
+    "MailToAddress3":   { "type": "string" },
+    "EFT_Ind":          { "type": "string" }
+  },
+
+  "required": [
+    "u_clm_nbr",
+    "u_orig_creation_date",
+    "subCategory",
+    "isPrintSuppressed"
+  ],
+
+  "if": {
+    "properties": { "isPrintSuppressed": { "const": "Y" } },
+    "required": ["isPrintSuppressed"]
+  },
+  "then": {
+    "properties": {
+      "mpin":             { "minLength": 1 },
+      "CONFIGKEY":        { "minLength": 1 },
+      "u_trl_id":         { "minLength": 1 },
+      "PassThruData":     { "minLength": 1 },
+      "MailToAddress1":   { "minLength": 1 },
+      "MailToAddress3":   { "minLength": 1 }
+    },
+    "required": [
+      "mpin",
+      "CONFIGKEY",
+      "u_trl_id",
+      "PassThruData",
+      "MailToAddress1",
+      "MailToAddress3"
+    ],
+    "if": {
+      "properties": { "EFT_Ind": { "const": "Y" } },
+      "required": ["EFT_Ind"]
+    },
+    "then": {
+      "properties": { "u_tin": { "minLength": 1 } },
+      "required": ["u_tin"]
+    }
+  }
+}
