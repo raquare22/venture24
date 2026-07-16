@@ -1,219 +1,117 @@
-rahul_maheshvari@optum.com@LAMU0KMQ4JX73GM PDO-paperless_letters_connector % diff tree-baseline.txt tree-final.txt  
-2,10d1
-< [WARNING] 
-< [WARNING] Some problems were encountered while building the effective model for com.optum.UHGWM110-017971:paperless-letters-connector:jar:1.0.94-SNAPSHOT
-< [WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: org.hibernate.validator:hibernate-validator:jar -> duplicate declaration of version (?) @ line 403, column 15
-< [WARNING] 'dependencies.dependency.(groupId:artifactId:type:classifier)' must be unique: com.uhg.ness:ness-logger-kafka:jar -> duplicate declaration of version 1.1.35 @ line 583, column 15
-< [WARNING] 
-< [WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
-< [WARNING] 
-< [WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
-< [WARNING] 
-18c9
-< [INFO] --- dependency:3.9.0:tree (default-cli) @ paperless-letters-connector ---
----
-> [INFO] --- dependency:3.10.0:tree (default-cli) @ paperless-letters-connector ---
-20c11
-< [INFO] +- org.hibernate.validator:hibernate-validator:jar:9.0.1.Final:compile
----
-> [INFO] +- org.hibernate.validator:hibernate-validator:jar:9.1.0.Final:compile
-30,41c21,32
-< [INFO] +- org.springframework.boot:spring-boot-starter-data-mongodb:jar:4.0.7:compile
-< [INFO] |  +- org.springframework.boot:spring-boot-starter-mongodb:jar:4.0.7:compile
-< [INFO] |  |  +- org.springframework.boot:spring-boot-mongodb:jar:4.0.7:compile
-< [INFO] |  |  \- org.mongodb:mongodb-driver-sync:jar:5.6.5:compile
-< [INFO] |  |     +- org.mongodb:bson:jar:5.6.5:compile
-< [INFO] |  |     \- org.mongodb:mongodb-driver-core:jar:5.6.5:compile
-< [INFO] |  |        \- org.mongodb:bson-record-codec:jar:5.6.5:runtime
-< [INFO] |  \- org.springframework.boot:spring-boot-data-mongodb:jar:4.0.7:compile
-< [INFO] |     +- org.springframework.boot:spring-boot-data-commons:jar:4.0.7:compile
-< [INFO] |     |  +- org.springframework.boot:spring-boot-persistence:jar:4.0.7:compile
-< [INFO] |     |  \- org.springframework.data:spring-data-commons:jar:4.0.6:compile
-< [INFO] |     +- org.springframework.boot:spring-boot-transaction:jar:4.0.7:compile
----
-> [INFO] +- org.springframework.boot:spring-boot-starter-data-mongodb:jar:4.1.0:compile
-> [INFO] |  +- org.springframework.boot:spring-boot-starter-mongodb:jar:4.1.0:compile
-> [INFO] |  |  +- org.springframework.boot:spring-boot-mongodb:jar:4.1.0:compile
-> [INFO] |  |  \- org.mongodb:mongodb-driver-sync:jar:5.8.0:compile
-> [INFO] |  |     +- org.mongodb:bson:jar:5.8.0:compile
-> [INFO] |  |     \- org.mongodb:mongodb-driver-core:jar:5.8.0:compile
-> [INFO] |  |        \- org.mongodb:bson-record-codec:jar:5.8.0:runtime
-> [INFO] |  \- org.springframework.boot:spring-boot-data-mongodb:jar:4.1.0:compile
-> [INFO] |     +- org.springframework.boot:spring-boot-data-commons:jar:4.1.0:compile
-> [INFO] |     |  +- org.springframework.boot:spring-boot-persistence:jar:4.1.0:compile
-> [INFO] |     |  \- org.springframework.data:spring-data-commons:jar:4.1.0:compile
-> [INFO] |     +- org.springframework.boot:spring-boot-transaction:jar:4.1.0:compile
-43,45c34,36
-< [INFO] |     \- org.springframework.data:spring-data-mongodb:jar:5.0.6:compile
-< [INFO] +- org.springframework.boot:spring-boot-autoconfigure:jar:4.0.7:compile
-< [INFO] |  \- org.springframework.boot:spring-boot:jar:4.0.7:compile
----
-> [INFO] |     \- org.springframework.data:spring-data-mongodb:jar:5.1.0:compile
-> [INFO] +- org.springframework.boot:spring-boot-autoconfigure:jar:4.1.0:compile
-> [INFO] |  \- org.springframework.boot:spring-boot:jar:4.1.0:compile
-50,60c41,42
-< [INFO] |  \- io.micrometer:micrometer-observation:jar:1.16.6:compile
-< [INFO] |     \- io.micrometer:micrometer-commons:jar:1.16.6:compile
-< [INFO] +- io.springfox:springfox-swagger-ui:jar:3.0.0:compile
-< [INFO] |  \- io.springfox:springfox-spring-webmvc:jar:3.0.0:runtime
-< [INFO] |     +- io.springfox:springfox-spi:jar:3.0.0:runtime
-< [INFO] |     +- io.springfox:springfox-schema:jar:3.0.0:runtime
-< [INFO] |     +- io.springfox:springfox-core:jar:3.0.0:runtime
-< [INFO] |     +- io.springfox:springfox-spring-web:jar:3.0.0:runtime
-< [INFO] |     |  \- io.github.classgraph:classgraph:jar:4.8.83:runtime
-< [INFO] |     +- org.springframework.plugin:spring-plugin-core:jar:2.0.0.RELEASE:runtime
-< [INFO] |     \- org.springframework.plugin:spring-plugin-metadata:jar:2.0.0.RELEASE:runtime
----
-> [INFO] |  \- io.micrometer:micrometer-observation:jar:1.17.0:compile
-> [INFO] |     \- io.micrometer:micrometer-commons:jar:1.17.0:compile
-67c49
-< [INFO] |  |  \- commons-codec:commons-codec:jar:1.19.0:compile
----
-> [INFO] |  |  \- commons-codec:commons-codec:jar:1.21.0:compile
-73,76c55,58
-< [INFO] +- org.apache.commons:commons-lang3:jar:3.19.0:compile
-< [INFO] +- org.apache.httpcomponents.client5:httpclient5:jar:5.5.2:compile
-< [INFO] |  +- org.apache.httpcomponents.core5:httpcore5:jar:5.3.6:compile
-< [INFO] |  \- org.apache.httpcomponents.core5:httpcore5-h2:jar:5.3.6:compile
----
-> [INFO] +- org.apache.commons:commons-lang3:jar:3.20.0:compile
-> [INFO] +- org.apache.httpcomponents.client5:httpclient5:jar:5.6.1:compile
-> [INFO] |  +- org.apache.httpcomponents.core5:httpcore5:jar:5.4.2:compile
-> [INFO] |  \- org.apache.httpcomponents.core5:httpcore5-h2:jar:5.4.2:compile
-79c61
-< [INFO] +- org.springframework.boot:spring-boot-starter:jar:4.0.7:compile
----
-> [INFO] +- org.springframework.boot:spring-boot-starter:jar:4.1.0:compile
-81c63
-< [INFO] +- org.springframework.boot:spring-boot-starter-log4j2:jar:4.0.7:compile
----
-> [INFO] +- org.springframework.boot:spring-boot-starter-log4j2:jar:4.1.0:compile
-83,97c65,80
-< [INFO] +- org.springframework.boot:spring-boot-starter-web:jar:4.0.7:compile
-< [INFO] |  +- org.springframework.boot:spring-boot-starter-jackson:jar:4.0.7:compile
-< [INFO] |  |  \- org.springframework.boot:spring-boot-jackson:jar:4.0.7:compile
-< [INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:4.0.7:compile
-< [INFO] |  |  +- org.springframework.boot:spring-boot-starter-tomcat-runtime:jar:4.0.7:compile
-< [INFO] |  |  |  +- org.springframework.boot:spring-boot-web-server:jar:4.0.7:compile
-< [INFO] |  |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:11.0.22:compile
-< [INFO] |  |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:11.0.22:compile
-< [INFO] |  |  \- org.springframework.boot:spring-boot-tomcat:jar:4.0.7:compile
-< [INFO] |  +- org.springframework.boot:spring-boot-http-converter:jar:4.0.7:compile
-< [INFO] |  \- org.springframework.boot:spring-boot-webmvc:jar:4.0.7:compile
-< [INFO] |     \- org.springframework.boot:spring-boot-servlet:jar:4.0.7:compile
-< [INFO] +- org.springframework.boot:spring-boot-starter-test:jar:4.0.7:test
-< [INFO] |  +- org.springframework.boot:spring-boot-test:jar:4.0.7:test
-< [INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:4.0.7:test
----
-> [INFO] +- org.springframework.boot:spring-boot-starter-web:jar:4.1.0:compile
-> [INFO] |  +- org.springframework.boot:spring-boot-starter-jackson:jar:4.1.0:compile
-> [INFO] |  |  \- org.springframework.boot:spring-boot-jackson:jar:4.1.0:compile
-> [INFO] |  +- org.springframework.boot:spring-boot-starter-tomcat:jar:4.1.0:compile
-> [INFO] |  |  +- org.springframework.boot:spring-boot-starter-tomcat-runtime:jar:4.1.0:compile
-> [INFO] |  |  |  +- org.springframework.boot:spring-boot-web-server:jar:4.1.0:compile
-> [INFO] |  |  |  +- org.apache.tomcat.embed:tomcat-embed-core:jar:11.0.23:compile
-> [INFO] |  |  |  +- org.apache.tomcat.embed:tomcat-embed-el:jar:11.0.23:compile
-> [INFO] |  |  |  \- org.apache.tomcat.embed:tomcat-embed-websocket:jar:11.0.23:compile
-> [INFO] |  |  \- org.springframework.boot:spring-boot-tomcat:jar:4.1.0:compile
-> [INFO] |  +- org.springframework.boot:spring-boot-http-converter:jar:4.1.0:compile
-> [INFO] |  \- org.springframework.boot:spring-boot-webmvc:jar:4.1.0:compile
-> [INFO] |     \- org.springframework.boot:spring-boot-servlet:jar:4.1.0:compile
-> [INFO] +- org.springframework.boot:spring-boot-starter-test:jar:4.1.0:test
-> [INFO] |  +- org.springframework.boot:spring-boot-test:jar:4.1.0:test
-> [INFO] |  +- org.springframework.boot:spring-boot-test-autoconfigure:jar:4.1.0:test
-103c86
-< [INFO] |  |  \- net.bytebuddy:byte-buddy:jar:1.17.8:runtime
----
-> [INFO] |  |  \- net.bytebuddy:byte-buddy:jar:1.18.10:test
-113,114c96,97
-< [INFO] |  +- org.mockito:mockito-core:jar:5.20.0:test
-< [INFO] |  |  +- net.bytebuddy:byte-buddy-agent:jar:1.17.8:test
----
-> [INFO] |  +- org.mockito:mockito-core:jar:5.23.0:test
-> [INFO] |  |  +- net.bytebuddy:byte-buddy-agent:jar:1.18.10:test
-116c99
-< [INFO] |  +- org.mockito:mockito-junit-jupiter:jar:5.20.0:test
----
-> [INFO] |  +- org.mockito:mockito-junit-jupiter:jar:5.23.0:test
-120c103
-< [INFO] |  \- org.xmlunit:xmlunit-core:jar:2.10.4:test
----
-> [INFO] |  \- org.xmlunit:xmlunit-core:jar:2.11.0:test
-131,132c114,115
-< [INFO] |  +- org.springframework.boot:spring-boot-starter-validation:jar:4.0.7:compile
-< [INFO] |  |  \- org.springframework.boot:spring-boot-validation:jar:4.0.7:compile
----
-> [INFO] |  +- org.springframework.boot:spring-boot-starter-validation:jar:4.1.0:compile
-> [INFO] |  |  \- org.springframework.boot:spring-boot-validation:jar:4.1.0:compile
-143c126
-< [INFO] +- org.ehcache:ehcache:jar:jakarta:3.11.1:compile
----
-> [INFO] +- org.ehcache:ehcache:jar:jakarta:3.12.0:compile
-159c142
-< [INFO] |  \- org.jetbrains.kotlin:kotlin-stdlib:jar:2.2.21:compile
----
-> [INFO] |  \- org.jetbrains.kotlin:kotlin-stdlib:jar:2.3.21:compile
-162,163c145,146
-< [INFO] |  +- org.jetbrains.kotlin:kotlin-stdlib-jdk8:jar:2.2.21:compile
-< [INFO] |  |  \- org.jetbrains.kotlin:kotlin-stdlib-jdk7:jar:2.2.21:compile
----
-> [INFO] |  +- org.jetbrains.kotlin:kotlin-stdlib-jdk8:jar:2.3.21:compile
-> [INFO] |  |  \- org.jetbrains.kotlin:kotlin-stdlib-jdk7:jar:2.3.21:compile
-172,183c155,165
-< [INFO] +- org.yaml:snakeyaml:jar:2.5:compile
-< [INFO] +- org.springframework.boot:spring-boot-starter-actuator:jar:4.0.7:compile
-< [INFO] |  +- org.springframework.boot:spring-boot-starter-micrometer-metrics:jar:4.0.7:compile
-< [INFO] |  |  \- org.springframework.boot:spring-boot-micrometer-metrics:jar:4.0.7:compile
-< [INFO] |  |     \- org.springframework.boot:spring-boot-micrometer-observation:jar:4.0.7:compile
-< [INFO] |  +- org.springframework.boot:spring-boot-actuator-autoconfigure:jar:4.0.7:compile
-< [INFO] |  |  \- org.springframework.boot:spring-boot-actuator:jar:4.0.7:compile
-< [INFO] |  +- org.springframework.boot:spring-boot-health:jar:4.0.7:compile
-< [INFO] |  \- io.micrometer:micrometer-jakarta9:jar:1.16.6:compile
-< [INFO] |     \- io.micrometer:micrometer-core:jar:1.16.6:compile
-< [INFO] |        +- org.hdrhistogram:HdrHistogram:jar:2.2.2:runtime
-< [INFO] |        \- org.latencyutils:LatencyUtils:jar:2.0.3:runtime
----
-> [INFO] +- org.yaml:snakeyaml:jar:2.6:compile
-> [INFO] +- org.springframework.boot:spring-boot-starter-actuator:jar:4.1.0:compile
-> [INFO] |  +- org.springframework.boot:spring-boot-starter-micrometer-metrics:jar:4.1.0:compile
-> [INFO] |  |  \- org.springframework.boot:spring-boot-micrometer-metrics:jar:4.1.0:compile
-> [INFO] |  |     \- org.springframework.boot:spring-boot-micrometer-observation:jar:4.1.0:compile
-> [INFO] |  +- org.springframework.boot:spring-boot-actuator-autoconfigure:jar:4.1.0:compile
-> [INFO] |  |  \- org.springframework.boot:spring-boot-actuator:jar:4.1.0:compile
-> [INFO] |  +- org.springframework.boot:spring-boot-health:jar:4.1.0:compile
-> [INFO] |  \- io.micrometer:micrometer-jakarta9:jar:1.17.0:compile
-> [INFO] |     \- io.micrometer:micrometer-core:jar:1.17.0:compile
-> [INFO] |        \- org.hdrhistogram:HdrHistogram:jar:2.2.2:runtime
-210,212d191
-< [INFO] +- org.apache.tomcat.embed:tomcat-embed-core:jar:11.0.23:compile
-< [INFO] |  \- org.apache.tomcat:tomcat-annotations-api:jar:11.0.22:compile
-< [INFO] +- tools.jackson.core:jackson-core:jar:3.1.1:compile
-227,231c206,210
-< [INFO] +- org.springframework.cloud:spring-cloud-starter-config:jar:5.0.0:compile
-< [INFO] |  +- org.springframework.cloud:spring-cloud-starter:jar:5.0.0:compile
-< [INFO] |  |  +- org.springframework.cloud:spring-cloud-context:jar:5.0.0:compile
-< [INFO] |  |  \- org.springframework.cloud:spring-cloud-commons:jar:5.0.0:compile
-< [INFO] |  +- org.springframework.cloud:spring-cloud-config-client:jar:5.0.0:compile
----
-> [INFO] +- org.springframework.cloud:spring-cloud-starter-config:jar:5.0.4:compile
-> [INFO] |  +- org.springframework.cloud:spring-cloud-starter:jar:5.0.2:compile
-> [INFO] |  |  +- org.springframework.cloud:spring-cloud-context:jar:5.0.2:compile
-> [INFO] |  |  \- org.springframework.cloud:spring-cloud-commons:jar:5.0.2:compile
-> [INFO] |  +- org.springframework.cloud:spring-cloud-config-client:jar:5.0.4:compile
-233,236c212,216
-< [INFO] +- org.springframework.cloud:spring-cloud-starter-vault-config:jar:5.0.0:compile
-< [INFO] |  +- org.springframework.cloud:spring-cloud-vault-config:jar:5.0.0:compile
-< [INFO] |  \- org.springframework.vault:spring-vault-core:jar:4.0.0:compile
-< [INFO] +- org.apache.kafka:kafka-clients:jar:4.1.2:compile
----
-> [INFO] |     \- tools.jackson.core:jackson-core:jar:3.1.4:compile
-> [INFO] +- org.springframework.cloud:spring-cloud-starter-vault-config:jar:5.0.2:compile
-> [INFO] |  +- org.springframework.cloud:spring-cloud-vault-config:jar:5.0.2:compile
-> [INFO] |  \- org.springframework.vault:spring-vault-core:jar:4.0.3:compile
-> [INFO] +- org.apache.kafka:kafka-clients:jar:4.2.1:compile
-248,249c228,229
-< [INFO] Total time:  0.937 s
-< [INFO] Finished at: 2026-07-08T15:41:37-04:00
----
-> [INFO] Total time:  0.934 s
-> [INFO] Finished at: 2026-07-08T15:37:38-04:00
+package com.optum.ppl.kafka.service.kafkaConsumer;
+
+import com.optum.ppl.kafka.service.domain.DocumentMetaDataService;
+import com.optum.ppl.kafka.service.mongo.DocumentMetaData;
+import com.optum.ppl.kafka.service.mongo.processors.MetaDataStatus;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.util.ReflectionTestUtils;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+
+@RunWith(MockitoJUnitRunner.class)
+public class ReimbursementConsumerServiceTest {
+
+    @Mock
+    private DocumentMetaDataService documentMetaDataService;
+
+    @InjectMocks
+    private ReimbursementConsumerService reimbursementConsumerService;
+
+    private final int TEST_SPACE_ID = 8910;
+
+    @Before
+    public void setUp() {
+        // spaceId is normally injected via @Value; set it manually for the unit test
+        ReflectionTestUtils.setField(reimbursementConsumerService, "reimbursement_spaceId", TEST_SPACE_ID);
+    }
+
+    @Test
+    public void testConsume_SuccessWithAllFields() {
+        // Arrange - keys must match what AbstractDocumentConsumer reads
+        String jsonValue = "{ \"globalDocumentId\": \"doc-8910-001\", \"documentClass\": \"PRRPT\", \"tin\": \"123456789\" }";
+        ConsumerRecord<String, String> record = new ConsumerRecord<>("test-topic", 0, 0L, "key-1", jsonValue);
+
+        // Act
+        reimbursementConsumerService.consume(record);
+
+        // Assert
+        ArgumentCaptor<DocumentMetaData> documentCaptor = ArgumentCaptor.forClass(DocumentMetaData.class);
+        verify(documentMetaDataService).insertDocumentWithSpaceId(documentCaptor.capture(), eq(TEST_SPACE_ID));
+
+        DocumentMetaData capturedDoc = documentCaptor.getValue();
+        assertNotNull(capturedDoc);
+        assertEquals(MetaDataStatus.NEW, capturedDoc.getStatus());
+        assertEquals("doc-8910-001", capturedDoc.getDoc360DocumentId());
+        assertEquals("PRRPT", capturedDoc.getDoc360DocClass());
+        assertNotNull(capturedDoc.getMetadata());
+        assertEquals("PRRPT", capturedDoc.getMetadata().getString("documentClass"));
+    }
+
+    @Test
+    public void testConsume_SuccessWithMissingOptionalFields() {
+        // Arrange - no globalDocumentId, no documentClass
+        String jsonValue = "{ \"tin\": \"123456789\" }";
+        ConsumerRecord<String, String> record = new ConsumerRecord<>("test-topic", 0, 0L, "key-2", jsonValue);
+
+        // Act
+        reimbursementConsumerService.consume(record);
+
+        // Assert - it still stores, but the two optional ids stay null
+        ArgumentCaptor<DocumentMetaData> documentCaptor = ArgumentCaptor.forClass(DocumentMetaData.class);
+        verify(documentMetaDataService).insertDocumentWithSpaceId(documentCaptor.capture(), eq(TEST_SPACE_ID));
+
+        DocumentMetaData capturedDoc = documentCaptor.getValue();
+        assertNull(capturedDoc.getDoc360DocumentId());
+        assertNull(capturedDoc.getDoc360DocClass());
+    }
+
+    @Test
+    public void testConsume_NullMessageValue_ShouldReturnEarly() {
+        // Arrange
+        ConsumerRecord<String, String> record = new ConsumerRecord<>("test-topic", 0, 0L, "key-3", null);
+
+        // Act
+        reimbursementConsumerService.consume(record);
+
+        // Assert - nothing is stored
+        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
+    }
+
+    @Test
+    public void testConsume_EmptyMessageValue_ShouldReturnEarly() {
+        // Arrange
+        ConsumerRecord<String, String> record = new ConsumerRecord<>("test-topic", 0, 0L, "key-4", "");
+
+        // Act
+        reimbursementConsumerService.consume(record);
+
+        // Assert - nothing is stored
+        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
+    }
+
+    @Test
+    public void testConsume_InvalidJson_ShouldCatchAndNotStore() {
+        // Arrange
+        String invalidJson = "{ invalid-json-format }";
+        ConsumerRecord<String, String> record = new ConsumerRecord<>("test-topic", 0, 0L, "key-5", invalidJson);
+
+        // Act - must not throw; the base class try/catch swallows and logs
+        reimbursementConsumerService.consume(record);
+
+        // Assert - nothing is stored
+        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
+    }
+}
