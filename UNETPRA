@@ -1,0 +1,896 @@
+package com.optum.fds.paperless.client.pojo;
+
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.optum.fds.paperless.client.ClientMetadata;
+import com.optum.fds.paperless.client.ErrorMessage;
+
+import static com.optum.fds.paperless.util.handlebar.helper.pojo.NormalizeUtil.normalizePipeDelimitedValue;
+
+/**
+ * Doc360 variant of UNET PRA metadata (Rally US10645243).
+ *
+ * After the Doc360 migration, UNET PRA metadata arrives on a Kafka topic using Doc360's
+ * u_* attribute names instead of the old zip-file names. This POJO maps each Doc360 field
+ * (@JsonAlias) onto the canonical PRUN field (@JsonProperty) so the downstream pipeline is
+ * unchanged. Modeled on USPPRADoc360.
+ *
+ * One space (10067/10074) carries THREE Doc360 doc classes — EPS Provider EOBs
+ * (u_eps_prov_eob), UNET GFLX Prov & Sp Paye EOBS (u_unet_gflx_eob), and Surest Provider
+ * Remittance Advice (u_surest_pra). Where a canonical field is named differently across
+ * those classes, @JsonAlias lists ALL of the names (e.g. u_master_tin / u_tin), so one POJO
+ * serves all three classes.
+ *
+ * createdDate is inherited from ClientMetadata, which already aliases u_doc_creation_dt.
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class UNETPRADoc360 extends ClientMetadata {
+
+    private static final long serialVersionUID = 7451096330427761820L;
+
+    // TIN: EPS/GFLX send u_master_tin; Surest sends u_tin
+    @JsonProperty("tin")
+    @JsonAlias({"u_master_tin", "u_tin"})
+    private String tin;
+
+    @JsonProperty("mpin")
+    @JsonAlias("u_indiv_prov_mpin")
+    private String mpin = "";
+
+    @JsonProperty("emailAlertReq")
+    @JsonAlias("u_email_alert_req")
+    private String emailAlertReq = "Y";
+
+    @JsonProperty("EFT_Ind")
+    @JsonAlias("u_eft_ind")
+    private String EFT_Ind;
+
+    @JsonProperty("835_Ind")           // canonical name starts with a digit; Java field is Ind_835
+    @JsonAlias("u_835_ind")
+    private String Ind_835;
+
+    @JsonProperty("physicianName")
+    @JsonAlias("u_phy_nm")
+    private String physicianName;
+
+    // Check/Trace: EPS/GFLX send u_check_nbr; Surest sends u_chk_nbr
+    @JsonProperty("CheckTraceNumber")
+    @JsonAlias({"u_check_nbr", "u_chk_nbr"})
+    private String CheckTraceNumber;
+
+    // Multi-value (sheet column C = Yes): normalized to pipe-joined String via setter below
+    @JsonProperty("multClaimNumber")
+    @JsonAlias("u_clm_nbr")
+    private String multClaimNumber;
+
+    // Multi-value; EPS/GFLX send u_member_id; Surest sends u_mbr_id
+    @JsonProperty("multMemberId")
+    @JsonAlias({"u_member_id", "u_mbr_id"})
+    private String multMemberId;
+
+    @JsonProperty("DefaultUsed")       // sheet: N/A — no Doc360 source, stays null/default
+    private String DefaultUsed;
+
+    @JsonProperty("CheckAmt")
+    @JsonAlias("u_chk_amt")
+    private String CheckAmt;
+
+    @JsonProperty("CONFIGKEY")
+    @JsonAlias("u_config_key")
+    private String CONFIGKEY;
+
+    @JsonProperty("originalPrintTrail")
+    @JsonAlias("u_trl_id")
+    private String originalPrintTrail;
+
+    @JsonProperty("PassThruData")
+    @JsonAlias("u_pass_thru_data")
+    private String PassThruData;
+
+    @JsonProperty("MailToAddress1")
+    @JsonAlias("u_mail_to_adr1")
+    private String MailToAddress1;
+
+    @JsonProperty("MailToAddress2")
+    @JsonAlias("u_mail_to_adr2")
+    private String MailToAddress2;
+
+    @JsonProperty("MailToAddress3")
+    @JsonAlias("u_mail_to_adr3")
+    private String MailToAddress3;
+
+    @JsonProperty("MailToAddress4")
+    @JsonAlias("u_mail_to_adr4")
+    private String MailToAddress4;
+
+    @JsonProperty("MailToAddress5")
+    @JsonAlias("u_mail_to_adr5")
+    private String MailToAddress5;
+
+    @JsonProperty("MailToAddress6")
+    @JsonAlias("u_mail_to_adr6")
+    private String MailToAddress6;
+
+    @JsonProperty("subCategory")
+    @JsonAlias("u_sub_category")
+    protected String subCategory;
+
+    @JsonProperty("NPI")
+    @JsonAlias("u_npi")
+    private String NPI;
+
+    @JsonProperty("paymentNumber")
+    @JsonAlias("u_vendor_pay_id")
+    private String paymentNumber;
+
+    // New Doc360-only field for UNET PRA; multi-value
+    @JsonProperty("multPatientAccountNumber")
+    @JsonAlias("u_patient_acct_nbr")
+    private String multPatientAccountNumber;
+
+    public UNETPRADoc360() {
+        this.category = "Payment Document";
+        this.fileType = "Letter";
+        this.tenant = "Link";
+        this.fileDescription = "Provider Remittance Advice";
+        this.createApplication = "PmntEng";
+        this.docSentTo = "";
+        this.sendToDocVault = false;
+        this.sendToShutterfly = false;
+        this.providerEmailId = "";
+        this.postCardInd = true;
+        this.dateEmailSent = null;
+        this.sendEmailNotifications = false;
+        this.sendPENAPIRequest = false;
+        this.privilege = "Claim Status";
+        this.subCategory = "PR";
+        Subcategory subCat = Subcategory.valueOf(this.subCategory);
+        this.setFilePath(subCat.getFilePath());
+    }
+
+    public String getTin() {
+        return tin;
+    }
+
+    public void setTin(String tin) {
+        this.tin = tin;
+    }
+
+    public String getMpin() {
+        return mpin;
+    }
+
+    public void setMpin(String mpin) {
+        if (mpin != null) {
+            this.mpin = mpin;
+        }
+    }
+
+    public String getEmailAlertReq() {
+        return emailAlertReq;
+    }
+
+    public void setEmailAlertReq(String emailAlertReq) {
+        if (emailAlertReq != null && !emailAlertReq.isEmpty()) {
+            this.emailAlertReq = emailAlertReq;
+        }
+    }
+
+    public String getEFT_Ind() {
+        return EFT_Ind;
+    }
+
+    public void setEFT_Ind(String eFT_Ind) {
+        EFT_Ind = eFT_Ind;
+    }
+
+    public String getInd_835() {
+        return Ind_835;
+    }
+
+    public void setInd_835(String ind_835) {
+        Ind_835 = ind_835;
+    }
+
+    public String getPhysicianName() {
+        return physicianName;
+    }
+
+    public void setPhysicianName(String physicianName) {
+        this.physicianName = physicianName;
+    }
+
+    public String getCheckTraceNumber() {
+        return CheckTraceNumber;
+    }
+
+    public void setCheckTraceNumber(String checkTraceNumber) {
+        CheckTraceNumber = checkTraceNumber;
+    }
+
+    public String getMultClaimNumber() {
+        return multClaimNumber;
+    }
+
+    // Doc360 may send this as a single string OR a JSON array; normalize to pipe-joined String
+    @JsonSetter("multClaimNumber")
+    @JsonAlias("u_clm_nbr")
+    public void setMultClaimNumber(Object raw) {
+        this.multClaimNumber = normalizePipeDelimitedValue(raw);
+    }
+
+    public String getMultMemberId() {
+        return multMemberId;
+    }
+
+    @JsonSetter("multMemberId")
+    @JsonAlias({"u_member_id", "u_mbr_id"})
+    public void setMultMemberId(Object raw) {
+        this.multMemberId = normalizePipeDelimitedValue(raw);
+    }
+
+    // Backward-compatibility shims: downstream code that still calls getMemberId()/setMemberId()
+    // keeps working after the memberId -> multMemberId rename.
+    public String getMemberId() {
+        return multMemberId;
+    }
+
+    public void setMemberId(String memberId) {
+        this.multMemberId = memberId;
+    }
+
+    public String getDefaultUsed() {
+        return DefaultUsed;
+    }
+
+    public void setDefaultUsed(String defaultUsed) {
+        DefaultUsed = defaultUsed;
+    }
+
+    public String getCheckAmt() {
+        return CheckAmt;
+    }
+
+    public void setCheckAmt(String checkAmt) {
+        CheckAmt = checkAmt;
+    }
+
+    public String getCONFIGKEY() {
+        return CONFIGKEY;
+    }
+
+    public void setCONFIGKEY(String cONFIGKEY) {
+        CONFIGKEY = cONFIGKEY;
+    }
+
+    public String getOriginalPrintTrail() {
+        return originalPrintTrail;
+    }
+
+    public void setOriginalPrintTrail(String originalPrintTrail) {
+        this.originalPrintTrail = originalPrintTrail;
+    }
+
+    public String getPassThruData() {
+        return PassThruData;
+    }
+
+    public void setPassThruData(String passThruData) {
+        PassThruData = passThruData;
+    }
+
+    public String getMailToAddress1() {
+        return MailToAddress1;
+    }
+
+    public void setMailToAddress1(String mailToAddress1) {
+        MailToAddress1 = mailToAddress1;
+    }
+
+    public String getMailToAddress2() {
+        return MailToAddress2;
+    }
+
+    public void setMailToAddress2(String mailToAddress2) {
+        MailToAddress2 = mailToAddress2;
+    }
+
+    public String getMailToAddress3() {
+        return MailToAddress3;
+    }
+
+    public void setMailToAddress3(String mailToAddress3) {
+        MailToAddress3 = mailToAddress3;
+    }
+
+    public String getMailToAddress4() {
+        return MailToAddress4;
+    }
+
+    public void setMailToAddress4(String mailToAddress4) {
+        MailToAddress4 = mailToAddress4;
+    }
+
+    public String getMailToAddress5() {
+        return MailToAddress5;
+    }
+
+    public void setMailToAddress5(String mailToAddress5) {
+        MailToAddress5 = mailToAddress5;
+    }
+
+    public String getMailToAddress6() {
+        return MailToAddress6;
+    }
+
+    public void setMailToAddress6(String mailToAddress6) {
+        MailToAddress6 = mailToAddress6;
+    }
+
+    public String getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(String subCategory) {
+        if (subCategory == null || subCategory.isEmpty()) {
+            this.subCategory = "PR";
+            this.setFilePath(Subcategory.PR.getFilePath());
+        } else {
+            this.subCategory = subCategory;
+            Subcategory subCat;
+            try {
+                subCat = Subcategory.valueOf(this.subCategory);
+            } catch (Exception e) {
+                subCat = Subcategory.PR;
+            }
+            this.setFilePath(subCat.getFilePath());
+        }
+
+        if (this.getExpiryDate() != null && this.getExpiryDate().length() == 7) {
+            this.setExpiryDate(this.vcpExpiryDateFormat(this.getExpiryDate(), this.subCategory));
+        }
+    }
+
+    public String getNPI() {
+        return NPI;
+    }
+
+    public void setNPI(String NPI) {
+        this.NPI = NPI;
+    }
+
+    public String getPaymentNumber() {
+        return paymentNumber;
+    }
+
+    public void setPaymentNumber(String paymentNumber) {
+        this.paymentNumber = paymentNumber;
+    }
+
+    public String getMultPatientAccountNumber() {
+        return multPatientAccountNumber;
+    }
+
+    @JsonSetter("multPatientAccountNumber")
+    @JsonAlias("u_patient_acct_nbr")
+    public void setMultPatientAccountNumber(Object raw) {
+        this.multPatientAccountNumber = normalizePipeDelimitedValue(raw);
+    }
+
+    public enum ErrorMsg implements ErrorMessage {
+        // SEVERE (code 22) — sheet column F "Y - 22". Keys are the RAW Doc360 payload names.
+        u_eft_ind (22, "Missing or invalid data: EFT_Ind(SEVERE)"),
+        u_config_key (22, "Missing or invalid data: CONFIGKEY(SEVERE)"),
+        u_trl_id (22, "Missing or invalid data: originalPrintTrail(SEVERE)"),
+        u_pass_thru_data (22, "Missing or invalid data: PassThruData(SEVERE)"),
+        u_mail_to_adr1 (22, "Missing or invalid data: MailToAddress1(SEVERE)"),
+        u_mail_to_adr3 (22, "Missing or invalid data: MailToAddress3(SEVERE)"),
+        u_tin_22 (22, "Missing or invalid data: tin(SEVERE)"),   // sentinel: TIN missing on EFT+print
+
+        // WARNING (code 12) — sheet column F "Y - 12"
+        u_indiv_prov_mpin (12, "Missing or invalid data: mpin"),
+        u_email_alert_req (12, "Missing or invalid data: emailAlertReq"),
+        u_check_nbr (12, "Missing or invalid data: CheckTraceNumber"),
+        u_chk_nbr (12, "Missing or invalid data: CheckTraceNumber"),
+        u_clm_nbr (12, "Missing or invalid data: multClaimNumber"),
+        u_sub_category (12, "Missing or invalid data: subCategory"),
+        u_doc_creation_dt (12, "Missing or invalid data: createdDate"),
+        u_tin_12 (12, "Missing or invalid data: tin");          // sentinel: TIN missing otherwise
+
+        private final int errorCode;
+        private final String errorMessage;
+
+        ErrorMsg(int code, String message) {
+            this.errorCode = code;
+            this.errorMessage = message;
+        }
+
+        public int getErrorCode() {
+            return errorCode;
+        }
+
+        public String getErrorMessage() {
+            return errorMessage;
+        }
+    }
+
+    public enum Subcategory {
+
+        P1 ("P1", "Commercial/Detailed PRAs"),
+        P2 ("P2", "Commercial/Virtual Card Payments and Info Only PRAs"),
+        P8 ("P8", "Commercial/Zero-Dollar PRAs"),
+        P9 ("P9", "Medicare/Zero-Dollar PRAs"),
+        P0 ("P0", "Community Plan/Zero-Dollar PRAs"),
+        E1 ("E1", "Other/Zero-Dollar PRAs"),
+        PR ("PR", "Other PRAs/Other");
+
+        private final String subCat;
+        private final String filePath;
+
+        Subcategory(String subCat, String filePath) {
+            this.subCat = subCat;
+            this.filePath = filePath;
+        }
+
+        public String getSubCat() {
+            return subCat;
+        }
+
+        public String getFilePath() {
+            return filePath;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "u_check_nbr":          { "type": "string", "minLength": 1 },
+    "u_chk_nbr":            { "type": "string", "minLength": 1 },
+    "u_vendor_pay_id":      { "type": "string" },
+    "u_doc_creation_dt":    { "type": "string", "minLength": 1 },
+    "u_eft_ind":            { "type": "string", "minLength": 1 },
+    "u_835_ind":            { "type": "string" },
+    "u_member_id":          { "oneOf": [ { "type": "string" }, { "type": "array", "items": { "type": "string" } } ] },
+    "u_mbr_id":             { "oneOf": [ { "type": "string" }, { "type": "array", "items": { "type": "string" } } ] },
+    "u_phy_nm":             { "type": "string" },
+    "DefaultUsed":          { "type": "string" },
+    "u_chk_amt":            { "type": "string" },
+    "u_clm_nbr":            { "oneOf": [ { "type": "string", "minLength": 1 }, { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } } ] },
+    "FileName":             { "type": "string" },
+    "u_sub_category":       { "type": "string", "minLength": 1 },
+    "u_email_alert_req":    { "type": "string", "enum": ["Y", "N"], "default": "Y", "minLength": 1 },
+    "u_master_tin":         { "type": "string", "minLength": 1 },
+    "u_tin":                { "type": "string", "minLength": 1 },
+    "u_indiv_prov_mpin":    { "type": "string", "minLength": 1 },
+    "u_config_key":         { "type": "string" },
+    "u_trl_id":             { "type": "string" },
+    "u_pass_thru_data":     { "type": "string" },
+    "u_mail_to_adr1":       { "type": "string" },
+    "u_mail_to_adr2":       { "type": "string" },
+    "u_mail_to_adr3":       { "type": "string" },
+    "u_mail_to_adr4":       { "type": "string" },
+    "u_mail_to_adr5":       { "type": "string" },
+    "u_mail_to_adr6":       { "type": "string" },
+    "u_npi":                { "type": "string" },
+    "u_patient_acct_nbr":   { "oneOf": [ { "type": "string" }, { "type": "array", "items": { "type": "string" } } ] }
+  },
+
+  "required": [
+    "u_doc_creation_dt",
+    "u_indiv_prov_mpin",
+    "u_eft_ind",
+    "u_email_alert_req",
+    "u_clm_nbr",
+    "u_sub_category"
+  ],
+
+  "allOf": [
+    {
+      "comment": "CheckTraceNumber is always required; EPS/GFLX send u_check_nbr, Surest sends u_chk_nbr",
+      "anyOf": [
+        { "required": ["u_check_nbr"] },
+        { "required": ["u_chk_nbr"] }
+      ]
+    }
+  ],
+
+  "if": {
+    "comment": "Non-EFT & print-enabled -> address/config block required; TIN missing = warning (12)",
+    "anyOf": [
+      { "properties": { "u_email_alert_req": { "const": "Y" }, "u_eft_ind": { "const": "N" } } },
+      { "properties": { "u_email_alert_req": { "const": ""  }, "u_eft_ind": { "const": "N" } } },
+      { "properties": { "u_email_alert_req": false,           "u_eft_ind": { "const": "N" } } }
+    ]
+  },
+  "then": {
+    "properties": {
+      "u_config_key":     { "minLength": 1 },
+      "u_trl_id":         { "minLength": 1 },
+      "u_pass_thru_data": { "minLength": 1 },
+      "u_mail_to_adr1":   { "minLength": 1 },
+      "u_mail_to_adr3":   { "minLength": 1 }
+    },
+    "required": [
+      "u_config_key",
+      "u_trl_id",
+      "u_pass_thru_data",
+      "u_mail_to_adr1",
+      "u_mail_to_adr3"
+    ],
+    "oneOf": [
+      { "anyOf": [
+          { "properties": { "u_master_tin": { "minLength": 1 } }, "required": ["u_master_tin"] },
+          { "properties": { "u_tin":        { "minLength": 1 } }, "required": ["u_tin"] }
+      ] },
+      { "required": ["u_tin_12"] }
+    ]
+  },
+  "else": {
+    "if": {
+      "comment": "EFT & print -> TIN missing = SEVERE (22)",
+      "anyOf": [
+        { "properties": { "u_email_alert_req": { "const": "Y" }, "u_eft_ind": { "const": "Y" } } },
+        { "properties": { "u_email_alert_req": { "const": ""  }, "u_eft_ind": { "const": "Y" } } },
+        { "properties": { "u_email_alert_req": false,           "u_eft_ind": { "const": "Y" } } }
+      ]
+    },
+    "then": {
+      "oneOf": [
+        { "anyOf": [
+            { "properties": { "u_master_tin": { "minLength": 1 } }, "required": ["u_master_tin"] },
+            { "properties": { "u_tin":        { "minLength": 1 } }, "required": ["u_tin"] }
+        ] },
+        { "required": ["u_tin_22"] }
+      ]
+    },
+    "else": {
+      "oneOf": [
+        { "anyOf": [
+            { "properties": { "u_master_tin": { "minLength": 1 } }, "required": ["u_master_tin"] },
+            { "properties": { "u_tin":        { "minLength": 1 } }, "required": ["u_tin"] }
+        ] },
+        { "required": ["u_tin_12"] }
+      ]
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.optum.fds.paperless.client.pojo;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
+
+import org.everit.json.schema.Schema;
+import org.everit.json.schema.loader.SchemaLoader;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.junit.Test;
+
+/**
+ * Tests for the Doc360 UNET PRA metadata mapping (Rally US10645243).
+ *
+ * Doc360 delivers metadata as JSON with u_* keys (not the legacy XML index files), so these
+ * tests drive the POJO/schema with JSON directly — mirroring the production path
+ * ProcessConvertMetadata uses (mapper.readValue + everit schema validate).
+ *
+ * Focus areas:
+ *   1. Multi-alias — the 3 doc classes (EPS/GFLX use u_master_tin/u_check_nbr/u_member_id,
+ *      Surest uses u_tin/u_chk_nbr/u_mbr_id) all map into the same canonical field.
+ *   2. Multi-value — u_clm_nbr / u_patient_acct_nbr arrive as string OR array, normalized to
+ *      a pipe-joined String.
+ *   3. required / severity — the schema reproduces the legacy 12 (warning) / 22 (SEVERE) rules
+ *      re-keyed to u_* names.
+ */
+public class UNETPRADoc360MetadataTest extends AbstractMetadataTestUtil {
+
+    private static final String CLIENT_NAME = "UNETPRADoc360";
+
+    // ---- helpers ------------------------------------------------------------
+
+    /** Validate a raw Doc360 payload against the UNETPRADoc360 schema; collect mapped error messages. */
+    private Set<String> validate(JSONObject payload) throws IOException {
+        Set<String> errors = new HashSet<>();
+        JSONObject jsonSchema = new JSONObject(getClientSchema(CLIENT_NAME));
+        Schema schema = SchemaLoader.builder().schemaJson(jsonSchema).build().load().build();
+        try {
+            schema.validate(payload);
+        } catch (org.everit.json.schema.ValidationException e) {
+            Class enumClass = getErrEnumFromClientName(CLIENT_NAME);
+            for (String msg : e.getAllMessages()) {
+                getErrors(msg, errors, enumClass);
+            }
+        }
+        return errors;
+    }
+
+    /** A fully-valid, non-EFT + print Doc360 payload (EPS/GFLX-style names). */
+    private JSONObject validEpsPayload() {
+        return new JSONObject()
+                .put("u_master_tin", "412062449")
+                .put("u_indiv_prov_mpin", "000000000")
+                .put("u_email_alert_req", "Y")
+                .put("u_eft_ind", "N")
+                .put("u_check_nbr", "TR79661936")
+                .put("u_clm_nbr", "CL73626941")
+                .put("u_sub_category", "P1")
+                .put("u_doc_creation_dt", "03/19/2021 10:18:51 PM")
+                .put("u_config_key", "CFG1")
+                .put("u_trl_id", "TRL1")
+                .put("u_pass_thru_data", "PTD1")
+                .put("u_mail_to_adr1", "123 Main St")
+                .put("u_mail_to_adr3", "Suite 5");
+    }
+
+    // ---- 1. multi-alias (3 doc classes) -------------------------------------
+
+    @Test
+    public void deserialize_uMasterTinAlias_mapsToTin() throws Exception {
+        UNETPRADoc360 pojo = objectMapper.readValue("{\"u_master_tin\":\"412062449\"}", UNETPRADoc360.class);
+        assertEquals("412062449", pojo.getTin());
+    }
+
+    @Test
+    public void deserialize_uTinAlias_mapsToTin() throws Exception {
+        UNETPRADoc360 pojo = objectMapper.readValue("{\"u_tin\":\"987654321\"}", UNETPRADoc360.class);
+        assertEquals("987654321", pojo.getTin());
+    }
+
+    @Test
+    public void deserialize_uCheckNbrAlias_mapsToCheckTraceNumber() throws Exception {
+        UNETPRADoc360 pojo = objectMapper.readValue("{\"u_check_nbr\":\"TR123\"}", UNETPRADoc360.class);
+        assertEquals("TR123", pojo.getCheckTraceNumber());
+    }
+
+    @Test
+    public void deserialize_uChkNbrAlias_mapsToCheckTraceNumber() throws Exception {
+        UNETPRADoc360 pojo = objectMapper.readValue("{\"u_chk_nbr\":\"CK999\"}", UNETPRADoc360.class);
+        assertEquals("CK999", pojo.getCheckTraceNumber());
+    }
+
+    @Test
+    public void deserialize_uMemberIdAlias_mapsToMultMemberId() throws Exception {
+        UNETPRADoc360 pojo = objectMapper.readValue("{\"u_member_id\":\"890478508\"}", UNETPRADoc360.class);
+        assertEquals("890478508", pojo.getMultMemberId());
+    }
+
+    @Test
+    public void deserialize_uMbrIdAlias_mapsToMultMemberId() throws Exception {
+        UNETPRADoc360 pojo = objectMapper.readValue("{\"u_mbr_id\":\"932811058\"}", UNETPRADoc360.class);
+        assertEquals("932811058", pojo.getMultMemberId());
+    }
+
+    // ---- 2. multi-value normalization ---------------------------------------
+
+    @Test
+    public void deserialize_claimNumberArray_normalizedToPipeJoined() throws Exception {
+        UNETPRADoc360 pojo = objectMapper.readValue(
+                "{\"u_clm_nbr\":[\"CL111\",\"CL222\",\"CL333\"]}", UNETPRADoc360.class);
+        assertEquals("CL111|CL222|CL333", pojo.getMultClaimNumber());
+    }
+
+    @Test
+    public void deserialize_claimNumberSingleString_mappedAsIs() throws Exception {
+        UNETPRADoc360 pojo = objectMapper.readValue("{\"u_clm_nbr\":\"CL111\"}", UNETPRADoc360.class);
+        assertEquals("CL111", pojo.getMultClaimNumber());
+    }
+
+    @Test
+    public void deserialize_patientAccountNumberArray_normalizedToPipeJoined() throws Exception {
+        UNETPRADoc360 pojo = objectMapper.readValue(
+                "{\"u_patient_acct_nbr\":[\"PA1\",\"PA2\"]}", UNETPRADoc360.class);
+        assertEquals("PA1|PA2", pojo.getMultPatientAccountNumber());
+    }
+
+    // ---- 3. backward-compat + defaults --------------------------------------
+
+    @Test
+    public void memberIdShim_returnsMultMemberId() throws Exception {
+        UNETPRADoc360 pojo = objectMapper.readValue("{\"u_mbr_id\":\"111\"}", UNETPRADoc360.class);
+        assertEquals("111", pojo.getMemberId());   // legacy accessor still works after rename
+    }
+
+    @Test
+    public void constructor_defaults_setPaymentDocumentIdentity() {
+        UNETPRADoc360 pojo = new UNETPRADoc360();
+        assertEquals("Payment Document", pojo.getCategory());
+        assertEquals("PmntEng", pojo.getCreateApplication());
+        assertEquals("PR", pojo.getSubCategory());
+    }
+
+    @Test
+    public void deserialize_unknownDoc360EobAttribute_ignored() throws Exception {
+        // EOB doc classes carry attributes not in the PRUN model (compound doc, legal hold, ...)
+        UNETPRADoc360 pojo = objectMapper.readValue(
+                "{\"u_tin\":\"1\",\"u_compound_doc\":\"X\",\"u_legal_hold\":\"Y\"}", UNETPRADoc360.class);
+        assertEquals("1", pojo.getTin());   // does not throw; extras ignored
+    }
+
+    // ---- 4. schema: happy path ----------------------------------------------
+
+    @Test
+    public void validate_allRequiredPresentNonEftPrint_noErrors() throws Exception {
+        assertTrue(validate(validEpsPayload()).isEmpty());
+    }
+
+    @Test
+    public void validate_tinViaSurestUTin_satisfiesRequirement() throws Exception {
+        JSONObject p = validEpsPayload();
+        p.remove("u_master_tin");
+        p.put("u_tin", "412062449");        // Surest names TIN u_tin
+        assertTrue(validate(p).isEmpty());
+    }
+
+    @Test
+    public void validate_checkTraceViaSurestUChkNbr_satisfiesRequirement() throws Exception {
+        JSONObject p = validEpsPayload();
+        p.remove("u_check_nbr");
+        p.put("u_chk_nbr", "CK1");          // Surest names it u_chk_nbr
+        assertTrue(validate(p).isEmpty());
+    }
+
+    @Test
+    public void validate_claimNumberAsArray_isAccepted() throws Exception {
+        JSONObject p = validEpsPayload();
+        p.put("u_clm_nbr", new JSONArray().put("CL1").put("CL2"));
+        assertTrue(validate(p).isEmpty());
+    }
+
+    // ---- 5. schema: required / severity -------------------------------------
+
+    @Test
+    public void validate_missingClaimNumber_returnsWarning12() throws Exception {
+        JSONObject p = validEpsPayload();
+        p.remove("u_clm_nbr");
+        Set<String> errors = validate(p);
+        assertTrue(errors.contains("Missing or invalid data: multClaimNumber"));
+    }
+
+    @Test
+    public void validate_missingCheckTraceBothNames_returnsWarning12() throws Exception {
+        JSONObject p = validEpsPayload();
+        p.remove("u_check_nbr");            // and u_chk_nbr already absent
+        Set<String> errors = validate(p);
+        assertTrue(errors.contains("Missing or invalid data: CheckTraceNumber"));
+    }
+
+    @Test
+    public void validate_missingConfigKeyOnNonEftPrint_returnsSevere22() throws Exception {
+        JSONObject p = validEpsPayload();
+        p.remove("u_config_key");
+        Set<String> errors = validate(p);
+        assertTrue(errors.contains("Missing or invalid data: CONFIGKEY(SEVERE)"));
+    }
+
+    @Test
+    public void validate_missingTinOnEftAndPrint_returnsSevere22() throws Exception {
+        JSONObject p = validEpsPayload();
+        p.remove("u_master_tin");
+        p.put("u_eft_ind", "Y");           // EFT + print => TIN missing is SEVERE
+        Set<String> errors = validate(p);
+        assertTrue(errors.contains("Missing or invalid data: tin(SEVERE)"));
+    }
+
+    @Test
+    public void validate_missingTinOnNonEft_returnsWarning12() throws Exception {
+        JSONObject p = validEpsPayload();
+        p.remove("u_master_tin");          // non-EFT => TIN missing is warning
+        Set<String> errors = validate(p);
+        assertTrue(errors.contains("Missing or invalid data: tin"));
+    }
+}
