@@ -1,0 +1,142 @@
+package com.optum.ppl.kafka.service.kafkaConsumer;
+
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
+@Service
+@ConditionalOnProperty(name = "feature.toggle.kafka.consumer.homeandcommunity", havingValue = "true")
+public class HomeAndCommunityConsumerService extends AbstractDocumentConsumer {
+
+    @Value("${HOME_AND_COMMUNITY_SPACEID}")
+    private int homeAndCommunity_spaceId;
+
+    @Override
+    protected int getSpaceId() {
+        return this.homeAndCommunity_spaceId;
+    }
+
+    @KafkaListener(
+            topics = "${spring.kafka.topic.homeandcommunity}",
+            containerFactory = "secureKafkaListenerContainerFactory"
+    )
+    public void consume(ConsumerRecord<String, String> message) {
+        super.processMessage(message);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.optum.ppl.kafka.service.kafkaConsumer;
+
+import com.optum.ppl.kafka.service.domain.DocumentMetaDataService;
+import com.optum.ppl.kafka.service.mongo.DocumentMetaData;
+import com.optum.ppl.kafka.service.mongo.processors.MetaDataStatus;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.util.ReflectionTestUtils;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+
+@RunWith(MockitoJUnitRunner.class)
+public class HomeAndCommunityConsumerServiceTest {
+
+    private static final int SPACE_ID = 7303;
+
+    @Mock
+    private DocumentMetaDataService documentMetaDataService;
+
+    @InjectMocks
+    private HomeAndCommunityConsumerService consumerService;
+
+    @Before
+    public void setUp() {
+        ReflectionTestUtils.setField(consumerService, "homeAndCommunity_spaceId", SPACE_ID);
+    }
+
+    private ConsumerRecord<String, String> record(String value) {
+        return new ConsumerRecord<>("test-topic", 0, 0L, "key", value);
+    }
+
+    @Test
+    public void consume_validMessage_storesDocument() {
+        String json = "{ \"globalDocumentId\": \"doc-1\", \"documentClass\": \"u_hc_prov_docs\", \"tin\": \"841337885\" }";
+
+        consumerService.consume(record(json));
+
+        ArgumentCaptor<DocumentMetaData> captor = ArgumentCaptor.forClass(DocumentMetaData.class);
+        verify(documentMetaDataService).insertDocumentWithSpaceId(captor.capture(), eq(SPACE_ID));
+
+        DocumentMetaData saved = captor.getValue();
+        assertEquals(MetaDataStatus.NEW, saved.getStatus());
+        assertEquals("doc-1", saved.getDoc360DocumentId());
+        assertEquals("u_hc_prov_docs", saved.getDoc360DocClass());
+    }
+
+    @Test
+    public void consume_missingOptionalFields_stillStores() {
+        consumerService.consume(record("{ \"tin\": \"841337885\" }"));
+
+        ArgumentCaptor<DocumentMetaData> captor = ArgumentCaptor.forClass(DocumentMetaData.class);
+        verify(documentMetaDataService).insertDocumentWithSpaceId(captor.capture(), eq(SPACE_ID));
+
+        DocumentMetaData saved = captor.getValue();
+        assertNull(saved.getDoc360DocumentId());
+        assertNull(saved.getDoc360DocClass());
+    }
+
+    @Test
+    public void consume_nullValue_doesNothing() {
+        consumerService.consume(record(null));
+        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
+    }
+
+    @Test
+    public void consume_emptyValue_doesNothing() {
+        consumerService.consume(record(""));
+        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
+    }
+
+    @Test
+    public void consume_invalidJson_doesNotThrowOrStore() {
+        consumerService.consume(record("{ not-valid-json }"));
+        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
+    }
+}
