@@ -1,0 +1,534 @@
+package com.optum.fds.paperless.client.pojo;
+
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonAlias;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.optum.fds.paperless.client.ClientMetadata;
+import com.optum.fds.paperless.client.ErrorMessage;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class HomeCommunityProviderReports extends ClientMetadata {
+
+	private static final long serialVersionUID = 1L;
+
+	@JsonProperty("fdsCloudSpaceId")
+	@JsonAlias("u_space_id")
+	private String fdsCloudSpaceId;
+
+	@JsonProperty("fdsCloudDocumentId")
+	@JsonAlias("u_document_id")
+	private String fdsCloudDocumentId;
+
+	@JsonProperty("fdsCloudAttachmentId")
+	@JsonAlias("u_attach_id")
+	private String fdsCloudAttachmentId;
+
+	@JsonProperty("parentId")
+	@JsonAlias("u_parent_id")
+	private String parentId;
+
+	@JsonProperty("optionalMetadata")
+	@JsonAlias("u_optional_metadata")
+	private String optionalMetadata;
+
+	@JsonProperty("cloudStorageProvider")
+	@JsonAlias("u_cloud_stor_prov")
+	private String cloudStorageProvider;
+
+	@JsonProperty("isAvailable")
+	@JsonAlias("u_isavailable")
+	private String isAvailable;
+
+	@JsonProperty("externalId")
+	@JsonAlias("u_ext_id")
+	private String externalId;
+
+	@JsonProperty("attachmentExternalId")
+	@JsonAlias("u_attch_ext_id")
+	private String attachmentExternalId;
+
+	@JsonProperty("attachmentModifiedBy")
+	@JsonAlias("u_attach_update_user")
+	private String attachmentModifiedBy;
+
+	@JsonProperty("attachmentModifiedDate")
+	@JsonAlias("u_attach_update_dt")
+	private Date attachmentModifiedDate;
+
+	@JsonProperty("documentModifiedBy")
+	@JsonAlias("u_doc_update_user")
+	private String documentModifiedBy;
+
+	@JsonProperty("documentUploadDate")
+	@JsonAlias("u_doc_update_dt")
+	private Date documentUploadDate;
+
+	@JsonProperty("version")
+	@JsonAlias("u_ver")
+	private String version;
+
+	@JsonProperty("bucket")
+	@JsonAlias("u_bucket")
+	private String bucket;
+
+	@JsonProperty("virusScanStatus")
+	@JsonAlias("u_virus_scan_status")
+	private String virusScanStatus;
+
+	@JsonProperty("key")
+	@JsonAlias("u_key")
+	private String key;
+
+	@JsonProperty("author")
+	@JsonAlias("u_author")
+	private String author;
+
+	@JsonProperty("workflow")
+	@JsonAlias("u_workflow")
+	private String workflow;
+
+	@JsonProperty("isMerged")
+	@JsonAlias("u_is_merged")
+	private String isMerged;
+
+	@JsonProperty("virusScanTime")
+	@JsonAlias("u_virus_scan_time")
+	private Date virusScanTime;
+
+	@JsonProperty("childId")
+	@JsonAlias("u_child_id")
+	private String childId;
+
+	@JsonProperty("tin")
+	@JsonAlias("u_tin")
+	private String tin;
+
+	@JsonProperty("subCategory")
+	@JsonAlias("u_sub_category")
+	private String subCategory;
+
+	@JsonProperty("providerName")
+	@JsonAlias("u_prov_nm")
+	private String providerName;
+
+	public HomeCommunityProviderReports() {
+
+		this.category = "Providers";
+		this.fileType = "Provider Report";
+		this.tenant = "Link";
+
+		this.fileDescription = "Home and Community Provider Reports";
+		this.createApplication = "Pathway";
+
+		this.docSentTo = "";
+		this.sendToDocVault = false;
+		this.sendToShutterfly = false;
+
+		this.providerEmailId = "";
+		this.postCardInd = true;
+
+		this.sendEmailNotifications = false;
+		this.sendPENAPIRequest = false;
+
+		this.privilege = "Patient Eligibility and Benefits";
+
+		this.setFilePath("HomeCommunityProviderReports");
+	}
+
+	public String getTin() {
+		return tin;
+	}
+
+	public void setTin(String tin) {
+		this.tin = tin;
+	}
+
+	public String getSubCategory() {
+		return subCategory;
+	}
+
+	public void setSubCategory(String subCategory) {
+		this.subCategory = subCategory;
+	}
+
+	public String getProviderName() {
+		return providerName;
+	}
+
+	public void setProviderName(String providerName) {
+		this.providerName = providerName;
+	}
+
+	public String getFdsCloudSpaceId() {
+		return fdsCloudSpaceId;
+	}
+
+	public void setFdsCloudSpaceId(String fdsCloudSpaceId) {
+		this.fdsCloudSpaceId = fdsCloudSpaceId;
+	}
+
+	public String getFdsCloudDocumentId() {
+		return fdsCloudDocumentId;
+	}
+
+	public void setFdsCloudDocumentId(String fdsCloudDocumentId) {
+		this.fdsCloudDocumentId = fdsCloudDocumentId;
+	}
+
+	public String getFdsCloudAttachmentId() {
+		return fdsCloudAttachmentId;
+	}
+
+	public void setFdsCloudAttachmentId(String fdsCloudAttachmentId) {
+		this.fdsCloudAttachmentId = fdsCloudAttachmentId;
+	}
+
+	public String getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
+
+	public String getOptionalMetadata() {
+		return optionalMetadata;
+	}
+
+	public void setOptionalMetadata(String optionalMetadata) {
+		this.optionalMetadata = optionalMetadata;
+	}
+
+	public String getCloudStorageProvider() {
+		return cloudStorageProvider;
+	}
+
+	public void setCloudStorageProvider(String cloudStorageProvider) {
+		this.cloudStorageProvider = cloudStorageProvider;
+	}
+
+	public String getIsAvailable() {
+		return isAvailable;
+	}
+
+	public void setIsAvailable(String isAvailable) {
+		this.isAvailable = isAvailable;
+	}
+
+	public String getExternalId() {
+		return externalId;
+	}
+
+	public void setExternalId(String externalId) {
+		this.externalId = externalId;
+	}
+
+	public String getAttachmentExternalId() {
+		return attachmentExternalId;
+	}
+
+	public void setAttachmentExternalId(String attachmentExternalId) {
+		this.attachmentExternalId = attachmentExternalId;
+	}
+
+	public String getAttachmentModifiedBy() {
+		return attachmentModifiedBy;
+	}
+
+	public void setAttachmentModifiedBy(String attachmentModifiedBy) {
+		this.attachmentModifiedBy = attachmentModifiedBy;
+	}
+
+	public Date getAttachmentModifiedDate() {
+		return attachmentModifiedDate;
+	}
+
+	public void setAttachmentModifiedDate(Date attachmentModifiedDate) {
+		this.attachmentModifiedDate = attachmentModifiedDate;
+	}
+
+	public String getDocumentModifiedBy() {
+		return documentModifiedBy;
+	}
+
+	public void setDocumentModifiedBy(String documentModifiedBy) {
+		this.documentModifiedBy = documentModifiedBy;
+	}
+
+	public Date getDocumentUploadDate() {
+		return documentUploadDate;
+	}
+
+	public void setDocumentUploadDate(Date documentUploadDate) {
+		this.documentUploadDate = documentUploadDate;
+	}
+
+	public String getVersion() {
+		return version;
+	}
+
+	public void setVersion(String version) {
+		this.version = version;
+	}
+
+	public String getBucket() {
+		return bucket;
+	}
+
+	public void setBucket(String bucket) {
+		this.bucket = bucket;
+	}
+
+	public String getVirusScanStatus() {
+		return virusScanStatus;
+	}
+
+	public void setVirusScanStatus(String virusScanStatus) {
+		this.virusScanStatus = virusScanStatus;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getWorkflow() {
+		return workflow;
+	}
+
+	public void setWorkflow(String workflow) {
+		this.workflow = workflow;
+	}
+
+	public String getIsMerged() {
+		return isMerged;
+	}
+
+	public void setIsMerged(String isMerged) {
+		this.isMerged = isMerged;
+	}
+
+	public Date getVirusScanTime() {
+		return virusScanTime;
+	}
+
+	public void setVirusScanTime(Date virusScanTime) {
+		this.virusScanTime = virusScanTime;
+	}
+
+	public String getChildId() {
+		return childId;
+	}
+
+	public void setChildId(String childId) {
+		this.childId = childId;
+	}
+
+	public enum ErrorMsg implements ErrorMessage {
+
+		u_tin(12, "Missing or invalid data: u_tin");
+
+		private final int errorCode;
+		private final String errorMessage;
+
+		ErrorMsg(int code, String message) {
+			this.errorCode = code;
+			this.errorMessage = message;
+		}
+
+		@Override
+		public int getErrorCode() {
+			return errorCode;
+		}
+
+		@Override
+		public String getErrorMessage() {
+			return errorMessage;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+
+  "properties": {
+
+    "u_space_id": {
+      "type": "string"
+    },
+
+    "u_document_id": {
+      "type": "string"
+    },
+
+    "u_attach_id": {
+      "type": "string"
+    },
+
+    "u_parent_id": {
+      "type": "string"
+    },
+
+    "u_optional_metadata": {
+      "type": "string"
+    },
+
+    "u_cloud_stor_prov": {
+      "type": "string"
+    },
+
+    "u_isavailable": {
+      "type": "string"
+    },
+
+    "u_filename": {
+      "type": "string"
+    },
+
+    "u_ext_id": {
+      "type": "string"
+    },
+
+    "u_attch_ext_id": {
+      "type": "string"
+    },
+
+    "u_attach_update_user": {
+      "type": "string"
+    },
+
+    "u_attach_update_dt": {
+      "type": "string"
+    },
+
+    "u_doc_update_user": {
+      "type": "string"
+    },
+
+    "u_doc_update_dt": {
+      "type": "string"
+    },
+
+    "u_ver": {
+      "type": "string"
+    },
+
+    "u_bucket": {
+      "type": "string"
+    },
+
+    "u_virus_scan_status": {
+      "type": "string"
+    },
+
+    "u_key": {
+      "type": "string"
+    },
+
+    "u_author": {
+      "type": "string"
+    },
+
+    "u_workflow": {
+      "type": "string"
+    },
+
+    "u_expiry_dt": {
+      "type": "string"
+    },
+
+    "u_is_merged": {
+      "type": "string"
+    },
+
+    "u_virus_scan_time": {
+      "type": "string"
+    },
+
+    "u_child_id": {
+      "type": "string"
+    },
+
+    "u_tin": {
+      "type": "string",
+      "minLength": 1
+    },
+
+    "u_sub_category": {
+      "type": "string"
+    },
+
+    "u_file_path": {
+      "type": "string"
+    },
+
+    "u_prov_nm": {
+      "type": "string"
+    },
+
+    "u_create_app": {
+      "type": "string"
+    },
+
+    "u_doc_creation_dt": {
+      "type": "string"
+    }
+  },
+
+  "required": [
+    "u_tin"
+  ]
+}
