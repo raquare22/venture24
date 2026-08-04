@@ -1,117 +1,123 @@
-package com.optum.ppl.kafka.service.kafkaConsumer;
+#HomeCommunityProviderReports
 
-import com.optum.ppl.kafka.service.domain.DocumentMetaDataService;
-import com.optum.ppl.kafka.service.mongo.DocumentMetaData;
-import com.optum.ppl.kafka.service.mongo.processors.MetaDataStatus;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.test.util.ReflectionTestUtils;
+HomeCommunityProviderReports.bouncedProviderEmailAddressProcess.criteria=1==2
+HomeCommunityProviderReports.postProcessNoCorporateMpin.criteria=1==2
+HomeCommunityProviderReports.preProcessGetCorporateMpin.criteria=metadata.stopProcessing!=true
+HomeCommunityProviderReports.preProcessValidation.criteria=1==2
+HomeCommunityProviderReports.retrieveProviderEmailAddress.criteria=1==2
+HomeCommunityProviderReports.createRequiredFieldRule.criteria=1==2
+HomeCommunityProviderReports.SendToShutterfly.criteria=1==2
+HomeCommunityProviderReports.createRequiredFieldRule.trigger_method=post
+HomeCommunityProviderReports.SendToShutterfly.trigger_method=post
+HomeCommunityProviderReports.createOriginalCompanionFile=false
+HomeCommunityProviderReports.post.docVault.criteria=metadata.sendToDocVault==true && metadata.stopProcessing!=true
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
+local.HomeCommunityProviderReports.spaceId=7300
+local.HomeCommunityProviderReports.bounceEmailCheckEFTIND=false
+local.HomeCommunityProviderReports.validateCorprateMPIN=true
+local.HomeCommunityProviderReports.turnPen=true
+local.HomeCommunityProviderReports.skipManipulatePdfFile=false
+local.HomeCommunityProviderReports.skipEFTIndFlag=true
+local.HomeCommunityProviderReports.writeEncryptedPDF=false
+local.HomeCommunityProviderReports.DocLib.searchCriteria="{ \"spaceId\" : 7300,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\" : false} ]}"
+local.HomeCommunityProviderReports.DocLib.searchWindow={\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
+local.HomeCommunityProviderReports.DocLib.slaTime=2
+local.HomeCommunityProviderReports.DocLib.maxDocumentsOccurs=1000
 
-@RunWith(MockitoJUnitRunner.class)
-public class ReimbursementConsumerServiceTest {
+dev.HomeCommunityProviderReports.spaceId=7300
+dev.HomeCommunityProviderReports.bounceEmailCheckEFTIND=false
+dev.HomeCommunityProviderReports.validateCorprateMPIN=true
+dev.HomeCommunityProviderReports.turnPen=true
+dev.HomeCommunityProviderReports.skipManipulatePdfFile=false
+dev.HomeCommunityProviderReports.skipEFTIndFlag=true
+dev.HomeCommunityProviderReports.writeEncryptedPDF=false
+dev.HomeCommunityProviderReports.DocLib.searchCriteria="{ \"spaceId\" : 7300,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\" : false} ]}"
+dev.HomeCommunityProviderReports.DocLib.searchWindow={\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
+dev.HomeCommunityProviderReports.DocLib.slaTime=2
+dev.HomeCommunityProviderReports.DocLib.maxDocumentsOccurs=1000
 
-    @Mock
-    private DocumentMetaDataService documentMetaDataService;
+qa.HomeCommunityProviderReports.spaceId=7301
+qa.HomeCommunityProviderReports.bounceEmailCheckEFTIND=false
+qa.HomeCommunityProviderReports.validateCorprateMPIN=true
+qa.HomeCommunityProviderReports.turnPen=true
+qa.HomeCommunityProviderReports.skipManipulatePdfFile=false
+qa.HomeCommunityProviderReports.skipEFTIndFlag=true
+qa.HomeCommunityProviderReports.writeEncryptedPDF=false
+qa.HomeCommunityProviderReports.DocLib.searchCriteria="{ \"spaceId\" : 7301,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\" : false} ]}"
+qa.HomeCommunityProviderReports.DocLib.searchWindow={\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
+qa.HomeCommunityProviderReports.DocLib.slaTime=2
+qa.HomeCommunityProviderReports.DocLib.maxDocumentsOccurs=1000
 
-    @InjectMocks
-    private ReimbursementConsumerService reimbursementConsumerService;
+stage.HomeCommunityProviderReports.spaceId=7302
+stage.HomeCommunityProviderReports.bounceEmailCheckEFTIND=false
+stage.HomeCommunityProviderReports.validateCorprateMPIN=true
+stage.HomeCommunityProviderReports.turnPen=true
+stage.HomeCommunityProviderReports.skipManipulatePdfFile=false
+stage.HomeCommunityProviderReports.skipEFTIndFlag=true
+stage.HomeCommunityProviderReports.writeEncryptedPDF=false
+stage.HomeCommunityProviderReports.DocLib.searchCriteria="{ \"spaceId\" : 7302,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\" : false} ]}"
+stage.HomeCommunityProviderReports.DocLib.searchWindow={\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
+stage.HomeCommunityProviderReports.DocLib.slaTime=2
+stage.HomeCommunityProviderReports.DocLib.maxDocumentsOccurs=1000
 
-    private final int TEST_SPACE_ID = 8910;
+prod.HomeCommunityProviderReports.spaceId=7303
+prod.HomeCommunityProviderReports.bounceEmailCheckEFTIND=false
+prod.HomeCommunityProviderReports.validateCorprateMPIN=true
+prod.HomeCommunityProviderReports.turnPen=true
+prod.HomeCommunityProviderReports.skipManipulatePdfFile=false
+prod.HomeCommunityProviderReports.skipEFTIndFlag=true
+prod.HomeCommunityProviderReports.writeEncryptedPDF=false
+prod.HomeCommunityProviderReports.DocLib.searchCriteria="{ \"spaceId\" : 7303,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\" : false} ]}"
+prod.HomeCommunityProviderReports.DocLib.searchWindow={\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
+prod.HomeCommunityProviderReports.DocLib.slaTime=2
+prod.HomeCommunityProviderReports.DocLib.maxDocumentsOccurs=1000
 
-    @Before
-    public void setUp() {
-        // spaceId is normally injected via @Value; set it manually for the unit test
-        ReflectionTestUtils.setField(reimbursementConsumerService, "reimbursement_spaceId", TEST_SPACE_ID);
-    }
+local.HomeCommunityProviderReports.processConvertMetadataHook.searchCriteria={\"spaceId\" : 7300, \"status\" : \"NEW\"}
+local.HomeCommunityProviderReports.processConvertMetadataHook.searchWindow={\"start_date_offset\":{\"time_window\":\"48\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
+local.HomeCommunityProviderReports.processConvertMetadataHook.maxDocumentsOccurs=1
 
-    @Test
-    public void testConsume_SuccessWithAllFields() {
-        // Arrange - keys must match what AbstractDocumentConsumer reads
-        String jsonValue = "{ \"globalDocumentId\": \"doc-8910-001\", \"documentClass\": \"PRRPT\", \"tin\": \"123456789\" }";
-        ConsumerRecord<String, String> record = new ConsumerRecord<>("test-topic", 0, 0L, "key-1", jsonValue);
+dev.HomeCommunityProviderReports.processConvertMetadataHook.searchCriteria={\"spaceId\" : 7300, \"status\" : \"NEW\"}
+dev.HomeCommunityProviderReports.processConvertMetadataHook.searchWindow={\"start_date_offset\":{\"time_window\":\"48\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
+dev.HomeCommunityProviderReports.processConvertMetadataHook.maxDocumentsOccurs=1
 
-        // Act
-        reimbursementConsumerService.consume(record);
+qa.HomeCommunityProviderReports.processConvertMetadataHook.searchCriteria={\"spaceId\" : 7301, \"status\" : \"NEW\"}
+qa.HomeCommunityProviderReports.processConvertMetadataHook.searchWindow={\"start_date_offset\":{\"time_window\":\"48\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
+qa.HomeCommunityProviderReports.processConvertMetadataHook.maxDocumentsOccurs=1
 
-        // Assert
-        ArgumentCaptor<DocumentMetaData> documentCaptor = ArgumentCaptor.forClass(DocumentMetaData.class);
-        verify(documentMetaDataService).insertDocumentWithSpaceId(documentCaptor.capture(), eq(TEST_SPACE_ID));
+stage.HomeCommunityProviderReports.processConvertMetadataHook.searchCriteria={\"spaceId\" : 7302, \"status\" : \"NEW\"}
+stage.HomeCommunityProviderReports.processConvertMetadataHook.searchWindow={\"start_date_offset\":{\"time_window\":\"48\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
+stage.HomeCommunityProviderReports.processConvertMetadataHook.maxDocumentsOccurs=1
 
-        DocumentMetaData capturedDoc = documentCaptor.getValue();
-        assertNotNull(capturedDoc);
-        assertEquals(MetaDataStatus.NEW, capturedDoc.getStatus());
-        assertEquals("doc-8910-001", capturedDoc.getDoc360DocumentId());
-        assertEquals("PRRPT", capturedDoc.getDoc360DocClass());
-        assertNotNull(capturedDoc.getMetadata());
-        assertEquals("PRRPT", capturedDoc.getMetadata().getString("documentClass"));
-    }
+prod.HomeCommunityProviderReports.processConvertMetadataHook.searchCriteria={\"spaceId\" : 7303, \"status\" : \"NEW\"}
+prod.HomeCommunityProviderReports.processConvertMetadataHook.searchWindow={\"start_date_offset\":{\"time_window\":\"48\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
+prod.HomeCommunityProviderReports.processConvertMetadataHook.maxDocumentsOccurs=1
 
-    @Test
-    public void testConsume_SuccessWithMissingOptionalFields() {
-        // Arrange - no globalDocumentId, no documentClass
-        String jsonValue = "{ \"tin\": \"123456789\" }";
-        ConsumerRecord<String, String> record = new ConsumerRecord<>("test-topic", 0, 0L, "key-2", jsonValue);
 
-        // Act
-        reimbursementConsumerService.consume(record);
 
-        // Assert - it still stores, but the two optional ids stay null
-        ArgumentCaptor<DocumentMetaData> documentCaptor = ArgumentCaptor.forClass(DocumentMetaData.class);
-        verify(documentMetaDataService).insertDocumentWithSpaceId(documentCaptor.capture(), eq(TEST_SPACE_ID));
 
-        DocumentMetaData capturedDoc = documentCaptor.getValue();
-        assertNull(capturedDoc.getDoc360DocumentId());
-        assertNull(capturedDoc.getDoc360DocClass());
-    }
 
-    @Test
-    public void testConsume_NullMessageValue_ShouldReturnEarly() {
-        // Arrange
-        ConsumerRecord<String, String> record = new ConsumerRecord<>("test-topic", 0, 0L, "key-3", null);
 
-        // Act
-        reimbursementConsumerService.consume(record);
 
-        // Assert - nothing is stored
-        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
-    }
 
-    @Test
-    public void testConsume_EmptyMessageValue_ShouldReturnEarly() {
-        // Arrange
-        ConsumerRecord<String, String> record = new ConsumerRecord<>("test-topic", 0, 0L, "key-4", "");
 
-        // Act
-        reimbursementConsumerService.consume(record);
 
-        // Assert - nothing is stored
-        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
-    }
 
-    @Test
-    public void testConsume_InvalidJson_ShouldCatchAndNotStore() {
-        // Arrange
-        String invalidJson = "{ invalid-json-format }";
-        ConsumerRecord<String, String> record = new ConsumerRecord<>("test-topic", 0, 0L, "key-5", invalidJson);
 
-        // Act - must not throw; the base class try/catch swallows and logs
-        reimbursementConsumerService.consume(record);
 
-        // Assert - nothing is stored
-        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+HomeCommunityProviderReports.rules=[{"sendToDocVault":true,"sendToShutterfly":false,"criteria":"1==1","requiredFields":["tin","corporateMpin"]}]
