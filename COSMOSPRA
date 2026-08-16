@@ -1,0 +1,159 @@
+package com.optum.ppl.kafka.service.kafkaConsumer;
+
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
+@Service
+@ConditionalOnProperty(name = "feature.toggle.kafka.consumer.cosmospra", havingValue = "true")
+public class CosmosPRAConsumerService extends AbstractDocumentConsumer{
+    @Value("${COSMOSPRA_SPACEID}")
+    private int cosmospra_spaceId;
+
+    @Override
+    protected int getSpaceId() {
+        return this.cosmospra_spaceId;
+    }
+
+    @KafkaListener(
+            topics = "${spring.kafka.topic.cosmospra}",
+            containerFactory = "secureKafkaListenerContainerFactory"
+    )
+    public void consume(ConsumerRecord<String, String> message) {
+        super.processMessage(message);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.optum.ppl.kafka.service.kafkaConsumer;
+
+import com.optum.ppl.kafka.service.domain.DocumentMetaDataService;
+import com.optum.ppl.kafka.service.mongo.DocumentMetaData;
+import com.optum.ppl.kafka.service.mongo.processors.MetaDataStatus;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.util.ReflectionTestUtils;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+@RunWith(MockitoJUnitRunner.class)
+public class CosmosPRAConsumerServiceTest {
+
+    @InjectMocks
+    private CosmosPRAConsumerService cosmosPRAConsumerService;
+
+    @Mock
+    private ConsumerRecord<String, String> consumerRecord;
+
+    @Mock
+    private DocumentMetaDataService documentMetaDataService;
+
+    private final int TEST_SPACE_ID = 10070;
+
+    @Before
+    public void setUp() {
+        ReflectionTestUtils.setField(cosmosPRAConsumerService, "cosmospra_spaceId", TEST_SPACE_ID);
+    }
+
+    private ConsumerRecord<String, String> buildRecord(String payload) {
+        return new ConsumerRecord<>("cosmospra-topic", 0, 0L, "test-key", payload);
+    }
+
+    @Test
+    public void testGetSpaceId_ReturnsConfiguredValue() {
+        assertEquals(TEST_SPACE_ID, cosmosPRAConsumerService.getSpaceId());
+    }
+
+    @Test
+    public void testConsume_DelegatesToProcessMessage() {
+        CosmosPRAConsumerService spyService = Mockito.spy(cosmosPRAConsumerService);
+        doNothing().when(spyService).processMessage(consumerRecord);
+
+        spyService.consume(consumerRecord);
+
+        verify(spyService).processMessage(consumerRecord);
+    }
+
+    @Test
+    public void testConsume_ValidPayload_InsertsDocumentWithConfiguredSpaceId() {
+        ConsumerRecord<String, String> record = buildRecord(
+                "{\"globalDocumentId\":\"g-123\",\"documentClass\":\"u_cosmos_pra\",\"tin\":\"123456789\"}");
+
+        when(documentMetaDataService.insertDocumentWithSpaceId(any(DocumentMetaData.class), eq(TEST_SPACE_ID)))
+                .thenReturn("doc-1");
+
+        cosmosPRAConsumerService.consume(record);
+
+        ArgumentCaptor<DocumentMetaData> captor = ArgumentCaptor.forClass(DocumentMetaData.class);
+        verify(documentMetaDataService).insertDocumentWithSpaceId(captor.capture(), eq(TEST_SPACE_ID));
+
+        DocumentMetaData savedDocument = captor.getValue();
+        assertEquals(MetaDataStatus.NEW, savedDocument.getStatus());
+        assertEquals("g-123", savedDocument.getDoc360DocumentId());
+        assertEquals("u_cosmos_pra", savedDocument.getDoc360DocClass());
+    }
+
+    @Test
+    public void testConsume_MissingOptionalFields_InsertsDocumentWithNullDoc360Fields() {
+        cosmosPRAConsumerService.consume(buildRecord("{\"tin\":\"123456789\"}"));
+
+        ArgumentCaptor<DocumentMetaData> captor = ArgumentCaptor.forClass(DocumentMetaData.class);
+        verify(documentMetaDataService).insertDocumentWithSpaceId(captor.capture(), eq(TEST_SPACE_ID));
+
+        DocumentMetaData savedDocument = captor.getValue();
+        assertNull(savedDocument.getDoc360DocumentId());
+        assertNull(savedDocument.getDoc360DocClass());
+    }
+
+    @Test
+    public void testConsume_NullMessageValue_ShouldReturnEarly() {
+        cosmosPRAConsumerService.consume(buildRecord(null));
+
+        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
+    }
+
+    @Test
+    public void testConsume_EmptyMessageValue_ShouldReturnEarly() {
+        cosmosPRAConsumerService.consume(buildRecord(""));
+
+        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
+    }
+
+    @Test
+    public void testConsume_InvalidJson_ShouldCatchAndSkipInsert() {
+        cosmosPRAConsumerService.consume(buildRecord("{ invalid-json-format }"));
+
+        verify(documentMetaDataService, never()).insertDocumentWithSpaceId(any(), any(Integer.class));
+    }
+}
