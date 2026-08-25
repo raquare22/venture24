@@ -1,49 +1,5 @@
 package com.optum.ppl.kafka.service.kafkaConsumer;
 
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Service;
-
-@Service
-@ConditionalOnProperty(name = "feature.toggle.kafka.consumer.priorauth1click", havingValue = "true")
-public class PriorAuth1ClickConsumerService extends AbstractDocumentConsumer{
-    @Value("${PRIORAUTH1CLICK_SPACEID}")
-    private int priorauth1click_spaceId;
-
-    @Override
-    protected int getSpaceId() {
-        return this.priorauth1click_spaceId;
-    }
-
-    @KafkaListener(
-            topics = "${spring.kafka.topic.priorauth1click}",
-            containerFactory = "secureKafkaListenerContainerFactory"
-    )
-    public void consume(ConsumerRecord<String, String> message) {
-        super.processMessage(message);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-package com.optum.ppl.kafka.service.kafkaConsumer;
-
 import com.optum.ppl.kafka.service.domain.DocumentMetaDataService;
 import com.optum.ppl.kafka.service.mongo.DocumentMetaData;
 import com.optum.ppl.kafka.service.mongo.processors.MetaDataStatus;
@@ -91,18 +47,13 @@ public class PriorAuth1ClickConsumerServiceTest {
     }
 
     @Test
-    public void testGetSpaceId_ReturnsConfiguredValue() {
-        assertEquals(TEST_SPACE_ID, priorAuth1ClickConsumerService.getSpaceId());
-    }
-
-    @Test
-    public void testConsume_DelegatesToProcessMessage() {
+    public void testConsume_DelegatesToProcessMessageWithConfiguredSpaceId() {
         PriorAuth1ClickConsumerService spyService = Mockito.spy(priorAuth1ClickConsumerService);
-        doNothing().when(spyService).processMessage(consumerRecord);
+        doNothing().when(spyService).processMessage(consumerRecord, TEST_SPACE_ID);
 
         spyService.consume(consumerRecord);
 
-        verify(spyService).processMessage(consumerRecord);
+        verify(spyService).processMessage(consumerRecord, TEST_SPACE_ID);
     }
 
     @Test
