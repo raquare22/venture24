@@ -1,0 +1,9 @@
+ls -l "$HOME/.optum-local/"
+
+
+keytool -exportcert -rfc -alias optumrootca -keystore src/main/resources/cert/pam-cert-truststore.jks -storepass 'admin@123' -file "$HOME/.optum-local/optum-root-ca.pem"
+
+
+keytool -importcert -noprompt -alias optumrootca -file "$HOME/.optum-local/optum-root-ca.pem" -keystore "$HOME/.optum-local/truststore.p12" -storepass changeit
+
+echo "$HOME/.optum-local/truststore.p12"
