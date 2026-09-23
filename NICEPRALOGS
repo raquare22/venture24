@@ -1,0 +1,436 @@
+	Time	Event
+
+22/09/2026
+20:00:23.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.ProcessRequiredFieldRule
+    message:  Prepost success list 6ab315d2335ffe2376bd7cb9
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-10
+    time:  1790121622.201
+}
+Show as raw text
+host =   source = fds-paperless-activiti-pra:ctc:fds-paperless-activiti-pra-stage-pra-848b499854-xspp6 sourcetype = prun:http:log
+
+22/09/2026
+20:00:23.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.ProcessRequiredFieldRule
+    message:  end of required field process, documentId=6ab315d2335ffe2376bd7cb9
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-10
+    time:  1790121622.200
+}
+Show as raw text
+host =   source = fds-paperless-activiti-pra:ctc:fds-paperless-activiti-pra-stage-pra-848b499854-xspp6 sourcetype = prun:http:log
+
+22/09/2026
+20:00:23.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.ProcessRequiredFieldRule
+    message:  requiredFieldRule process complete for docId=6ab315d2335ffe2376bd7cb9, sendToDocVault=true, sendToShutterfly=true, eDeliveryError=Missing or invalid data: providerEmailId
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-10
+    time:  1790121622.193
+}
+Show as raw text
+host =   source = fds-paperless-activiti-pra:ctc:fds-paperless-activiti-pra-stage-pra-848b499854-xspp6 sourcetype = prun:http:log
+
+22/09/2026
+20:00:23.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.ProcessRequiredFieldRule
+    message:  Prepost doc list 6ab315d2335ffe2376bd7cb9
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-10
+    time:  1790121622.190
+}
+Show as raw text
+host =   source = fds-paperless-activiti-pra:ctc:fds-paperless-activiti-pra-stage-pra-848b499854-xspp6 sourcetype = prun:http:log
+
+22/09/2026
+20:00:22.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.RetrieveProviderEmailAddress
+    message:  end of retrieve email process inside catch, correlationID=6ab315d2335ffe2376bd7cb9_10302
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-10
+    time:  1790121622.167
+}
+Show as raw text
+host =   source = fds-paperless-activiti-pra:ctc:fds-paperless-activiti-pra-stage-pra-848b499854-xspp6 sourcetype = prun:http:log
+
+22/09/2026
+20:00:22.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.RetrieveProviderEmailAddress
+    message:  doExecute Retrieve Email terminated with an ERROR delegateExecutionId=c56ae59e-b6e1-11f1-8acb-fe8c34ecb918, CorrelationID=6ab315d2335ffe2376bd7cb9_10302 java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:209)
+	at com.optum.fds.paperless.java.delegate.RetrieveProviderEmailAddress.fetchEmailIdFromPreferences(RetrieveProviderEmailAddress.java:321)
+	at com.optum.fds.paperless.java.delegate.RetrieveProviderEmailAddress.doExecute(RetrieveProviderEmailAddress.java:157)
+	at com.optum.fds.paperless.java.delegate.OptumJavaDelegateBase.execute(OptumJavaDelegateBase.java:51)
+	at org.flowable.engine.impl.delegate.invocation.JavaDelegateInvocation.invoke(JavaDelegateInvocation.java:35)
+	at org.flowable.engine.impl.delegate.invocation.DelegateInvocation.proceed(DelegateInvocation.java:32)
+	at org.flowable.engine.impl.delegate.invocation.DefaultDelegateInterceptor.handleInvocation(DefaultDelegateInterceptor.java:26)
+	at org.flowable.engine.impl.bpmn.behavior.ServiceTaskDelegateExpressionActivityBehavior.execute(ServiceTaskDelegateExpressionActivityBehavior.java:177)
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.executeActivityBehavior(ContinueProcessOperation.java:297)
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.executeSynchronous(ContinueProcessOperation.java:175)
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.continueThroughFlowNode(ContinueProcessOperation.java:125)
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.run(ContinueProcessOperation.java:88)
+	at org.flowable.common.engine.impl.AbstractEngineConfiguration.lambda$new$0(AbstractEngineConfiguration.java:198)
+	at org.flowable.engine.impl.interceptor.CommandInvoker.executeOperation(CommandInvoker.java:188)
+	at org.flowable.engine.impl.interceptor.CommandInvoker.executeOperations(CommandInvoker.java:128)
+	at org.flowable.engine.impl.interceptor.CommandInvoker.execute(CommandInvoker.java:80)
+	at org.flowable.engine.impl.interceptor.BpmnOverrideContextInterceptor.execute(BpmnOverrideContextInterceptor.java:26)
+	at org.flowable.common.engine.impl.interceptor.TransactionContextInterceptor.execute(TransactionContextInterceptor.java:53)
+	at org.flowable.common.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:105)
+	at org.flowable.common.spring.SpringTransactionInterceptor.lambda$execute$0(SpringTransactionInterceptor.java:57)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:137)
+	at org.flowable.common.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:57)
+	at org.flowable.common.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:30)
+	at org.flowable.common.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:56)
+	at org.flowable.common.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:51)
+	at org.flowable.engine.impl.RuntimeServiceImpl.startProcessInstance(RuntimeServiceImpl.java:848)
+	at org.flowable.engine.impl.runtime.ProcessInstanceBuilderImpl.start(ProcessInstanceBuilderImpl.java:265)
+	at com.optum.fds.paperless.FDSHelper.runProcess(FDSHelper.java:65)
+	at com.optum.fds.paperless.FDSHelper.retrieveProviderEmailAddress(FDSHelper.java:367)
+	at com.optum.fds.paperless.controller.FDSServicesController.prePost(FDSServicesController.java:260)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:252)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:184)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:132)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:59)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:733)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2201)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+    properties: { [+]
+   }
+    severity:  ERROR
+    thread:  http-nio-8080-exec-10
+    time:  1790121622.159
+}
+Show as raw text
+host =   source = fds-paperless-activiti-pra:ctc:fds-paperless-activiti-pra-stage-pra-848b499854-xspp6 sourcetype = prun:http:log
+
+22/09/2026
+20:00:22.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.RetrieveProviderEmailAddress
+    message:  start of retrieve email process, documentId=6ab315d2335ffe2376bd7cb9
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-10
+    time:  1790121622.123
+}
+Show as raw text
+host =   source = fds-paperless-activiti-pra:ctc:fds-paperless-activiti-pra-stage-pra-848b499854-xspp6 sourcetype = prun:http:log
+
+22/09/2026
+20:00:22.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.RetrieveCorporateMPINv2
+    message:  Processing document. delegate=RetrieveCorporateMPINv2 docId=6ab315d2335ffe2376bd7cb9
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-10
+    time:  1790121622.100
+}
+Show as raw text
+host =   source = fds-paperless-activiti-pra:ctc:fds-paperless-activiti-pra-stage-pra-848b499854-xspp6 sourcetype = prun:http:log
+
+22/09/2026
+20:00:22.000	
+{ [-]
+    logger:  com.optum.fds.paperless.controller.FDSServicesController
+    message:  Entering Run prePost docId=6ab315d2335ffe2376bd7cb9, hookId=620273e9c7a85c61e75d9b47
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-10
+    time:  1790121622.093
+}
+Show as raw text
+host =   source = fds-paperless-activiti-pra:ctc:fds-paperless-activiti-pra-stage-pra-848b499854-xspp6 sourcetype = prun:http:log
+
+22/09/2026
+20:00:01.000	
+{ [-]
+    logger:  com.optum.fds.paperless.processorlistener.service.ServiceBase
+    message:  Successfully posted to engine: apiUrl=https://fds-paperless-activiti-stage.optum.com/api/services/run/prePost, requestJson={"id":"620273e9c7a85c61e75d9b47","appIdentifier":"qx3q2rsz53sqvnjf2fc0jge22r7j4vw3","clientId":0,"dateCreated":1634570780060,"dateModified":1634570780060,"name":"preposthook","transactionId":null,"version":null,"errorMessage":null,"expires":null,"hookRecordType":"hook","method":null,"parentId":null,"spaceId":10302,"target":"documents","executionOrder":0,"locked":false,"hook":{"name":"preposthook","action":{"type":"workflow","config":{"search_window":{"start_date_offset":{"time_window":"72","format":"Hours"},"end_date_offset":{"time_window":"0","format":"Hours"}},"search_criteria":"{\"spaceId\" : 10302, \"status\" : \"AVAILABLE\", $or: [{ \"fdsDocumentId\" : { \"$exists\" : true }}, { \"doc360DocumentId\" : { \"$exists\" : true }}], $or: [{\"metadata.prepostStarted\" : { \"$exists\" : false }}, {\"metadata.prepostStarted\" :false}]}","corporateMPIN":{"process_key":"retrieveCorporateMPINv2Process","provSearchUrl":"https://gateway-stage-dmz.optum.com/api/alpha/pdr/pes/physicians-and-facilities/v4.0/search","inpSpaceId":"10302","pesGrantType":"client_credentials","appName":"UHCWest","oauth_token":"MPwT3jMthTWEOfpRVBuLo2vCuqDOSX8p","attributeSet":"summary_0002","count":"1","validateCorprateMPIN":"false","pesAppId":"neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx","pesAppSecret":"xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze","pesAuthUrl":"https://gateway-stage-dmz.optum.com/auth/oauth2/token"},"providerEmailAddress":{"process_key":"retrieveProviderEmailAddressProcess","providerSpaceIdV2":"8928","skipEFTIndFlag":"","useFDSCloud":false,"fdsCloudAuthUrl":"https://auth.stage.federateddataservices.com/oauth2/token","cloud_client_id":"2iphjca5o7topvt6er130ae2l1","cloud_client_secret":"12ojo0fv2jqvg436st4ebkjilohi23d3rnmqaoq3jlg0pumb9fe8","cloud_grant_type":"client_credentials","fdsCloudGetDocumentUrl":"https://api.stage.federateddataservices.com/core/v2.5/api/documents/{spaceId}","pdoFetchPreferencesUrl":"https://gateway-stage-dmz.optum.com/api/stage/pdr/pdo/v1/preferences","pdo_client_id":"neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx","pdo_client_secret":"xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze","pdo_token_url":"https://gateway-stage-dmz.optum.com/auth/oauth2/cached/token","fetchSecondaryEmail":false},"requiredFieldRule":{"process_key":"requiredFieldRuleProcess","rules":[{"sendToShutterfly":false,"criteria":"emailAlertReq==\"N\"","requiredFields":["tin","corporateMpin"]},{"sendToShutterfly":true,"criteria":"emailAlertReq!=\"N\"","requiredFields":["tin","corporateMpin","mpin","providerEmailId"]}]}}}},"revisions":null,"docId":"6ab315d2335ffe2376bd7cb9","status":"AVAILABLE"}
+    severity:  INFO
+    thread:  HttpClient-2-Worker-1427
+    time:  1790121600.289
+}
+Show as raw text
+host =   source = ppl-paperless-processor-listener:ctc:ppl-paperless-processor-listener-stage-7b75cbbb6c-xfgr8 sourcetype = prun:http:log
+
+22/09/2026
+20:00:00.000	
+{ [-]
+    logger:  com.optum.fds.paperless.processorlistener.service.ServiceBase
+    message:  apiUrl=https://fds-paperless-activiti-stage.optum.com/api/services/run/prePost, requestJson={"id":"620273e9c7a85c61e75d9b47","appIdentifier":"qx3q2rsz53sqvnjf2fc0jge22r7j4vw3","clientId":0,"dateCreated":1634570780060,"dateModified":1634570780060,"name":"preposthook","transactionId":null,"version":null,"errorMessage":null,"expires":null,"hookRecordType":"hook","method":null,"parentId":null,"spaceId":10302,"target":"documents","executionOrder":0,"locked":false,"hook":{"name":"preposthook","action":{"type":"workflow","config":{"search_window":{"start_date_offset":{"time_window":"72","format":"Hours"},"end_date_offset":{"time_window":"0","format":"Hours"}},"search_criteria":"{\"spaceId\" : 10302, \"status\" : \"AVAILABLE\", $or: [{ \"fdsDocumentId\" : { \"$exists\" : true }}, { \"doc360DocumentId\" : { \"$exists\" : true }}], $or: [{\"metadata.prepostStarted\" : { \"$exists\" : false }}, {\"metadata.prepostStarted\" :false}]}","corporateMPIN":{"process_key":"retrieveCorporateMPINv2Process","provSearchUrl":"https://gateway-stage-dmz.optum.com/api/alpha/pdr/pes/physicians-and-facilities/v4.0/search","inpSpaceId":"10302","pesGrantType":"client_credentials","appName":"UHCWest","oauth_token":"MPwT3jMthTWEOfpRVBuLo2vCuqDOSX8p","attributeSet":"summary_0002","count":"1","validateCorprateMPIN":"false","pesAppId":"neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx","pesAppSecret":"xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze","pesAuthUrl":"https://gateway-stage-dmz.optum.com/auth/oauth2/token"},"providerEmailAddress":{"process_key":"retrieveProviderEmailAddressProcess","providerSpaceIdV2":"8928","skipEFTIndFlag":"","useFDSCloud":false,"fdsCloudAuthUrl":"https://auth.stage.federateddataservices.com/oauth2/token","cloud_client_id":"2iphjca5o7topvt6er130ae2l1","cloud_client_secret":"12ojo0fv2jqvg436st4ebkjilohi23d3rnmqaoq3jlg0pumb9fe8","cloud_grant_type":"client_credentials","fdsCloudGetDocumentUrl":"https://api.stage.federateddataservices.com/core/v2.5/api/documents/{spaceId}","pdoFetchPreferencesUrl":"https://gateway-stage-dmz.optum.com/api/stage/pdr/pdo/v1/preferences","pdo_client_id":"neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx","pdo_client_secret":"xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze","pdo_token_url":"https://gateway-stage-dmz.optum.com/auth/oauth2/cached/token","fetchSecondaryEmail":false},"requiredFieldRule":{"process_key":"requiredFieldRuleProcess","rules":[{"sendToShutterfly":false,"criteria":"emailAlertReq==\"N\"","requiredFields":["tin","corporateMpin"]},{"sendToShutterfly":true,"criteria":"emailAlertReq!=\"N\"","requiredFields":["tin","corporateMpin","mpin","providerEmailId"]}]}}}},"revisions":null,"docId":"6ab315d2335ffe2376bd7cb9","status":"AVAILABLE"}
+    severity:  INFO
+    thread:  scheduled-task-pool-59
+    time:  1790121600.075
+}
+Show as raw text
+host =   source = ppl-paperless-processor-listener:ctc:ppl-paperless-processor-listener-stage-7b75cbbb6c-xfgr8 sourcetype = prun:http:log
+
+22/09/2026
+20:00:00.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.ProcessRequiredFieldRule
+    message:  Prepost success list 6ab315d2335ffe2376bd7cb9
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-8
+    time:  1790121600.265
+}
+Show as raw text
+host =   source = fds-paperless-activiti:ctc:fds-paperless-activiti-stage-8576785c65-6k77n sourcetype = prun:http:log
+
+22/09/2026
+20:00:00.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.ProcessRequiredFieldRule
+    message:  end of required field process, documentId=6ab315d2335ffe2376bd7cb9
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-8
+    time:  1790121600.265
+}
+Show as raw text
+host =   source = fds-paperless-activiti:ctc:fds-paperless-activiti-stage-8576785c65-6k77n sourcetype = prun:http:log
+
+22/09/2026
+20:00:00.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.ProcessRequiredFieldRule
+    message:  requiredFieldRule process complete for docId=6ab315d2335ffe2376bd7cb9, sendToDocVault=true, sendToShutterfly=true, eDeliveryError=Missing or invalid data: providerEmailId
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-8
+    time:  1790121600.261
+}
+Show as raw text
+host =   source = fds-paperless-activiti:ctc:fds-paperless-activiti-stage-8576785c65-6k77n sourcetype = prun:http:log
+
+22/09/2026
+20:00:00.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.ProcessRequiredFieldRule
+    message:  Prepost doc list 6ab315d2335ffe2376bd7cb9
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-8
+    time:  1790121600.256
+}
+Show as raw text
+host =   source = fds-paperless-activiti:ctc:fds-paperless-activiti-stage-8576785c65-6k77n sourcetype = prun:http:log
+
+22/09/2026
+20:00:00.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.RetrieveProviderEmailAddress
+    message:  end of retrieve email process inside catch, correlationID=6ab315d2335ffe2376bd7cb9_10302
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-8
+    time:  1790121600.200
+}
+Show as raw text
+host =   source = fds-paperless-activiti:ctc:fds-paperless-activiti-stage-8576785c65-6k77n sourcetype = prun:http:log
+
+22/09/2026
+20:00:00.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.RetrieveProviderEmailAddress
+    message:  doExecute Retrieve Email terminated with an ERROR delegateExecutionId=b85411c4-b6e1-11f1-b4da-7a6eff0d0dba, CorrelationID=6ab315d2335ffe2376bd7cb9_10302 java.lang.NullPointerException
+	at java.base/java.util.Objects.requireNonNull(Objects.java:209)
+	at com.optum.fds.paperless.java.delegate.RetrieveProviderEmailAddress.fetchEmailIdFromPreferences(RetrieveProviderEmailAddress.java:321)
+	at com.optum.fds.paperless.java.delegate.RetrieveProviderEmailAddress.doExecute(RetrieveProviderEmailAddress.java:157)
+	at com.optum.fds.paperless.java.delegate.OptumJavaDelegateBase.execute(OptumJavaDelegateBase.java:51)
+	at org.flowable.engine.impl.delegate.invocation.JavaDelegateInvocation.invoke(JavaDelegateInvocation.java:35)
+	at org.flowable.engine.impl.delegate.invocation.DelegateInvocation.proceed(DelegateInvocation.java:32)
+	at org.flowable.engine.impl.delegate.invocation.DefaultDelegateInterceptor.handleInvocation(DefaultDelegateInterceptor.java:26)
+	at org.flowable.engine.impl.bpmn.behavior.ServiceTaskDelegateExpressionActivityBehavior.execute(ServiceTaskDelegateExpressionActivityBehavior.java:177)
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.executeActivityBehavior(ContinueProcessOperation.java:297)
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.executeSynchronous(ContinueProcessOperation.java:175)
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.continueThroughFlowNode(ContinueProcessOperation.java:125)
+	at org.flowable.engine.impl.agenda.ContinueProcessOperation.run(ContinueProcessOperation.java:88)
+	at org.flowable.common.engine.impl.AbstractEngineConfiguration.lambda$new$0(AbstractEngineConfiguration.java:198)
+	at org.flowable.engine.impl.interceptor.CommandInvoker.executeOperation(CommandInvoker.java:188)
+	at org.flowable.engine.impl.interceptor.CommandInvoker.executeOperations(CommandInvoker.java:128)
+	at org.flowable.engine.impl.interceptor.CommandInvoker.execute(CommandInvoker.java:80)
+	at org.flowable.engine.impl.interceptor.BpmnOverrideContextInterceptor.execute(BpmnOverrideContextInterceptor.java:26)
+	at org.flowable.common.engine.impl.interceptor.TransactionContextInterceptor.execute(TransactionContextInterceptor.java:53)
+	at org.flowable.common.engine.impl.interceptor.CommandContextInterceptor.execute(CommandContextInterceptor.java:105)
+	at org.flowable.common.spring.SpringTransactionInterceptor.lambda$execute$0(SpringTransactionInterceptor.java:57)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:137)
+	at org.flowable.common.spring.SpringTransactionInterceptor.execute(SpringTransactionInterceptor.java:57)
+	at org.flowable.common.engine.impl.interceptor.LogInterceptor.execute(LogInterceptor.java:30)
+	at org.flowable.common.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:56)
+	at org.flowable.common.engine.impl.cfg.CommandExecutorImpl.execute(CommandExecutorImpl.java:51)
+	at org.flowable.engine.impl.RuntimeServiceImpl.startProcessInstance(RuntimeServiceImpl.java:848)
+	at org.flowable.engine.impl.runtime.ProcessInstanceBuilderImpl.start(ProcessInstanceBuilderImpl.java:265)
+	at com.optum.fds.paperless.FDSHelper.runProcess(FDSHelper.java:65)
+	at com.optum.fds.paperless.FDSHelper.retrieveProviderEmailAddress(FDSHelper.java:367)
+	at com.optum.fds.paperless.controller.FDSServicesController.prePost(FDSServicesController.java:305)
+	at jdk.internal.reflect.GeneratedMethodAccessor417.invoke(Unknown Source)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:569)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:252)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:184)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:132)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:59)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:111)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:535)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:86)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:71)
+	at org.apache.catalina.valves.RemoteIpValve.invoke(RemoteIpValve.java:733)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:347)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:71)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1307)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:2201)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:74)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:949)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:483)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:74)
+	at java.base/java.lang.Thread.run(Thread.java:840)
+
+    properties: { [+]
+   }
+    severity:  ERROR
+    thread:  http-nio-8080-exec-8
+    time:  1790121600.195
+}
+Show as raw text
+host =   source = fds-paperless-activiti:ctc:fds-paperless-activiti-stage-8576785c65-6k77n sourcetype = prun:http:log
+
+22/09/2026
+20:00:00.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.RetrieveProviderEmailAddress
+    message:  start of retrieve email process, documentId=6ab315d2335ffe2376bd7cb9
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-8
+    time:  1790121600.163
+}
+Show as raw text
+host =   source = fds-paperless-activiti:ctc:fds-paperless-activiti-stage-8576785c65-6k77n sourcetype = prun:http:log
+
+22/09/2026
+20:00:00.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.RetrieveCorporateMPINv2
+    message:  Completed processing document. delegate=RetrieveCorporateMPINv2 docId=6ab315d2335ffe2376bd7cb9
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-8
+    time:  1790121600.133
+}
+Show as raw text
+host =   source = fds-paperless-activiti:ctc:fds-paperless-activiti-stage-8576785c65-6k77n sourcetype = prun:http:log
+
+22/09/2026
+20:00:00.000	
+{ [-]
+    logger:  com.optum.fds.paperless.java.delegate.RetrieveCorporateMPINv2
+    message:  Processing document. delegate=RetrieveCorporateMPINv2 docId=6ab315d2335ffe2376bd7cb9
+    properties: { [+]
+   }
+    severity:  INFO
+    thread:  http-nio-8080-exec-8
+    time:  1790121600.122
+}
+Show as raw text
+host =   source = fds-paperless-activiti:ctc:fds-paperless-activiti-stage-8576785c65-6k77n sourcetype = prun:http:log
