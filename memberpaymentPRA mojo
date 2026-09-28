@@ -1,0 +1,308 @@
+{
+    
+            "metadata" : {
+                "applicationId" : "6dd32954-4b5c-49eb-95c9-cb4321d69b02",
+                "applicationDescription" : "Doc360 Batch Ingestion/Go Forward Ingestion (GFI)",
+                "consumerId" : null,
+                "consumerNamespace" : null,
+                "documentClass" : "u_enterprise_pac",
+                "documentClassDescription" : "Enterprise Pay a Claim Documents",
+                "globalDocumentId" : "fbafdc8b-4d4b-49b6-82bb-9aca0899999",
+                "chronicleId" : "fbafdc8b-4d4b-49b6-82bb-9aca08a486cc",
+                "versionLabel" : "1.0",
+                "indexName" : "u_enterprise_pac_2026-08_v4",
+                "activityDate" : "2026-08-26T15:11:18.851Z",
+                "userId" : "GFI",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "112420013-20250912-daily.csv",
+                "messages" : null,
+                "uuid" : "859a0020-49b2-4118-bb91-15538aeb1c31",
+                "batchId" : "8000657082",
+                "compoundDocId" : "60668f33b2504a6f97e9419d7fc081a5",
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "pe",
+                "attributes" : [
+                    {
+                        "alias" : "key9",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "csv",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key11",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "348",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "originalPrintTrail",
+                        "physicalName" : "u_trl_id",
+                        "value" : "1111",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "fbafdc8b-4d4b-49b6-82bb-9aca0899999",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key6",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PassThruData",
+                        "physicalName" : "u_pass_thru_data",
+                        "value" : "2026-09-09T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MailToAddress1",
+                        "physicalName" : "u_mail_to_adr1",
+                        "value" : "Esperanza",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MailToAddress2",
+                        "physicalName" : "u_mail_to_adr2",
+                        "value" : "Esperanza",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MailToAddress3",
+                        "physicalName" : "u_mail_to_adr3",
+                        "value" : "Esperanza",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Created Date",
+                        "physicalName" : "u_orig_creation_date",
+                        "value" : "2026-08-26T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "EFT_Ind",
+                        "physicalName" : "u_eft_ind",
+                        "value" : "N",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "emailAlertReq",
+                        "physicalName" : "u_email_alert_req",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "subCategory",
+                        "physicalName" : "u_sub_category",
+                        "value" : "P5",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "CheckTraceNumber",
+                        "physicalName" : "CHECKNUMBER",
+                        "value" : "40160142",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "tin",
+                        "physicalName" : "u_tin",
+                        "value" : "841875712",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "mpin",
+                        "physicalName" : "u_mpin",
+                        "value" : "007244802",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "createdDate",
+                        "physicalName" : "PROCESSDATE",
+                        "value" : "2026-01-26T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MailToAddress2",
+                        "physicalName" : "MailToAddress2",
+                        "value" : "007244802",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MailToAddress2",
+                        "physicalName" : "MailToAddress2",
+                        "value" : "007244802",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "CONFIGKEY",
+                        "physicalName" : "CONFIGKEY",
+                        "value" : "007244802",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MailToAddress3",
+                        "physicalName" : "MailToAddress3",
+                        "value" : "007244802",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "mpin",
+                        "physicalName" : "ProviderMPIN",
+                        "value" : "007244802",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "tin",
+                        "physicalName" : "TIN",
+                        "value" : "007244802",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "filePath",
+                        "physicalName" : "LETTERTYPE",
+                        "value" : "Commercial/Virtual Card Payment Remittance Documents",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PassThruData",
+                        "physicalName" : "PassThruData",
+                        "value" : "007244802",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "originalPrintTrail",
+                        "physicalName" : "originalPrintTrail",
+                        "value" : "007244802",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MailToAddress1",
+                        "physicalName" : "MailToAddress1",
+                        "value" : "007244802",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "emailAlertReq",
+                        "physicalName" : "isPrintSuppressed",
+                        "value" : "Y",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "appIdentifier" : "necojl43vr7xnxt2y5agxwh1nyve5qck",
+            "clientId" : NumberInt(685),
+            "dateCreated" : ISODate("2026-09-26T16:13:50.811+0000"),
+            "dateModified" : ISODate("2026-09-26T16:13:50.811+0000"),
+            "spaceId" : NumberInt(20602),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        
+    
+}
