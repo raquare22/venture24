@@ -1,123 +1,360 @@
-#HomeCommunityProviderReports
-
-HomeCommunityProviderReports.bouncedProviderEmailAddressProcess.criteria=1==2
-HomeCommunityProviderReports.postProcessNoCorporateMpin.criteria=1==2
-HomeCommunityProviderReports.preProcessGetCorporateMpin.criteria=metadata.stopProcessing!=true
-HomeCommunityProviderReports.preProcessValidation.criteria=1==2
-HomeCommunityProviderReports.retrieveProviderEmailAddress.criteria=1==2
-HomeCommunityProviderReports.createRequiredFieldRule.criteria=1==2
-HomeCommunityProviderReports.SendToShutterfly.criteria=1==2
-HomeCommunityProviderReports.createRequiredFieldRule.trigger_method=post
-HomeCommunityProviderReports.SendToShutterfly.trigger_method=post
-HomeCommunityProviderReports.createOriginalCompanionFile=false
-HomeCommunityProviderReports.post.docVault.criteria=metadata.sendToDocVault==true && metadata.stopProcessing!=true
-
-local.HomeCommunityProviderReports.spaceId=7300
-local.HomeCommunityProviderReports.bounceEmailCheckEFTIND=false
-local.HomeCommunityProviderReports.validateCorprateMPIN=true
-local.HomeCommunityProviderReports.turnPen=true
-local.HomeCommunityProviderReports.skipManipulatePdfFile=false
-local.HomeCommunityProviderReports.skipEFTIndFlag=true
-local.HomeCommunityProviderReports.writeEncryptedPDF=false
-local.HomeCommunityProviderReports.DocLib.searchCriteria="{ \"spaceId\" : 7300,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\" : false} ]}"
-local.HomeCommunityProviderReports.DocLib.searchWindow={\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
-local.HomeCommunityProviderReports.DocLib.slaTime=2
-local.HomeCommunityProviderReports.DocLib.maxDocumentsOccurs=1000
-
-dev.HomeCommunityProviderReports.spaceId=7300
-dev.HomeCommunityProviderReports.bounceEmailCheckEFTIND=false
-dev.HomeCommunityProviderReports.validateCorprateMPIN=true
-dev.HomeCommunityProviderReports.turnPen=true
-dev.HomeCommunityProviderReports.skipManipulatePdfFile=false
-dev.HomeCommunityProviderReports.skipEFTIndFlag=true
-dev.HomeCommunityProviderReports.writeEncryptedPDF=false
-dev.HomeCommunityProviderReports.DocLib.searchCriteria="{ \"spaceId\" : 7300,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\" : false} ]}"
-dev.HomeCommunityProviderReports.DocLib.searchWindow={\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
-dev.HomeCommunityProviderReports.DocLib.slaTime=2
-dev.HomeCommunityProviderReports.DocLib.maxDocumentsOccurs=1000
-
-qa.HomeCommunityProviderReports.spaceId=7301
-qa.HomeCommunityProviderReports.bounceEmailCheckEFTIND=false
-qa.HomeCommunityProviderReports.validateCorprateMPIN=true
-qa.HomeCommunityProviderReports.turnPen=true
-qa.HomeCommunityProviderReports.skipManipulatePdfFile=false
-qa.HomeCommunityProviderReports.skipEFTIndFlag=true
-qa.HomeCommunityProviderReports.writeEncryptedPDF=false
-qa.HomeCommunityProviderReports.DocLib.searchCriteria="{ \"spaceId\" : 7301,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\" : false} ]}"
-qa.HomeCommunityProviderReports.DocLib.searchWindow={\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
-qa.HomeCommunityProviderReports.DocLib.slaTime=2
-qa.HomeCommunityProviderReports.DocLib.maxDocumentsOccurs=1000
-
-stage.HomeCommunityProviderReports.spaceId=7302
-stage.HomeCommunityProviderReports.bounceEmailCheckEFTIND=false
-stage.HomeCommunityProviderReports.validateCorprateMPIN=true
-stage.HomeCommunityProviderReports.turnPen=true
-stage.HomeCommunityProviderReports.skipManipulatePdfFile=false
-stage.HomeCommunityProviderReports.skipEFTIndFlag=true
-stage.HomeCommunityProviderReports.writeEncryptedPDF=false
-stage.HomeCommunityProviderReports.DocLib.searchCriteria="{ \"spaceId\" : 7302,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\" : false} ]}"
-stage.HomeCommunityProviderReports.DocLib.searchWindow={\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
-stage.HomeCommunityProviderReports.DocLib.slaTime=2
-stage.HomeCommunityProviderReports.DocLib.maxDocumentsOccurs=1000
-
-prod.HomeCommunityProviderReports.spaceId=7303
-prod.HomeCommunityProviderReports.bounceEmailCheckEFTIND=false
-prod.HomeCommunityProviderReports.validateCorprateMPIN=true
-prod.HomeCommunityProviderReports.turnPen=true
-prod.HomeCommunityProviderReports.skipManipulatePdfFile=false
-prod.HomeCommunityProviderReports.skipEFTIndFlag=true
-prod.HomeCommunityProviderReports.writeEncryptedPDF=false
-prod.HomeCommunityProviderReports.DocLib.searchCriteria="{ \"spaceId\" : 7303,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\" : false} ]}"
-prod.HomeCommunityProviderReports.DocLib.searchWindow={\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
-prod.HomeCommunityProviderReports.DocLib.slaTime=2
-prod.HomeCommunityProviderReports.DocLib.maxDocumentsOccurs=1000
-
-local.HomeCommunityProviderReports.processConvertMetadataHook.searchCriteria={\"spaceId\" : 7300, \"status\" : \"NEW\"}
-local.HomeCommunityProviderReports.processConvertMetadataHook.searchWindow={\"start_date_offset\":{\"time_window\":\"48\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
-local.HomeCommunityProviderReports.processConvertMetadataHook.maxDocumentsOccurs=1
-
-dev.HomeCommunityProviderReports.processConvertMetadataHook.searchCriteria={\"spaceId\" : 7300, \"status\" : \"NEW\"}
-dev.HomeCommunityProviderReports.processConvertMetadataHook.searchWindow={\"start_date_offset\":{\"time_window\":\"48\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
-dev.HomeCommunityProviderReports.processConvertMetadataHook.maxDocumentsOccurs=1
-
-qa.HomeCommunityProviderReports.processConvertMetadataHook.searchCriteria={\"spaceId\" : 7301, \"status\" : \"NEW\"}
-qa.HomeCommunityProviderReports.processConvertMetadataHook.searchWindow={\"start_date_offset\":{\"time_window\":\"48\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
-qa.HomeCommunityProviderReports.processConvertMetadataHook.maxDocumentsOccurs=1
-
-stage.HomeCommunityProviderReports.processConvertMetadataHook.searchCriteria={\"spaceId\" : 7302, \"status\" : \"NEW\"}
-stage.HomeCommunityProviderReports.processConvertMetadataHook.searchWindow={\"start_date_offset\":{\"time_window\":\"48\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
-stage.HomeCommunityProviderReports.processConvertMetadataHook.maxDocumentsOccurs=1
-
-prod.HomeCommunityProviderReports.processConvertMetadataHook.searchCriteria={\"spaceId\" : 7303, \"status\" : \"NEW\"}
-prod.HomeCommunityProviderReports.processConvertMetadataHook.searchWindow={\"start_date_offset\":{\"time_window\":\"48\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}
-prod.HomeCommunityProviderReports.processConvertMetadataHook.maxDocumentsOccurs=1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-HomeCommunityProviderReports.rules=[{"sendToDocVault":true,"sendToShutterfly":false,"criteria":"1==1","requiredFields":["tin","corporateMpin"]}]
+{
+    "_id" : ObjectId("6abce630b772a45a79a6f026"),
+    "metadata" : {
+        "emailAlertReq" : "Y",
+        "fileDescription" : "Nice Payment Advice",
+        "docSentTo" : "DocLib",
+        "subCategory" : "P5",
+        "fileName" : "15196102_000226770.pdf",
+        "originalPrintTrail" : "3746",
+        "postCardInd" : true,
+        "privilege" : "Claim Status",
+        "tin" : "813342404",
+        "CONFIGKEY" : "FDSPP3624",
+        "sendToDocVault" : true,
+        "EFT_Ind" : "Y",
+        "tenant" : "Link",
+        "npi" : "1073776860",
+        "filePath" : "UHC West Payment Packages/Detailed Pmt Docs",
+        "sendEmailNotifications" : false,
+        "providerEmailId" : "",
+        "sendPENAPIRequest" : false,
+        "createdDate" : "2026-09-14T00:00:00.000Z",
+        "physicianName" : "MICROGENDX LLC",
+        "CheckAmt" : "00000000000359.58",
+        "fileSize" : NumberInt(41021),
+        "createApplication" : "NICE-PRA",
+        "CheckTraceNumber" : "40181598",
+        "PassThruData" : "N7100700000008712802",
+        "mpin" : "002967399",
+        "category" : "Payment Document",
+        "fileType" : "PDF",
+        "sendToShutterfly" : true,
+        "expiryDate" : "2028-09-29T10:40:00.218Z",
+        "prepostStarted" : true,
+        "corporateMpin" : "002967399",
+        "eDeliveryError" : "Missing or invalid data: providerEmailId",
+        "prepostEnded" : true,
+        "docLibAPIResponse" : true,
+        "docLibUploadDate" : "2026-09-30T10:46:00.086Z",
+        "absolutePath" : "/ingest/shutterfly/necojl43vr7xnxt2y5agxwh1nyve5qck/10302/20260930190010084/",
+        "isPostCard" : true,
+        "skipManipulatePdfFile" : true,
+        "rprntSentToSF" : true,
+        "shutterflyFileName" : "FDS_NO_RPRNT_111103546_09302026190010.txt"
+    },
+    "spaceId" : NumberInt(10302),
+    "doc360DocumentId" : "d67fd8e0-dbc5-4d07-a08d-6cbaeb86359c",
+    "doc360DocClass" : "u_nice_claims_payment",
+    "revisions" : [
+        {
+            "metadata" : {
+                "applicationId" : "6dd32954-4b5c-49eb-95c9-cb4321d69b02",
+                "applicationDescription" : "Doc360 Batch Ingestion/Go Forward Ingestion (GFI)",
+                "consumerId" : null,
+                "consumerNamespace" : null,
+                "documentClass" : "u_nice_claims_payment",
+                "documentClassDescription" : "NICE CLAIMS PAYMENT",
+                "globalDocumentId" : "d67fd8e0-dbc5-4d07-a08d-6cbaeb86359c",
+                "chronicleId" : "d67fd8e0-dbc5-4d07-a08d-6cbaeb86359c",
+                "versionLabel" : "1.0",
+                "indexName" : "u_nice_claims_payment_2026-09_v2",
+                "activityDate" : "2026-09-30T10:31:30.001Z",
+                "userId" : "GFI",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "15196102_000226770.pdf",
+                "messages" : null,
+                "uuid" : "4e5474d5-388e-4405-8247-f335656abe24",
+                "batchId" : "8000662348",
+                "compoundDocId" : "ca1cc58447c04050811f9b97d34e83b4",
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "sflyextend",
+                "attributes" : [
+                    {
+                        "alias" : "key0",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "National Provider ID",
+                        "physicalName" : "u_npi",
+                        "value" : "1073776860",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key20",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "EFT Indicator",
+                        "physicalName" : "u_eft_ind",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key29",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MPIN",
+                        "physicalName" : "u_mpin",
+                        "value" : "002967399",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail ID",
+                        "physicalName" : "u_trl_id",
+                        "value" : "3746",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key5",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee ID",
+                        "physicalName" : "u_payee_id",
+                        "value" : "CLM10000762899",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee Name",
+                        "physicalName" : "u_payment_nm",
+                        "value" : "MICROGENDX LLC",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key19",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Document Creation Date",
+                        "physicalName" : "u_doc_creation_dt",
+                        "value" : "2026-09-14T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key30",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Pass Thru Data",
+                        "physicalName" : "u_pass_thru_data",
+                        "value" : "N7100700000008712802",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key12",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail Description",
+                        "physicalName" : "u_trl_desc",
+                        "value" : "NICECLM PROVIDER PRA",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID ",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "d67fd8e0-dbc5-4d07-a08d-6cbaeb86359c",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key14",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Number",
+                        "physicalName" : "u_payment_nbr",
+                        "value" : "40181598",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Date",
+                        "physicalName" : "u_payment_dt",
+                        "value" : "2026-09-14T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key35",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "41021",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Bank Code",
+                        "physicalName" : "u_bank_cd",
+                        "value" : "TXCLMCHK",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key3",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Amount",
+                        "physicalName" : "u_payment_amt",
+                        "value" : "00000000000359.58",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key18",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Config Key",
+                        "physicalName" : "u_config_key",
+                        "value" : "FDSPP3624",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key6",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Tax ID Number",
+                        "physicalName" : "u_tin",
+                        "value" : "813342404",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key21",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Email Alert Req",
+                        "physicalName" : "u_email_alert_req",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key38",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address3",
+                        "physicalName" : "u_mailing_adr3",
+                        "value" : "LUBBOCK TX 79407-1715",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key36",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address1",
+                        "physicalName" : "u_mailing_adr1",
+                        "value" : "MICROGENDX LLC",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key37",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address2",
+                        "physicalName" : "u_mailing_adr2",
+                        "value" : "2002 W LOOP 289",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key34",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "PDF",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key32",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Sub Category",
+                        "physicalName" : "u_sub_category",
+                        "value" : "P5",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-09-30T10:36:32.789+0000"),
+            "dateModified" : ISODate("2026-09-30T10:36:32.789+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        },
+        {
+            "metadata" : {
+                "emailAlertReq" : "Y",
+                "fileDescription" : "Nice Payment Advice",
+                "docSentTo" : "",
+                "subCategory" : "P5",
+                "fileName" : "15196102_000226770.pdf",
+                "originalPrintTrail" : "3746",
+                "postCardInd" : true,
+                "privilege" : "Claim Status",
+                "tin" : "813342404",
+                "CONFIGKEY" : "FDSPP3624",
+                "sendToDocVault" : false,
+                "EFT_Ind" : "Y",
+                "tenant" : "Link",
+                "npi" : "1073776860",
+                "filePath" : "UHC West Payment Packages/Detailed Pmt Docs",
+                "sendEmailNotifications" : false,
+                "providerEmailId" : "",
+                "sendPENAPIRequest" : false,
+                "createdDate" : "2026-09-14T00:00:00.000Z",
+                "physicianName" : "MICROGENDX LLC",
+                "CheckAmt" : "00000000000359.58",
+                "fileSize" : NumberInt(41021),
+                "createApplication" : "NICE-PRA",
+                "CheckTraceNumber" : "40181598",
+                "PassThruData" : "N7100700000008712802",
+                "mpin" : "002967399",
+                "category" : "Payment Document",
+                "fileType" : "PDF",
+                "sendToShutterfly" : false,
+                "expiryDate" : "2028-09-29T10:40:00.194Z"
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-09-30T10:36:32.789+0000"),
+            "dateModified" : ISODate("2026-09-30T10:40:00.195+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "AVAILABLE",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        }
+    ],
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-09-30T10:36:32.789+0000"),
+    "dateModified" : ISODate("2026-09-30T10:46:03.830+0000"),
+    "status" : "AVAILABLE",
+    "_class" : "com.optum.fds.paperless.mongo.DocumentMetaData"
+}
