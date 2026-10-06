@@ -1,0 +1,239 @@
+package com.optum.ppl.kafka.service.kafkaConsumer;
+
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.stereotype.Service;
+
+@Service
+@ConditionalOnProperty(name = "feature.toggle.kafka.consumer.unet", havingValue = "true")
+public class UNETConsumerService extends AbstractDocumentConsumer {
+
+    @Value("${UNET_SPACEID}")
+    private int unet_spaceId;
+
+    @KafkaListener(
+            topics = "${spring.kafka.topic.unet}",
+            containerFactory = "secureKafkaListenerContainerFactory"
+    )
+    public void consume(ConsumerRecord<String, String> message) {
+        super.processMessage(message, unet_spaceId);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.optum.ppl.kafka.service.kafkaConsumer;
+
+import com.optum.ppl.kafka.service.domain.DocumentMetaDataService;
+import com.optum.ppl.kafka.service.mongo.DocumentMetaData;
+import com.optum.ppl.kafka.service.mongo.processors.MetaDataStatus;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.bson.Document;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.test.util.ReflectionTestUtils;
+
+import java.util.List;
+
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+
+/**
+ * Unit tests for {@link UNETConsumerService} (UNET Claim Letters, Doc360 doc class {@code u_mli_elgs}).
+ *
+ * <p>The consumer only hands each record to {@link AbstractDocumentConsumer} together with the configured
+ * UNET space id. These tests pin that hand-off, the inherited handling of good, partial and unusable payloads,
+ * and the configuration keys — plain strings that the compiler cannot check and that must match Vault.
+ */
+@RunWith(MockitoJUnitRunner.StrictStubs.class)
+public class UNETConsumerServiceTest {
+
+    /** Deliberately not a real UNET space id (8888 stage / 8889 prod), so a hard-coded id in the consumer fails. */
+    private static final int CONFIGURED_SPACE_ID = 4242;
+    private static final String SPACE_ID_FIELD = "unet_spaceId";
+    private static final String DOC_CLASS = "u_mli_elgs";
+    private static final String TOPIC = "unet-claim-letters";
+
+    @Mock
+    private DocumentMetaDataService documentMetaDataService;
+
+    @InjectMocks
+    private UNETConsumerService unetConsumerService;
+
+    @Captor
+    private ArgumentCaptor<DocumentMetaData> storedDocument;
+
+    @Before
+    public void setUp() {
+        // @Value is only resolved inside a Spring context, so set the configured space id directly.
+        ReflectionTestUtils.setField(unetConsumerService, SPACE_ID_FIELD, CONFIGURED_SPACE_ID);
+    }
+
+    // --- Valid messages are stored as NEW under the configured space id ---
+
+    @Test
+    public void consume_validDoc360Message_storesNewDocumentUnderConfiguredSpaceId() {
+        unetConsumerService.consume(recordWithValue(doc360Message("GDID-0001", DOC_CLASS)));
+
+        verify(documentMetaDataService).insertDocumentWithSpaceId(storedDocument.capture(), eq(CONFIGURED_SPACE_ID));
+        verifyNoMoreInteractions(documentMetaDataService);
+
+        DocumentMetaData document = storedDocument.getValue();
+        assertEquals(MetaDataStatus.NEW, document.getStatus());
+        assertEquals("GDID-0001", document.getDoc360DocumentId());
+        assertEquals(DOC_CLASS, document.getDoc360DocClass());
+    }
+
+    @Test
+    public void consume_validDoc360Message_keepsRawAttributesForDownstreamConversion() {
+        unetConsumerService.consume(recordWithValue(doc360Message("GDID-0002", DOC_CLASS)));
+
+        verify(documentMetaDataService).insertDocumentWithSpaceId(storedDocument.capture(), eq(CONFIGURED_SPACE_ID));
+
+        List<Document> attributes = storedDocument.getValue().getMetadata().getList("attributes", Document.class);
+        assertEquals(1, attributes.size());
+        assertEquals("u_claim_number", attributes.get(0).getString("physicalName"));
+        assertEquals("CLM000000001", attributes.get(0).getString("value"));
+    }
+
+    @Test
+    public void consume_messageWithoutDoc360Identifiers_storesDocumentWithNullIdentifiers() {
+        unetConsumerService.consume(recordWithValue("{ \"attributes\": [] }"));
+
+        verify(documentMetaDataService).insertDocumentWithSpaceId(storedDocument.capture(), eq(CONFIGURED_SPACE_ID));
+
+        DocumentMetaData document = storedDocument.getValue();
+        assertEquals(MetaDataStatus.NEW, document.getStatus());
+        assertNull(document.getDoc360DocumentId());
+        assertNull(document.getDoc360DocClass());
+    }
+
+    // --- Unusable payloads are skipped: nothing is stored and nothing is thrown to the listener container ---
+
+    @Test
+    public void consume_nullValue_doesNotStore() {
+        unetConsumerService.consume(recordWithValue(null));
+
+        verifyNoInteractions(documentMetaDataService);
+    }
+
+    @Test
+    public void consume_emptyValue_doesNotStore() {
+        unetConsumerService.consume(recordWithValue(""));
+
+        verifyNoInteractions(documentMetaDataService);
+    }
+
+    @Test
+    public void consume_blankValue_doesNotStore() {
+        unetConsumerService.consume(recordWithValue("   "));
+
+        verifyNoInteractions(documentMetaDataService);
+    }
+
+    @Test
+    public void consume_malformedJson_doesNotStore() {
+        unetConsumerService.consume(recordWithValue("{ \"globalDocumentId\": "));
+
+        verifyNoInteractions(documentMetaDataService);
+    }
+
+    // --- Configuration contract: these keys must match Vault, and a typo would only show up at deploy time ---
+
+    @Test
+    public void classAnnotation_featureToggle_isUnetFlagEnabledByTrue() {
+        ConditionalOnProperty toggle = UNETConsumerService.class.getAnnotation(ConditionalOnProperty.class);
+
+        assertNotNull("consumer must be behind a feature toggle", toggle);
+        assertArrayEquals(new String[] {"feature.toggle.kafka.consumer.unet"}, toggle.name());
+        assertEquals("true", toggle.havingValue());
+    }
+
+    @Test
+    public void consumeAnnotation_kafkaListener_usesUnetTopicAndSecureContainerFactory() throws NoSuchMethodException {
+        KafkaListener listener = UNETConsumerService.class
+                .getMethod("consume", ConsumerRecord.class)
+                .getAnnotation(KafkaListener.class);
+
+        assertNotNull("consume must be a Kafka listener", listener);
+        assertArrayEquals(new String[] {"${spring.kafka.topic.unet}"}, listener.topics());
+        assertEquals("secureKafkaListenerContainerFactory", listener.containerFactory());
+    }
+
+    @Test
+    public void spaceIdField_valueAnnotation_isBoundToUnetSpaceIdKey() throws NoSuchFieldException {
+        Value value = UNETConsumerService.class.getDeclaredField(SPACE_ID_FIELD).getAnnotation(Value.class);
+
+        assertNotNull("space id must come from configuration", value);
+        assertEquals("${UNET_SPACEID}", value.value());
+    }
+
+    private static ConsumerRecord<String, String> recordWithValue(String value) {
+        return new ConsumerRecord<>(TOPIC, 0, 0L, "unet-key", value);
+    }
+
+    /** Builds a synthetic Doc360 message in the real envelope shape: identifiers plus physicalName/value attributes. */
+    private static String doc360Message(String globalDocumentId, String documentClass) {
+        return """
+                {
+                  "globalDocumentId": "%s",
+                  "documentClass": "%s",
+                  "attributes": [
+                    { "physicalName": "u_claim_number", "value": "CLM000000001" }
+                  ]
+                }
+                """.formatted(globalDocumentId, documentClass);
+    }
+}
