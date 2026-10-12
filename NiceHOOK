@@ -1,0 +1,892 @@
+
+NICEPRA ALL Hooks
+
+
+//ConvertMetadata hook
+
+{
+    "_id" : ObjectId("6a9fb68db3bd338140ea7e0f"),
+    "hook" : {
+        "name" : "processConvertMetadataHook",
+        "hook_type" : "cron",
+        "hook_object" : "cronObject",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "process_key" : "processConvertMetadata",
+                "search_criteria" : "{\"spaceId\" : 10302, \"status\" : \"NEW\"}",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}",
+                "spaceId" : "10302",
+                "maxDocumentsOccurs" : NumberInt(1000),
+                "clientName" : "NicePRA",
+                "metadataValidationNotification" : false
+            }
+        }
+    },
+    "hookRecordType" : "hook",
+    "method" : "cron",
+    "spaceId" : NumberInt(10302),
+    "target" : "hooks",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "necojl43vr7xnxt2y5agxwh1nyve5qck",
+    "clientId" : NumberInt(685),
+    "name" : "processConvertMetadataHook",
+    "status" : "AVAILABLE",
+    "transactionId" : "a7e06083-e5a1-4809-8293-0620dc8b8888",
+    "_class" : "com.optum.fs.mongo.HookMetaData",
+    "dateCreated" : ISODate("2026-09-08T07:17:33.960+0000"),
+    "dateModified" : ISODate("2026-09-08T07:17:33.960+0000")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+prepostHook:
+
+{
+    "_id" : ObjectId("620273e9c7a85c61e75d9b47"),
+    "hook" : {
+        "name" : "preposthook",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "search_window" : {
+                    "start_date_offset" : {
+                        "time_window" : "72",
+                        "format" : "Hours"
+                    },
+                    "end_date_offset" : {
+                        "time_window" : "0",
+                        "format" : "Hours"
+                    }
+                },
+                "search_criteria" : "{\"spaceId\" : 10302, \"status\" : \"AVAILABLE\", $and: [{$or: [{ fdsDocumentId: { $exists: true, $ne: null } }, { doc360DocumentId: { $exists: true, $ne: null } }]},{ \"metadata.prepostStarted\": { $exists: false } }, { \"metadata.prepostEnded\": { $exists: false } }]}",
+                "corporateMPIN" : {
+                    "process_key" : "retrieveCorporateMPINv2Process",
+                    "provSearchUrl" : "https://gateway-stage-dmz.optum.com/api/alpha/pdr/pes/physicians-and-facilities/v4.0/search",
+                    "inpSpaceId" : "10302",
+                    "pesGrantType" : "client_credentials",
+                    "appName" : "UHCWest",
+                    "oauth_token" : "MPwT3jMthTWEOfpRVBuLo2vCuqDOSX8p",
+                    "attributeSet" : "summary_0002",
+                    "count" : "1",
+                    "validateCorprateMPIN" : "false",
+                    "pesAppId" : "neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx",
+                    "pesAppSecret" : "xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze",
+                    "pesAuthUrl" : "https://gateway-stage-dmz.optum.com/auth/oauth2/token"
+                },
+                "providerEmailAddress" : {
+                    "process_key" : "retrieveProviderEmailAddressProcess",
+                    "providerSpaceIdV2" : "8928",
+                    "skipEFTIndFlag" : "",
+                    "useFDSCloud" : false,
+                    "fdsCloudAuthUrl" : "https://auth.stage.federateddataservices.com/oauth2/token",
+                    "cloud_client_id" : "2iphjca5o7topvt6er130ae2l1",
+                    "cloud_client_secret" : "12ojo0fv2jqvg436st4ebkjilohi23d3rnmqaoq3jlg0pumb9fe8",
+                    "cloud_grant_type" : "client_credentials",
+                    "fdsCloudGetDocumentUrl" : "https://api.stage.federateddataservices.com/core/v2.5/api/documents/{spaceId}",
+                    "pdoFetchPreferencesUrl" : "https://gateway-stage-dmz.optum.com/api/stage/pdr/pdo/v1/preferences",
+                    "pdo_client_id" : "neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx",
+                    "pdo_client_secret" : "xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze",
+                    "pdo_token_url" : "https://gateway-stage-dmz.optum.com/auth/oauth2/cached/token",
+                    "fetchSecondaryEmail" : false
+                },
+                "requiredFieldRule" : {
+                    "process_key" : "requiredFieldRuleProcess",
+                    "rules" : [
+                        {
+                            "sendToShutterfly" : false,
+                            "criteria" : "emailAlertReq==\"N\"",
+                            "requiredFields" : [
+                                "tin",
+                                "corporateMpin"
+                            ]
+                        },
+                        {
+                            "sendToShutterfly" : true,
+                            "criteria" : "emailAlertReq!=\"N\"",
+                            "requiredFields" : [
+                                "tin",
+                                "corporateMpin",
+                                "mpin",
+                                "providerEmailId"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "hookRecordType" : "hook",
+    "spaceId" : NumberInt(10302),
+    "target" : "documents",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "qx3q2rsz53sqvnjf2fc0jge22r7j4vw3",
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2021-10-18T15:26:20.060+0000"),
+    "dateModified" : ISODate("2021-10-18T15:26:20.060+0000"),
+    "status" : "AVAILABLE",
+    "name" : "preposthook",
+    "_class" : "com.optum.fds.paperless.mongo.HookMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//DocLibhook
+
+{
+    "_id" : ObjectId("62027722c7a85c61e75e0c9b"),
+    "hook" : {
+        "name" : "hookDocvaultRestApi_post_10302",
+        "executionOrder" : "0",
+        "eval_time" : "POST_PROCESS",
+        "hook_type" : "standard",
+        "hook_object" : "objectOne",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "search_criteria" : "{ \"spaceId\" : 10302,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\"  : false} ]}",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"120\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}",
+                "process_key" : "postDocumentDocvaultForElgsProcess",
+                "clientId" : "federated-data",
+                "clientSecret" : "6ea70261-fe0c-4a08-b176-e11347d3f0ce",
+                "docvaultOauthUrl" : "https://api-gateway.linkhealth.com/oauth/token",
+                "uri" : "https://api-gateway.linkhealth.com/docvault-api-stage/v1/document",
+                "docLibOauthUrl" : "https://gateway-stage.optum.com/auth/oauth2/token",
+                "docLibClientId" : "neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx",
+                "docLibClientSecret" : "xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze",
+                "docLibRestUrl" : "https://gateway-stage.optum.com/api/stage/pdr/uhcpdoclib/v3/metadata",
+                "template_id" : "5ea5195f934e6ee9694a511f",
+                "PENAPIUrl" : "http://fds-paperless-pen-api-fds-pen-stage.origin-ctc-core.optum.com/Pen/emailRecord",
+                "appId" : "necojl43vr7xnxt2y5agxwh1nyve5qck",
+                "appSecret" : "vnwzz7wazvfdjr3aaddxfcfbk59y82hq",
+                "pen_template_id" : "5e95abe91abb65a70f5a3d0c",
+                "template_name" : "filterReqFieldForDocvault",
+                "maxRetries" : NumberInt(2),
+                "primary" : "docLib",
+                "retrySleepTime" : NumberInt(500),
+                "turnPEN" : false,
+                "maxDocumentsOccurs" : NumberInt(300),
+                "fdsDocumentsUrl" : "https://fs2-stagedmz-ose3.optum.com/v2/documents",
+                "slaTime" : NumberInt(24),
+                "batchSize" : NumberInt(50)
+            }
+        },
+        "trigger" : {
+            "criteria" : "metadata.sendToDocVault==true && metadata.sendPENAPIRequest==false && metadata.sendEmailNotifications==false && metadata.stopProcessing!=true",
+            "on_event" : {
+                "method" : "post",
+                "target" : "documents"
+            },
+            "days_offset" : NumberInt(0)
+        }
+    },
+    "hookRecordType" : "hook",
+    "method" : "post",
+    "spaceId" : NumberInt(10302),
+    "target" : "documents",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "necojl43vr7xnxt2y5agxwh1nyve5qck",
+    "clientId" : NumberInt(685),
+    "dateCreated" : ISODate("2021-07-01T03:22:05.820+0000"),
+    "dateModified" : ISODate("2021-07-01T03:22:05.820+0000"),
+    "name" : "hookDocvaultRestApi_post_10302",
+    "status" : "AVAILABLE",
+    "transactionId" : "bc2c1175-b2f6-4b0d-8f8d-03066b84e267",
+    "_class" : "com.optum.fs.mongo.HookMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//shutterfly
+
+{
+    "_id" : ObjectId("620276c2c7a85c61e75e0064"),
+    "hook" : {
+        "name" : "sendDocumentsToShutterflyProcessUHCWestCronExpressionHook",
+        "hook_type" : "cron",
+        "hook_object" : "cronObject",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "process_key" : "sendDocumentsToShutterflyProcess",
+                "search_criteria" : "{\"spaceId\" : 10302, \"status\" : \"AVAILABLE\", \"metadata.rprntSentToSF\" : { \"$exists\" : false }, \"metadata.sendToShutterfly\" : true, \"metadata.postCardInd\" : true}",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"400\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}",
+                "sftp_hostname" : "ecgpi.healthtechnologygroup.com",
+                "sftp_username_arc" : "is00amf",
+                "sftp_pw_arc" : "YW03eGag",
+                "sftp_archive_dir" : "/batch/uhcw_test_archive",
+                "grant_type" : "authorization_code",
+                "fdsAuthUrl" : "https://fs2-stagedmz-ose3.optum.com/v2/oauth2/token.json",
+                "document_update_flag_path" : "rprntSentToSF",
+                "document_update_flag_value" : true,
+                "document_format_field" : "dateEmailSent",
+                "fdsCloudAuthUrl" : "https://auth.stage.federateddataservices.com/oauth2/token",
+                "cloud_client_id" : "2iphjca5o7topvt6er130ae2l1",
+                "cloud_client_secret" : "12ojo0fv2jqvg436st4ebkjilohi23d3rnmqaoq3jlg0pumb9fe8",
+                "cloud_grant_type" : "client_credentials",
+                "fdsCloudGetAttachmentUrl" : "https://api.stage.federateddataservices.com/core/v2.5/api/documents/{spaceId}/{documentId}/attachments/{attachmentId}",
+                "fdsDocumentsUrl" : "https://fs2-stagedmz-ose3.optum.com/v2/documents",
+                "environment" : "stage",
+                "spaceId" : "10302",
+                "providerSpaceIdV2" : "8928",
+                "maxDocumentsOccurs" : NumberInt(300),
+                "appId" : "necojl43vr7xnxt2y5agxwh1nyve5qck",
+                "appSecret" : "bbtqlkw473dn103uahcreyel44nmr7mv",
+                "credentialList" : [
+                    {
+                        "10302" : {
+                            "clientId" : "necojl43vr7xnxt2y5agxwh1nyve5qck",
+                            "clientSecret" : "bbtqlkw473dn103uahcreyel44nmr7mv"
+                        }
+                    },
+                    {
+                        "8928" : {
+                            "clientId" : "89de2aa36a3b43f49395116255be8c0a",
+                            "clientSecret" : "6702871cb8f74150b88e086e4730c44d"
+                        }
+                    }
+                ],
+                "fdsDocumentUrl" : "https://fs2-stagedmz-ose3.optum.com/v2/attachments",
+                "sftp_username" : "is00amf",
+                "sftp_pw" : "YW03eGag",
+                "sftp_dir" : "/batch/uhcw_test_archive",
+                "addressBlockX" : 1.0,
+                "addressBlockY" : 1.84,
+                "identifierFontSize" : 8.0,
+                "originalPrintTrail" : "2182",
+                "receiverIdentifier" : "DPS$$$PKG",
+                "skipManipulatePdfFile" : false,
+                "createOriginalCompanionFile" : false,
+                "writeEncryptedPDF" : "false",
+                "X-Upstream-Env" : "int",
+                "doc360AppId" : "3c88a4a8-840c-4fbe-b3c7-37122ad0f3e9",
+                "doc360AppSecret" : "H63IEjoXZazLDvuEsslnMmKDTMVXWq2t6Lr",
+                "doc360GetAttachmentUrl" : "https://api-stg.uhg.com/api/ecs/doc360-getcontent/v1/document-contents",
+                "doc360OauthUrl" : "https://api-stg.uhg.com/oauth2/token",
+                "scope" : "ecs/doc360-getcontent:read",
+                "useDoc360" : true
+            }
+        },
+        "trigger" : {
+            "date_field" : "date",
+            "days_offset" : NumberInt(0),
+            "cronExpression" : "0 */15 * ? * *",
+            "on_event" : {
+                "method" : "cron",
+                "target" : "hooks"
+            },
+            "criteria" : "true"
+        },
+        "executionOrder" : NumberInt(0)
+    },
+    "hookRecordType" : "hook",
+    "method" : "cron",
+    "spaceId" : NumberInt(10302),
+    "target" : "hooks",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "necojl43vr7xnxt2y5agxwh1nyve5qck",
+    "clientId" : NumberInt(685),
+    "dateCreated" : ISODate("2021-01-10T14:05:51.124+0000"),
+    "dateModified" : ISODate("2021-06-04T04:00:46.855+0000"),
+    "name" : "sendDocumentsToShutterflyProcessUHCWestCronExpressionHook",
+    "status" : "AVAILABLE",
+    "transactionId" : "a7e06083-e5a1-4809-8293-0620dc8b1a4a",
+    "_class" : "com.optum.fs.mongo.HookMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PEN Hook
+
+{
+    "_id" : ObjectId("62027806c7a85c61e75e2a57"),
+    "hook" : {
+        "name" : "ProviderEmailNotificationHook",
+        "hook_type" : "cron",
+        "hook_object" : "cronObject",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "process_key" : "providerEmailNotificationProcess",
+                "PENAPIUrl" : "https://fds-paperless-pen-api-stage.optum.com/Pen/emailRecord",
+                "appId" : "necojl43vr7xnxt2y5agxwh1nyve5qck",
+                "appSecret" : "bbtqlkw473dn103uahcreyel44nmr7mv",
+                "search_criteria" : "{\"spaceId\" : 10302, \"metadata.sendEmailNotifications\" : false, \"metadata.providerEmailId\" : {$ne : \"\"}, \"metadata.docLibAPIResponse\" : true, \"metadata.sendPENAPIRequest\" : false }",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}",
+                "template_id" : "5f2364f8ae66ce6a9bb515cf",
+                "template_name" : "emailRequestToPEN",
+                "fdsDocumentsUrl" : "https://fs2-stagedmz-ose3.optum.com/v2/documents",
+                "document_update_flag_path" : "sendPENAPIRequest",
+                "document_update_flag_value" : true,
+                "maxRetries" : NumberInt(2),
+                "retrySleepTime" : NumberInt(500),
+                "maxDocumentsOccurs" : NumberInt(1000),
+                "PENAPIMultiCloudUrl" : "https://api-stg.uhg.com/api/provider/demographics/pen-service/1.0.0/Pen/emailRecord",
+                "PENAppId" : "d4681586-981e-4d49-99a8-7152961f26fd",
+                "PENAppSecret" : "ETuF8R5j0wdbpH443AUZyD0rVSXW24YJ6Kq",
+                "PENGrantType" : "client_credentials",
+                "PENOauthUrl" : "https://api-stg.uhg.com/oauth2/token",
+                "PENScope" : "https://api.uhg.com/.default"
+            }
+        },
+        "trigger" : {
+            "date_field" : "date",
+            "days_offset" : NumberInt(0),
+            "cronExpression" : "0 0 2,10,18 * * ?",
+            "on_event" : {
+                "method" : "cron",
+                "target" : "hooks"
+            },
+            "criteria" : "true"
+        },
+        "executionOrder" : NumberInt(0)
+    },
+    "hookRecordType" : "hook",
+    "method" : "cron",
+    "spaceId" : NumberInt(10302),
+    "target" : "hooks",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "necojl43vr7xnxt2y5agxwh1nyve5qck",
+    "clientId" : NumberInt(697),
+    "dateCreated" : ISODate("2021-03-04T20:18:24.561+0000"),
+    "dateModified" : ISODate("2021-08-31T10:00:06.544+0000"),
+    "name" : "ProviderEmailNotificationHook",
+    "status" : "AVAILABLE",
+    "transactionId" : "f2ac999a-3e79-480e-a549-e812f7890082",
+    "_class" : "com.optum.fs.mongo.HookMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+memeberPaymentPRAHook
+
+
+{
+    "_id" : ObjectId("6aa8e054335ffe2376bd7bd7"),
+    "hook" : {
+        "name" : "processConvertMetadataHook",
+        "hook_type" : "cron",
+        "hook_object" : "cronObject",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "process_key" : "processConvertMetadata",
+                "search_criteria" : "{\"spaceId\" : 20602, \"status\" : \"NEW\"}",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}",
+                "spaceId" : "20602",
+                "maxDocumentsOccurs" : NumberInt(1000),
+                "clientName" : "MemberPaymentPRADoc360",
+                "metadataValidationNotification" : false
+            }
+        }
+    },
+    "hookRecordType" : "hook",
+    "method" : "cron",
+    "spaceId" : NumberInt(20602),
+    "target" : "hooks",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "MGRah9mOeIO7yR1SdLK0XgUMtS9ZwKc1",
+    "clientId" : NumberInt(685),
+    "name" : "processConvertMetadataHook",
+    "status" : "AVAILABLE",
+    "transactionId" : "a7e06083-e5a1-4809-8293-0620dc8b8888",
+    "_class" : "com.optum.fs.mongo.HookMetaData",
+    "dateCreated" : ISODate("2026-09-08T07:17:33.960+0000"),
+    "dateModified" : ISODate("2026-09-08T07:17:33.960+0000")
+}
+
+
+
+
+
+
+
+
+
+
+2) Prepost hook
+
+{
+    "_id" : ObjectId("68e955930c9c2b4667fb8da3"),
+    "hook" : {
+        "name" : "preposthook",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "search_window" : {
+                    "start_date_offset" : {
+                        "time_window" : "72",
+                        "format" : "Hours"
+                    },
+                    "end_date_offset" : {
+                        "time_window" : "0",
+                        "format" : "Hours"
+                    }
+                },
+                "search_criteria" : "{\"spaceId\" : 20602, \"status\" : \"AVAILABLE\", $and: [{$or: [{ fdsDocumentId: { $exists: true, $ne: null } }, { doc360DocumentId: { $exists: true, $ne: null } }]},{ \"metadata.prepostStarted\": { $exists: false } }, { \"metadata.prepostEnded\": { $exists: false } }]}",
+                "corporateMPIN" : {
+                    "process_key" : "retrieveCorporateMPINv2Process",
+                    "provSearchUrl" : "https://gateway-stage-dmz.optum.com/api/alpha/pdr/pes/physicians-and-facilities/v4.0/search",
+                    "inpSpaceId" : "10802",
+                    "pesGrantType" : "client_credentials",
+                    "appName" : "PE",
+                    "attributeSet" : "summary_0002",
+                    "count" : "1",
+                    "validateCorprateMPIN" : "false",
+                    "pesAppId" : "neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx",
+                    "pesAppSecret" : "xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze",
+                    "pesAuthUrl" : "https://gateway-stage-dmz.optum.com/auth/oauth2/token"
+                },
+                "providerEmailAddress" : {
+                    "process_key" : "retrieveProviderEmailAddressProcess",
+                    "providerSpaceIdV2" : "8928",
+                    "skipEFTIndFlag" : "true",
+                    "useFDSCloud" : false,
+                    "fdsCloudAuthUrl" : "https://auth.stage.federateddataservices.com/oauth2/token",
+                    "cloud_client_id" : "2iphjca5o7topvt6er130ae2l1",
+                    "cloud_client_secret" : "12ojo0fv2jqvg436st4ebkjilohi23d3rnmqaoq3jlg0pumb9fe8",
+                    "cloud_grant_type" : "client_credentials",
+                    "fdsCloudGetDocumentUrl" : "https://api.stage.federateddataservices.com/core/v2.5/api/documents/{spaceId}",
+                    "pdoFetchPreferencesUrl" : "https://gateway-stage-dmz.optum.com/api/stage/pdr/pdo/v1/preferences",
+                    "pdo_client_id" : "neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx",
+                    "pdo_client_secret" : "xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze",
+                    "pdo_token_url" : "https://gateway-stage-dmz.optum.com/auth/oauth2/cached/token",
+                    "fetchSecondaryEmail" : false
+                },
+                "requiredFieldRule" : {
+                    "process_key" : "requiredFieldRuleProcess",
+                    "rules" : [
+                        {
+                            "sendToShutterfly" : false,
+                            "criteria" : "emailAlertReq==\"N\"",
+                            "requiredFields" : [
+                                "tin",
+                                "corporateMpin"
+                            ]
+                        },
+                        {
+                            "sendToShutterfly" : true,
+                            "criteria" : "emailAlertReq!=\"N\"",
+                            "requiredFields" : [
+                                "tin",
+                                "corporateMpin",
+                                "mpin",
+                                "providerEmailId"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "hookRecordType" : "hook",
+    "spaceId" : NumberInt(20602),
+    "target" : "documents",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "MGRah9mOeIO7yR1SdLK0XgUMtS9ZwKc1",
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2025-08-25T20:03:54.208+0000"),
+    "dateModified" : ISODate("2025-08-25T20:03:54.208+0000"),
+    "status" : "AVAILABLE",
+    "name" : "preposthook",
+    "_class" : "com.optum.fds.paperless.mongo.HookMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3) DocLib
+
+
+
+
+{
+    "_id" : ObjectId("68e955d60c9c2b4667fb8da4"),
+    "hook" : {
+        "name" : "hookDocLibRestApi_post_20602",
+        "executionOrder" : "0",
+        "eval_time" : "POST_PROCESS",
+        "hook_type" : "standard",
+        "hook_object" : "objectOne",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "search_criteria" : "{ \"spaceId\" : 20602,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\"  : false} ]}",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"120\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}",
+                "process_key" : "postDocumentDocvaultForElgsProcess",
+                "clientId" : "federated-data",
+                "clientSecret" : "6ea70261-fe0c-4a08-b176-e11347d3f0ce",
+                "docvaultOauthUrl" : "https://api-gateway.linkhealth.com/oauth/token",
+                "uri" : "https://api-gateway.linkhealth.com/docvault-api-stage/v1/document",
+                "docLibOauthUrl" : "https://gateway-stage.optum.com/auth/oauth2/token",
+                "docLibClientId" : "neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx",
+                "docLibClientSecret" : "xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze",
+                "docLibRestUrl" : "https://gateway-stage.optum.com/api/stage/pdr/uhcpdoclib/v3/metadata",
+                "template_id" : "5ea5195f934e6ee9694a511f",
+                "PENAPIUrl" : "http://fds-paperless-pen-api-fds-pen-stage.origin-ctc-core.optum.com/Pen/emailRecord",
+                "appId" : "MGRah9mOeIO7yR1SdLK0XgUMtS9ZwKc1",
+                "appSecret" : "vnwzz7wazvfdjr3aaddxfcfbk59y82hq",
+                "pen_template_id" : "5e95abe91abb65a70f5a3d0c",
+                "template_name" : "filterReqFieldForDocvault",
+                "maxRetries" : NumberInt(2),
+                "primary" : "docLib",
+                "retrySleepTime" : NumberInt(500),
+                "turnPEN" : false,
+                "maxDocumentsOccurs" : NumberInt(300),
+                "fdsDocumentsUrl" : "https://fs2-stagedmz-ose3.optum.com/v2/documents",
+                "slaTime" : NumberInt(24),
+                "batchSize" : NumberInt(50)
+            }
+        },
+        "trigger" : {
+            "criteria" : "metadata.sendToDocVault==true && metadata.sendPENAPIRequest==false && metadata.sendEmailNotifications==false && metadata.stopProcessing!=true",
+            "on_event" : {
+                "method" : "post",
+                "target" : "documents"
+            },
+            "days_offset" : NumberInt(0)
+        }
+    },
+    "hookRecordType" : "hook",
+    "method" : "post",
+    "spaceId" : NumberInt(20602),
+    "target" : "documents",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "MGRah9mOeIO7yR1SdLK0XgUMtS9ZwKc1",
+    "clientId" : NumberInt(685),
+    "dateCreated" : ISODate("2025-08-25T21:06:04.549+0000"),
+    "dateModified" : ISODate("2025-08-25T21:06:04.549+0000"),
+    "status" : "AVAILABLE",
+    "name" : "hookDocLibRestApi_post_20602",
+    "_class" : "com.optum.fs.mongo.HookMetaData",
+    "transactionId" : "bc2c1175-b2f6-4b0d-8f8d-03066b84e267"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4)Shutterfly hook
+
+
+{
+    "_id" : ObjectId("68e956580c9c2b4667fb8da6"),
+    "hook" : {
+        "name" : "sendDocumentsToShutterflyProcessMemberPaymentPRACronExpressionHook",
+        "hook_type" : "cron",
+        "hook_object" : "cronObject",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "process_key" : "sendDocumentsToShutterflyProcess",
+                "search_criteria" : "{\"spaceId\" : 20602, \"status\" : \"AVAILABLE\", \"metadata.rprntSentToSF\" : { \"$exists\" : false }, \"metadata.sendToShutterfly\" : true}",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"1\",\"format\":\"Hours\"}}",
+                "sftp_hostname" : "ecgpi.healthtechnologygroup.com",
+                "sftp_username" : "is10am6",
+                "sftp_pw" : "74kn02ZM",
+                "sftp_archive_dir" : "/batch/pe_member_payout_stage_archive",
+                "grant_type" : "authorization_code",
+                "fdsAuthUrl" : "http://ppl-prun-services-nonprod.hcck8s-ctc.optum.com",
+                "fdsDocumentUrl" : "https://fs2-stagedmz-ose3.optum.com/v2/documents",
+                "document_update_flag_path" : "rprntSentToSF",
+                "document_update_flag_value" : true,
+                "document_format_field" : "dateEmailSent",
+                "environment" : "stage",
+                "spaceId" : "20602",
+                "providerSpaceIdV2" : "8928",
+                "maxDocumentsOccurs" : NumberInt(300),
+                "appId" : "gc4zg9zh4j1ecoujir14pkv17sf4kz2b",
+                "appSecret" : "wqi1lo70zet71ab8xuvevcpbcnukh5kz",
+                "fdsCloudAuthUrl" : "https://auth.stage.federateddataservices.com/oauth2/token",
+                "cloud_client_id" : "2iphjca5o7topvt6er130ae2l1",
+                "cloud_client_secret" : "12ojo0fv2jqvg436st4ebkjilohi23d3rnmqaoq3jlg0pumb9fe8",
+                "cloud_grant_type" : "client_credentials",
+                "fdsCloudGetAttachmentUrl" : "https://api.stage.federateddataservices.com/core/v2.5/api/documents/{spaceId}/{documentId}/attachments/{attachmentId}",
+                "credentialList" : [
+                    {
+                        "20602" : {
+                            "clientId" : "MGRah9mOeIO7yR1SdLK0XgUMtS9ZwKc1",
+                            "clientSecret" : "wqi1lo70zet71ab8xuvevcpbcnukh5kz"
+                        }
+                    },
+                    {
+                        "8928" : {
+                            "clientId" : "89de2aa36a3b43f49395116255be8c0a",
+                            "clientSecret" : "6702871cb8f74150b88e086e4730c44d"
+                        }
+                    }
+                ],
+                "sftp_username_arc" : "is00amf",
+                "sftp_pw_arc" : "YW03eGag",
+                "sftp_dir" : "/in/shutterfly/dpi",
+                "addressBlockX" : 1.0,
+                "addressBlockY" : 1.84,
+                "identifierFontSize" : 8.0,
+                "originalPrintTrail" : "3821",
+                "receiverIdentifier" : "DPS$$$PKG",
+                "skipManipulatePdfFile" : false,
+                "createOriginalCompanionFile" : false,
+                "writeEncryptedPDF" : "false",
+                "X-Upstream-Env" : "int",
+                "doc360AppId" : "3c88a4a8-840c-4fbe-b3c7-37122ad0f3e9",
+                "doc360AppSecret" : "H63IEjoXZazLDvuEsslnMmKDTMVXWq2t6Lr",
+                "doc360GetAttachmentUrl" : "https://api-stg.uhg.com/api/ecs/doc360-getcontent/v1/document-contents",
+                "doc360OauthUrl" : "https://api-stg.uhg.com/oauth2/token",
+                "scope" : "ecs/doc360-getcontent:read",
+                "useDoc360" : false
+            }
+        }
+    },
+    "hookRecordType" : "hook",
+    "method" : "cron",
+    "spaceId" : NumberInt(20602),
+    "target" : "hooks",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "MGRah9mOeIO7yR1SdLK0XgUMtS9ZwKc1",
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2025-09-23T16:41:27.099+0000"),
+    "dateModified" : ISODate("2025-09-23T16:41:27.099+0000"),
+    "status" : "AVAILABLE",
+    "name" : "sendDocumentsToShutterflyProcessMemberPaymentPRACronExpressionHook",
+    "_class" : "com.optum.fds.paperless.mongo.HookMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5) PEN Hook
+
+{
+    "_id" : ObjectId("68e9560c0c9c2b4667fb8da5"),
+    "hook" : {
+        "name" : "ProviderEmailNotificationHook",
+        "hook_type" : "cron",
+        "hook_object" : "cronObject",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "process_key" : "providerEmailNotificationProcess",
+                "PENAPIUrl" : "https://fds-paperless-pen-api-stage.optum.com/Pen/emailRecord",
+                "search_criteria" : "{\"spaceId\" : 20602, \"metadata.sendEmailNotifications\" : false, \"metadata.providerEmailId\" : {\"$ne\" : \"\"}, \"metadata.docLibAPIResponse\" : true, \"metadata.sendPENAPIRequest\" : false }",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"24\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}",
+                "document_update_flag_path" : "sendPENAPIRequest",
+                "document_update_flag_value" : true,
+                "template_name" : "emailRequestToPEN",
+                "maxRetries" : NumberInt(2),
+                "retrySleepTime" : NumberInt(500),
+                "appId" : "gc4zg9zh4j1ecoujir14pkv17sf4kz2b",
+                "appSecret" : "wqi1lo70zet71ab8xuvevcpbcnukh5kz",
+                "maxDocumentsOccurs" : NumberInt(1000),
+                "PENAPIMultiCloudUrl" : "https://api-stg.uhg.com/api/provider/demographics/pen-service/1.0.0/Pen/emailRecord",
+                "PENAppId" : "d4681586-981e-4d49-99a8-7152961f26fd",
+                "PENAppSecret" : "ETuF8R5j0wdbpH443AUZyD0rVSXW24YJ6Kq",
+                "PENGrantType" : "client_credentials",
+                "PENOauthUrl" : "https://api-stg.uhg.com/oauth2/token",
+                "PENScope" : "https://api.uhg.com/.default"
+            }
+        }
+    },
+    "hookRecordType" : "hook",
+    "method" : "cron",
+    "spaceId" : NumberInt(20602),
+    "target" : "hooks",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "MGRah9mOeIO7yR1SdLK0XgUMtS9ZwKc1",
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2025-08-26T17:57:53.704+0000"),
+    "dateModified" : ISODate("2025-08-26T17:57:53.704+0000"),
+    "status" : "AVAILABLE",
+    "name" : "ProviderEmailNotificationHook",
+    "_class" : "com.optum.fds.paperless.mongo.HookMetaData"
+}
