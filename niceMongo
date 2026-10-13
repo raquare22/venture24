@@ -1,0 +1,2373 @@
+{
+    "_id" : ObjectId("6ac8ae550715d79deb8f2632"),
+    "metadata" : {
+        "emailAlertReq" : "Y",
+        "fileDescription" : "Nice Payment Advice",
+        "docSentTo" : "",
+        "multClaimNumber" : "005610493-01-137",
+        "subCategory" : "PR",
+        "fileName" : "15197079_000084440.pdf",
+        "originalPrintTrail" : "3749",
+        "postCardInd" : true,
+        "errorList" : [
+            "Missing or invalid data: u_eft_ind",
+            "Missing or invalid data: u_config_key (SEVERE)",
+            "Missing or invalid data: u_email_alert_req",
+            "Missing or invalid data: u_mail_to_adr2 (SEVERE)",
+            "Missing or invalid data: u_sub_category",
+            "Missing or invalid data: u_pass_thru_data (SEVERE)",
+            "Missing or invalid data: u_tin",
+            "Missing or invalid data: u_mail_to_adr1 (SEVERE)",
+            "Missing or invalid data: u_mpin"
+        ],
+        "sendEmailNotifications" : false,
+        "providerEmailId" : "",
+        "privilege" : "Claim Status",
+        "sendPENAPIRequest" : false,
+        "physicianName" : "ESTHER LEMUS",
+        "CheckAmt" : "00000000000017.50",
+        "fileSize" : NumberInt(97577),
+        "createApplication" : "NICE-PRA",
+        "CheckTraceNumber" : "10254630",
+        "mpin" : "",
+        "category" : "Payment Document",
+        "sendToDocVault" : false,
+        "fileType" : "PDF",
+        "tenant" : "Link",
+        "sendToShutterfly" : false,
+        "createdDate" : "2026-10-09T09:10:04.414Z",
+        "expiryDate" : "2028-10-08T09:10:04.414Z"
+    },
+    "spaceId" : NumberInt(10302),
+    "doc360DocumentId" : "9066a30d-9bb7-488f-9b21-17138e51e575",
+    "doc360DocClass" : "u_nice_claims_payment",
+    "revisions" : [
+        {
+            "metadata" : {
+                "applicationId" : "6dd32954-4b5c-49eb-95c9-cb4321d69b02",
+                "applicationDescription" : "Doc360 Batch Ingestion/Go Forward Ingestion (GFI)",
+                "consumerId" : null,
+                "consumerNamespace" : null,
+                "documentClass" : "u_nice_claims_payment",
+                "documentClassDescription" : "NICE CLAIMS PAYMENT",
+                "globalDocumentId" : "9066a30d-9bb7-488f-9b21-17138e51e575",
+                "chronicleId" : "9066a30d-9bb7-488f-9b21-17138e51e575",
+                "versionLabel" : "1.0",
+                "indexName" : "u_nice_claims_payment_2026-10_v2",
+                "activityDate" : "2026-10-09T09:05:23.152Z",
+                "userId" : "GFI",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "15197079_000084440.pdf",
+                "messages" : null,
+                "uuid" : "13bd1d86-7131-4689-8f67-4804b2d115b9",
+                "batchId" : "8000662834",
+                "compoundDocId" : "d9758c59f760472c97ebf73764a9bb39",
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "sflyextend",
+                "attributes" : [
+                    {
+                        "alias" : "key4",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Claim Number",
+                        "physicalName" : "u_clm_nbr",
+                        "value" : "005610493-01-137",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail ID",
+                        "physicalName" : "u_trl_id",
+                        "value" : "3749",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key5",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee ID",
+                        "physicalName" : "u_payee_id",
+                        "value" : "CLM2561049301",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee Name",
+                        "physicalName" : "u_payment_nm",
+                        "value" : "ESTHER LEMUS",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key9",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Control Number",
+                        "physicalName" : "u_ptnt_ctrl_nbr",
+                        "value" : "0",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key10",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient First Name",
+                        "physicalName" : "u_fst_nm",
+                        "value" : "ESTHER",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key12",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail Description",
+                        "physicalName" : "u_trl_desc",
+                        "value" : "NICECLM MEMBER EOP",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID ",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "9066a30d-9bb7-488f-9b21-17138e51e575",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key14",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Number",
+                        "physicalName" : "u_payment_nbr",
+                        "value" : "10254630",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Date",
+                        "physicalName" : "u_payment_dt",
+                        "value" : "2026-10-05T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key35",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "97577",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Bank Code",
+                        "physicalName" : "u_bank_cd",
+                        "value" : "CACLMCHK",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key3",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Amount",
+                        "physicalName" : "u_payment_amt",
+                        "value" : "00000000000017.50",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key11",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Last Name",
+                        "physicalName" : "u_lst_nm",
+                        "value" : "LEMUS",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key34",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "PDF",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-09T09:05:25.221+0000"),
+            "dateModified" : ISODate("2026-10-09T09:05:25.221+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        },
+        {
+            "metadata" : {
+                "emailAlertReq" : "Y",
+                "fileDescription" : "Nice Payment Advice",
+                "docSentTo" : "",
+                "multClaimNumber" : "005610493-01-137",
+                "subCategory" : "PR",
+                "fileName" : "15197079_000084440.pdf",
+                "originalPrintTrail" : "3749",
+                "postCardInd" : true,
+                "errorList" : [
+                    "Missing or invalid data: u_eft_ind",
+                    "Missing or invalid data: u_config_key (SEVERE)",
+                    "Missing or invalid data: u_email_alert_req",
+                    "Missing or invalid data: u_mail_to_adr2 (SEVERE)",
+                    "Missing or invalid data: u_sub_category",
+                    "Missing or invalid data: u_pass_thru_data (SEVERE)",
+                    "Missing or invalid data: u_tin",
+                    "Missing or invalid data: u_mail_to_adr1 (SEVERE)",
+                    "Missing or invalid data: u_mpin"
+                ],
+                "sendEmailNotifications" : false,
+                "providerEmailId" : "",
+                "privilege" : "Claim Status",
+                "sendPENAPIRequest" : false,
+                "physicianName" : "ESTHER LEMUS",
+                "CheckAmt" : "00000000000017.50",
+                "fileSize" : NumberInt(97577),
+                "createApplication" : "NICE-PRA",
+                "CheckTraceNumber" : "10254630",
+                "mpin" : "",
+                "category" : "Payment Document",
+                "sendToDocVault" : false,
+                "fileType" : "PDF",
+                "tenant" : "Link",
+                "sendToShutterfly" : false,
+                "createdDate" : "2026-10-09T09:10:02.968Z",
+                "expiryDate" : "2028-10-08T09:10:02.968Z"
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-09T09:05:25.221+0000"),
+            "dateModified" : ISODate("2026-10-09T09:10:02.969+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "SEVERE_ERROR",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        }
+    ],
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-10-09T09:05:25.221+0000"),
+    "dateModified" : ISODate("2026-10-09T09:10:04.415+0000"),
+    "status" : "SEVERE_ERROR",
+    "_class" : "com.optum.fds.paperless.mongo.DocumentMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "_id" : ObjectId("6ac8ae590715d79deb8f2808"),
+    "metadata" : {
+        "emailAlertReq" : "N",
+        "fileDescription" : "Nice Payment Advice",
+        "docSentTo" : "",
+        "subCategory" : "PR",
+        "fileName" : "15197098_000121990.pdf",
+        "originalPrintTrail" : "3746",
+        "postCardInd" : true,
+        "privilege" : "Claim Status",
+        "tin" : "770324739",
+        "CONFIGKEY" : "FDSPP3624",
+        "sendToDocVault" : true,
+        "EFT_Ind" : "Y",
+        "tenant" : "Link",
+        "multClaimNumber" : "002006672-01-045",
+        "npi" : "1659305902",
+        "errorList" : [
+            "Missing or invalid data: u_sub_category",
+            "Missing or invalid data: u_mpin"
+        ],
+        "sendEmailNotifications" : false,
+        "providerEmailId" : "",
+        "sendPENAPIRequest" : false,
+        "multMemberId" : "2006672-01",
+        "createdDate" : "2026-08-27T00:00:00.000Z",
+        "physicianName" : "AMERICAN MEDICAL RESPONSE",
+        "CheckAmt" : "00000000000388.46",
+        "fileSize" : NumberInt(51886),
+        "createApplication" : "NICE-PRA",
+        "CheckTraceNumber" : "61132976",
+        "PassThruData" : "Y7100500000000018365",
+        "mpin" : "",
+        "category" : "Payment Document",
+        "fileType" : "PDF",
+        "sendToShutterfly" : false,
+        "expiryDate" : "2028-10-08T09:10:11.302Z",
+        "prepostStarted" : true,
+        "corporateMpin" : "001415819",
+        "prepostEnded" : true,
+        "docLibAPIResponse" : false
+    },
+    "spaceId" : NumberInt(10302),
+    "doc360DocumentId" : "ff142cb0-e27f-4e76-be30-697cd7380bc5",
+    "doc360DocClass" : "u_nice_claims_payment",
+    "revisions" : [
+        {
+            "metadata" : {
+                "applicationId" : "6dd32954-4b5c-49eb-95c9-cb4321d69b02",
+                "applicationDescription" : "Doc360 Batch Ingestion/Go Forward Ingestion (GFI)",
+                "consumerId" : null,
+                "consumerNamespace" : null,
+                "documentClass" : "u_nice_claims_payment",
+                "documentClassDescription" : "NICE CLAIMS PAYMENT",
+                "globalDocumentId" : "ff142cb0-e27f-4e76-be30-697cd7380bc5",
+                "chronicleId" : "ff142cb0-e27f-4e76-be30-697cd7380bc5",
+                "versionLabel" : "1.0",
+                "indexName" : "u_nice_claims_payment_2026-10_v2",
+                "activityDate" : "2026-10-09T09:05:24.166Z",
+                "userId" : "GFI",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "15197098_000121990.pdf",
+                "messages" : null,
+                "uuid" : "6b57e768-11e1-45e3-b2fc-821310bdd790",
+                "batchId" : "8000662837",
+                "compoundDocId" : "b4bc31ae621845949fef89c19a200cc3",
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "sflyextend",
+                "attributes" : [
+                    {
+                        "alias" : "key0",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "National Provider ID",
+                        "physicalName" : "u_npi",
+                        "value" : "1659305902",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key20",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "EFT Indicator",
+                        "physicalName" : "u_eft_ind",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key4",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Claim Number",
+                        "physicalName" : "u_clm_nbr",
+                        "value" : "002006672-01-045",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail ID",
+                        "physicalName" : "u_trl_id",
+                        "value" : "3746",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key5",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee ID",
+                        "physicalName" : "u_payee_id",
+                        "value" : "CLM10000193987",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee Name",
+                        "physicalName" : "u_payment_nm",
+                        "value" : "AMERICAN MEDICAL RESPONSE",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key9",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Control Number",
+                        "physicalName" : "u_ptnt_ctrl_nbr",
+                        "value" : "4582749814600",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key19",
+                        "type" : "Date",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Document Creation Date",
+                        "physicalName" : "u_doc_creation_dt",
+                        "value" : "2026-08-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key30",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Pass Thru Data",
+                        "physicalName" : "u_pass_thru_data",
+                        "value" : "Y7100500000000018365",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key10",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient First Name",
+                        "physicalName" : "u_fst_nm",
+                        "value" : "MICHAEL",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key12",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail Description",
+                        "physicalName" : "u_trl_desc",
+                        "value" : "NICECLM PROVIDER PRA",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID ",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "ff142cb0-e27f-4e76-be30-697cd7380bc5",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key14",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Number",
+                        "physicalName" : "u_payment_nbr",
+                        "value" : "61132976",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Date",
+                        "physicalName" : "u_payment_dt",
+                        "value" : "2026-08-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key35",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "51886",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Bank Code",
+                        "physicalName" : "u_bank_cd",
+                        "value" : "CACLMACH",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key3",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Amount",
+                        "physicalName" : "u_payment_amt",
+                        "value" : "00000000000388.46",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key18",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Config Key",
+                        "physicalName" : "u_config_key",
+                        "value" : "FDSPP3624",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key6",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Tax ID Number",
+                        "physicalName" : "u_tin",
+                        "value" : "770324739",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key21",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Email Alert Req",
+                        "physicalName" : "u_email_alert_req",
+                        "value" : "N",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key11",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Last Name",
+                        "physicalName" : "u_lst_nm",
+                        "value" : "LAUTERBACH",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key28",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Member ID",
+                        "physicalName" : "u_mbr_id",
+                        "value" : "2006672-01",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key38",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address3",
+                        "physicalName" : "u_mailing_adr3",
+                        "value" : "LOS ANGELES CA 90074-2464",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key36",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address1",
+                        "physicalName" : "u_mailing_adr1",
+                        "value" : "AMERICAN MEDICAL RESPONSE",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key37",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address2",
+                        "physicalName" : "u_mailing_adr2",
+                        "value" : "PO BOX 742464",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key34",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "PDF",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-09T09:05:29.753+0000"),
+            "dateModified" : ISODate("2026-10-09T09:05:29.753+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        },
+        {
+            "metadata" : {
+                "emailAlertReq" : "N",
+                "fileDescription" : "Nice Payment Advice",
+                "docSentTo" : "",
+                "subCategory" : "PR",
+                "fileName" : "15197098_000121990.pdf",
+                "originalPrintTrail" : "3746",
+                "postCardInd" : true,
+                "privilege" : "Claim Status",
+                "tin" : "770324739",
+                "CONFIGKEY" : "FDSPP3624",
+                "sendToDocVault" : false,
+                "EFT_Ind" : "Y",
+                "tenant" : "Link",
+                "multClaimNumber" : "002006672-01-045",
+                "npi" : "1659305902",
+                "errorList" : [
+                    "Missing or invalid data: u_sub_category",
+                    "Missing or invalid data: u_mpin"
+                ],
+                "sendEmailNotifications" : false,
+                "providerEmailId" : "",
+                "sendPENAPIRequest" : false,
+                "multMemberId" : "2006672-01",
+                "createdDate" : "2026-08-27T00:00:00.000Z",
+                "physicianName" : "AMERICAN MEDICAL RESPONSE",
+                "CheckAmt" : "00000000000388.46",
+                "fileSize" : NumberInt(51886),
+                "createApplication" : "NICE-PRA",
+                "CheckTraceNumber" : "61132976",
+                "PassThruData" : "Y7100500000000018365",
+                "mpin" : "",
+                "category" : "Payment Document",
+                "fileType" : "PDF",
+                "sendToShutterfly" : false,
+                "expiryDate" : "2028-10-08T09:10:10.636Z"
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-09T09:05:29.753+0000"),
+            "dateModified" : ISODate("2026-10-09T09:10:10.637+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "AVAILABLE",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        }
+    ],
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-10-09T09:05:29.753+0000"),
+    "dateModified" : ISODate("2026-10-09T09:26:28.044+0000"),
+    "status" : "AVAILABLE",
+    "_class" : "com.optum.fds.paperless.mongo.DocumentMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "_id" : ObjectId("6ac8ae590715d79deb8f2809"),
+    "metadata" : {
+        "emailAlertReq" : "Y",
+        "fileDescription" : "Nice Payment Advice",
+        "docSentTo" : "",
+        "subCategory" : "PR",
+        "fileName" : "15197098_002829867.pdf",
+        "originalPrintTrail" : "3259",
+        "postCardInd" : true,
+        "privilege" : "Claim Status",
+        "tin" : "934163254",
+        "CONFIGKEY" : "FDSPP3624",
+        "sendToDocVault" : true,
+        "EFT_Ind" : "Y",
+        "tenant" : "Link",
+        "multClaimNumber" : "000593350-02-007",
+        "npi" : "1467225235",
+        "errorList" : [
+            "Missing or invalid data: u_sub_category"
+        ],
+        "sendEmailNotifications" : false,
+        "providerEmailId" : "",
+        "sendPENAPIRequest" : false,
+        "multMemberId" : "0593350-01",
+        "createdDate" : "2026-08-27T00:00:00.000Z",
+        "physicianName" : "UNIVERSAL RADIOLOGY PARTN",
+        "CheckAmt" : "00000000000117.80",
+        "fileSize" : NumberInt(53094),
+        "createApplication" : "NICE-PRA",
+        "CheckTraceNumber" : "61133061",
+        "PassThruData" : "Y7100500000000019603",
+        "mpin" : "009062150",
+        "category" : "Payment Document",
+        "fileType" : "PDF",
+        "sendToShutterfly" : false,
+        "expiryDate" : "2028-10-08T09:10:11.310Z",
+        "corporateMpin" : "009062150",
+        "docLibAPIResponse" : false,
+        "prepostStarted" : true,
+        "prepostEnded" : true
+    },
+    "spaceId" : NumberInt(10302),
+    "doc360DocumentId" : "ffed225f-30e8-4ff7-952a-6d071ce3515c",
+    "doc360DocClass" : "u_nice_claims_payment",
+    "revisions" : [
+        {
+            "metadata" : {
+                "applicationId" : "6dd32954-4b5c-49eb-95c9-cb4321d69b02",
+                "applicationDescription" : "Doc360 Batch Ingestion/Go Forward Ingestion (GFI)",
+                "consumerId" : null,
+                "consumerNamespace" : null,
+                "documentClass" : "u_nice_claims_payment",
+                "documentClassDescription" : "NICE CLAIMS PAYMENT",
+                "globalDocumentId" : "ffed225f-30e8-4ff7-952a-6d071ce3515c",
+                "chronicleId" : "ffed225f-30e8-4ff7-952a-6d071ce3515c",
+                "versionLabel" : "1.0",
+                "indexName" : "u_nice_claims_payment_2026-10_v2",
+                "activityDate" : "2026-10-09T09:05:24.166Z",
+                "userId" : "GFI",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "15197098_002829867.pdf",
+                "messages" : null,
+                "uuid" : "6b57e768-11e1-45e3-b2fc-821310bdd790",
+                "batchId" : "8000662837",
+                "compoundDocId" : "e3768f4b638b4d96bd521322b8f39302",
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "sflyextend",
+                "attributes" : [
+                    {
+                        "alias" : "key0",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "National Provider ID",
+                        "physicalName" : "u_npi",
+                        "value" : "1467225235",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key20",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "EFT Indicator",
+                        "physicalName" : "u_eft_ind",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key29",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MPIN",
+                        "physicalName" : "u_mpin",
+                        "value" : "009062150",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key4",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Claim Number",
+                        "physicalName" : "u_clm_nbr",
+                        "value" : "000593350-02-007",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail ID",
+                        "physicalName" : "u_trl_id",
+                        "value" : "3746",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key5",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee ID",
+                        "physicalName" : "u_payee_id",
+                        "value" : "CLM10000764613",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee Name",
+                        "physicalName" : "u_payment_nm",
+                        "value" : "UNIVERSAL RADIOLOGY PARTN",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key9",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Control Number",
+                        "physicalName" : "u_ptnt_ctrl_nbr",
+                        "value" : "14406769B",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key19",
+                        "type" : "Date",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Document Creation Date",
+                        "physicalName" : "u_doc_creation_dt",
+                        "value" : "2026-08-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key30",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Pass Thru Data",
+                        "physicalName" : "u_pass_thru_data",
+                        "value" : "Y7100500000000019603",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key10",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient First Name",
+                        "physicalName" : "u_fst_nm",
+                        "value" : "ALVARO",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key12",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail Description",
+                        "physicalName" : "u_trl_desc",
+                        "value" : "NICECLM PROVIDER PRA",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID ",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "ffed225f-30e8-4ff7-952a-6d071ce3515c",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key14",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Number",
+                        "physicalName" : "u_payment_nbr",
+                        "value" : "61133061",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Date",
+                        "physicalName" : "u_payment_dt",
+                        "value" : "2026-08-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key35",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "53094",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Bank Code",
+                        "physicalName" : "u_bank_cd",
+                        "value" : "CACLMACH",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key3",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Amount",
+                        "physicalName" : "u_payment_amt",
+                        "value" : "00000000000117.80",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key18",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Config Key",
+                        "physicalName" : "u_config_key",
+                        "value" : "FDSPP3624",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key6",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Tax ID Number",
+                        "physicalName" : "u_tin",
+                        "value" : "934163254",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key21",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Email Alert Req",
+                        "physicalName" : "u_email_alert_req",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key11",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Last Name",
+                        "physicalName" : "u_lst_nm",
+                        "value" : "JIMENEZ",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key28",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Member ID",
+                        "physicalName" : "u_mbr_id",
+                        "value" : "0593350-01",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key38",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address3",
+                        "physicalName" : "u_mailing_adr3",
+                        "value" : "DALLAS TX 75373-9168",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key36",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address1",
+                        "physicalName" : "u_mailing_adr1",
+                        "value" : "UNIVERSAL RADIOLOGY PARTN",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key37",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address2",
+                        "physicalName" : "u_mailing_adr2",
+                        "value" : "PO BOX 739168",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key34",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "PDF",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-09T09:05:29.789+0000"),
+            "dateModified" : ISODate("2026-10-09T09:05:29.789+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        },
+        {
+            "metadata" : {
+                "emailAlertReq" : "Y",
+                "fileDescription" : "Nice Payment Advice",
+                "docSentTo" : "",
+                "subCategory" : "PR",
+                "fileName" : "15197098_002829867.pdf",
+                "originalPrintTrail" : "3746",
+                "postCardInd" : true,
+                "privilege" : "Claim Status",
+                "tin" : "934163254",
+                "CONFIGKEY" : "FDSPP3624",
+                "sendToDocVault" : false,
+                "EFT_Ind" : "Y",
+                "tenant" : "Link",
+                "multClaimNumber" : "000593350-02-007",
+                "npi" : "1467225235",
+                "errorList" : [
+                    "Missing or invalid data: u_sub_category"
+                ],
+                "sendEmailNotifications" : false,
+                "providerEmailId" : "",
+                "sendPENAPIRequest" : false,
+                "multMemberId" : "0593350-01",
+                "createdDate" : "2026-08-27T00:00:00.000Z",
+                "physicianName" : "UNIVERSAL RADIOLOGY PARTN",
+                "CheckAmt" : "00000000000117.80",
+                "fileSize" : NumberInt(53094),
+                "createApplication" : "NICE-PRA",
+                "CheckTraceNumber" : "61133061",
+                "PassThruData" : "Y7100500000000019603",
+                "mpin" : "009062150",
+                "category" : "Payment Document",
+                "fileType" : "PDF",
+                "sendToShutterfly" : false,
+                "expiryDate" : "2028-10-08T09:10:10.649Z"
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-12T09:05:29.789+0000"),
+            "dateModified" : ISODate("2026-10-12T09:10:10.650+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "AVAILABLE",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        }
+    ],
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-10-12T09:05:29.789+0000"),
+    "dateModified" : ISODate("2026-10-12T09:26:28.134+0000"),
+    "status" : "AVAILABLE",
+    "_class" : "com.optum.fds.paperless.mongo.DocumentMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "_id" : ObjectId("6acd45825f28be5b1a545020"),
+    "metadata" : {
+        "emailAlertReq" : "Y",
+        "fileDescription" : "Nice Payment Advice",
+        "docSentTo" : "",
+        "subCategory" : "P5",
+        "fileName" : "15197098_002829867.pdf",
+        "originalPrintTrail" : "3746",
+        "postCardInd" : true,
+        "privilege" : "Claim Status",
+        "tin" : "934163254",
+        "CONFIGKEY" : "FDSPP3624",
+        "sendToDocVault" : false,
+        "EFT_Ind" : "Y",
+        "tenant" : "Link",
+        "MailToAddress1" : "UNIVERSAL RADIOLOGY PARTN",
+        "multClaimNumber" : "000593350-02-007",
+        "npi" : "1467225235",
+        "sendEmailNotifications" : false,
+        "providerEmailId" : "",
+        "sendPENAPIRequest" : false,
+        "multMemberId" : "0593350-01",
+        "createdDate" : "2026-08-27T00:00:00.000Z",
+        "physicianName" : "UNIVERSAL RADIOLOGY PARTN",
+        "CheckAmt" : "00000000000117.80",
+        "fileSize" : NumberInt(53094),
+        "createApplication" : "NICE-PRA",
+        "CheckTraceNumber" : "61133061",
+        "PassThruData" : "Y7100500000000019603",
+        "mpin" : "009062150",
+        "category" : "Payment Document",
+        "MailToAddress2" : "PO BOX 739168",
+        "fileType" : "PDF",
+        "MailToAddress3" : "DALLAS TX 75373-9168",
+        "sendToShutterfly" : false,
+        "expiryDate" : "2028-10-11T20:56:41.012Z"
+    },
+    "spaceId" : NumberInt(10302),
+    "revisions" : [
+        {
+            "metadata" : {
+                "applicationId" : "6dd32954-4b5c-49eb-95c9-cb4321d69b02",
+                "applicationDescription" : "Doc360 Batch Ingestion/Go Forward Ingestion (GFI)",
+                "consumerId" : null,
+                "consumerNamespace" : null,
+                "documentClass" : "u_nice_claims_payment",
+                "documentClassDescription" : "NICE CLAIMS PAYMENT",
+                "globalDocumentId" : "ffed225f-30e8-4ff7-952a-6d071ce31325",
+                "chronicleId" : "ffed225f-30e8-4ff7-952a-6d071ce31325",
+                "versionLabel" : "1.0",
+                "indexName" : "u_nice_claims_payment_2026-10_v2",
+                "activityDate" : "2026-10-09T09:05:24.166Z",
+                "userId" : "GFI",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "15197098_002829867.pdf",
+                "messages" : null,
+                "uuid" : "6b57e768-11e1-45e3-b2fc-821310bdd790",
+                "batchId" : "8000662837",
+                "compoundDocId" : "e3768f4b638b4d96bd521322b8f39302",
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "sflyextend",
+                "attributes" : [
+                    {
+                        "alias" : "key0",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "National Provider ID",
+                        "physicalName" : "u_npi",
+                        "value" : "1467225235",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key20",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "EFT Indicator",
+                        "physicalName" : "u_eft_ind",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key29",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MPIN",
+                        "physicalName" : "u_mpin",
+                        "value" : "009062150",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key4",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Claim Number",
+                        "physicalName" : "u_clm_nbr",
+                        "value" : "000593350-02-007",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail ID",
+                        "physicalName" : "u_trl_id",
+                        "value" : "3746",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key5",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee ID",
+                        "physicalName" : "u_payee_id",
+                        "value" : "CLM10000764613",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee Name",
+                        "physicalName" : "u_payment_nm",
+                        "value" : "UNIVERSAL RADIOLOGY PARTN",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key9",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Control Number",
+                        "physicalName" : "u_ptnt_ctrl_nbr",
+                        "value" : "14406769B",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key19",
+                        "type" : "Date",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Document Creation Date",
+                        "physicalName" : "u_doc_creation_dt",
+                        "value" : "2026-08-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key30",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Pass Thru Data",
+                        "physicalName" : "u_pass_thru_data",
+                        "value" : "Y7100500000000019603",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key10",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient First Name",
+                        "physicalName" : "u_fst_nm",
+                        "value" : "ALVARO",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key12",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail Description",
+                        "physicalName" : "u_trl_desc",
+                        "value" : "NICECLM PROVIDER PRA",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID ",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "ffed225f-30e8-4ff7-952a-6d071ce31312",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key14",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Number",
+                        "physicalName" : "u_payment_nbr",
+                        "value" : "61133061",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Date",
+                        "physicalName" : "u_payment_dt",
+                        "value" : "2026-08-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key35",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "53094",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Bank Code",
+                        "physicalName" : "u_bank_cd",
+                        "value" : "CACLMACH",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key3",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Amount",
+                        "physicalName" : "u_payment_amt",
+                        "value" : "00000000000117.80",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key18",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Config Key",
+                        "physicalName" : "u_config_key",
+                        "value" : "FDSPP3624",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key6",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Tax ID Number",
+                        "physicalName" : "u_tin",
+                        "value" : "934163254",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key21",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Email Alert Req",
+                        "physicalName" : "u_email_alert_req",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key11",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Last Name",
+                        "physicalName" : "u_lst_nm",
+                        "value" : "JIMENEZ",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key28",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Member ID",
+                        "physicalName" : "u_mbr_id",
+                        "value" : "0593350-01",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key38",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address3",
+                        "physicalName" : "u_mailing_adr3",
+                        "value" : "DALLAS TX 75373-9168",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key36",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address1",
+                        "physicalName" : "u_mailing_adr1",
+                        "value" : "UNIVERSAL RADIOLOGY PARTN",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key37",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address2",
+                        "physicalName" : "u_mailing_adr2",
+                        "value" : "PO BOX 739168",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key34",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "PDF",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-09T09:05:29.789+0000"),
+            "dateModified" : ISODate("2026-10-09T09:05:29.789+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        }
+    ],
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-10-09T09:05:29.789+0000"),
+    "dateModified" : ISODate("2026-10-12T20:56:41.013+0000"),
+    "status" : "AVAILABLE",
+    "_class" : "com.optum.fds.paperless.mongo.DocumentMetaData",
+    "doc360DocClass" : "u_nice_claims_payment",
+    "doc360DocumentId" : "ffed225f-30e8-4ff7-952a-6d071ce31325"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "_id" : ObjectId("6ac8ae590715d79deb8f2809"),
+    "metadata" : {
+        "emailAlertReq" : "Y",
+        "fileDescription" : "Nice Payment Advice",
+        "docSentTo" : "",
+        "subCategory" : "PR",
+        "fileName" : "15197098_002829867.pdf",
+        "originalPrintTrail" : "3259",
+        "postCardInd" : true,
+        "privilege" : "Claim Status",
+        "tin" : "934163254",
+        "CONFIGKEY" : "FDSPP3624",
+        "sendToDocVault" : true,
+        "EFT_Ind" : "Y",
+        "tenant" : "Link",
+        "multClaimNumber" : "000593350-02-007",
+        "npi" : "1467225235",
+        "errorList" : [
+            "Missing or invalid data: u_sub_category"
+        ],
+        "sendEmailNotifications" : false,
+        "providerEmailId" : "",
+        "sendPENAPIRequest" : false,
+        "multMemberId" : "0593350-01",
+        "createdDate" : "2026-08-27T00:00:00.000Z",
+        "physicianName" : "UNIVERSAL RADIOLOGY PARTN",
+        "CheckAmt" : "00000000000117.80",
+        "fileSize" : NumberInt(53094),
+        "createApplication" : "NICE-PRA",
+        "CheckTraceNumber" : "61133061",
+        "PassThruData" : "Y7100500000000019603",
+        "mpin" : "009062150",
+        "category" : "Payment Document",
+        "fileType" : "PDF",
+        "sendToShutterfly" : false,
+        "expiryDate" : "2028-10-08T09:10:11.310Z",
+        "corporateMpin" : "009062150",
+        "docLibAPIResponse" : false,
+        "prepostStarted" : true,
+        "prepostEnded" : true
+    },
+    "spaceId" : NumberInt(10302),
+    "doc360DocumentId" : "ffed225f-30e8-4ff7-952a-6d071ce3515c",
+    "doc360DocClass" : "u_nice_claims_payment",
+    "revisions" : [
+        {
+            "metadata" : {
+                "applicationId" : "6dd32954-4b5c-49eb-95c9-cb4321d69b02",
+                "applicationDescription" : "Doc360 Batch Ingestion/Go Forward Ingestion (GFI)",
+                "consumerId" : null,
+                "consumerNamespace" : null,
+                "documentClass" : "u_nice_claims_payment",
+                "documentClassDescription" : "NICE CLAIMS PAYMENT",
+                "globalDocumentId" : "ffed225f-30e8-4ff7-952a-6d071ce3515c",
+                "chronicleId" : "ffed225f-30e8-4ff7-952a-6d071ce3515c",
+                "versionLabel" : "1.0",
+                "indexName" : "u_nice_claims_payment_2026-10_v2",
+                "activityDate" : "2026-10-09T09:05:24.166Z",
+                "userId" : "GFI",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "15197098_002829867.pdf",
+                "messages" : null,
+                "uuid" : "6b57e768-11e1-45e3-b2fc-821310bdd790",
+                "batchId" : "8000662837",
+                "compoundDocId" : "e3768f4b638b4d96bd521322b8f39302",
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "sflyextend",
+                "attributes" : [
+                    {
+                        "alias" : "key0",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "National Provider ID",
+                        "physicalName" : "u_npi",
+                        "value" : "1467225235",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key20",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "EFT Indicator",
+                        "physicalName" : "u_eft_ind",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key29",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MPIN",
+                        "physicalName" : "u_mpin",
+                        "value" : "009062150",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key4",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Claim Number",
+                        "physicalName" : "u_clm_nbr",
+                        "value" : "000593350-02-007",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail ID",
+                        "physicalName" : "u_trl_id",
+                        "value" : "3746",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key5",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee ID",
+                        "physicalName" : "u_payee_id",
+                        "value" : "CLM10000764613",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee Name",
+                        "physicalName" : "u_payment_nm",
+                        "value" : "UNIVERSAL RADIOLOGY PARTN",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key9",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Control Number",
+                        "physicalName" : "u_ptnt_ctrl_nbr",
+                        "value" : "14406769B",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key19",
+                        "type" : "Date",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Document Creation Date",
+                        "physicalName" : "u_doc_creation_dt",
+                        "value" : "2026-08-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key30",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Pass Thru Data",
+                        "physicalName" : "u_pass_thru_data",
+                        "value" : "Y7100500000000019603",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key10",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient First Name",
+                        "physicalName" : "u_fst_nm",
+                        "value" : "ALVARO",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key12",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail Description",
+                        "physicalName" : "u_trl_desc",
+                        "value" : "NICECLM PROVIDER PRA",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID ",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "ffed225f-30e8-4ff7-952a-6d071ce3515c",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key14",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Number",
+                        "physicalName" : "u_payment_nbr",
+                        "value" : "61133061",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Date",
+                        "physicalName" : "u_payment_dt",
+                        "value" : "2026-08-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key35",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "53094",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Bank Code",
+                        "physicalName" : "u_bank_cd",
+                        "value" : "CACLMACH",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key3",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Amount",
+                        "physicalName" : "u_payment_amt",
+                        "value" : "00000000000117.80",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key18",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Config Key",
+                        "physicalName" : "u_config_key",
+                        "value" : "FDSPP3624",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key6",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Tax ID Number",
+                        "physicalName" : "u_tin",
+                        "value" : "934163254",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key21",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Email Alert Req",
+                        "physicalName" : "u_email_alert_req",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key11",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Last Name",
+                        "physicalName" : "u_lst_nm",
+                        "value" : "JIMENEZ",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key28",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Member ID",
+                        "physicalName" : "u_mbr_id",
+                        "value" : "0593350-01",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key38",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address3",
+                        "physicalName" : "u_mailing_adr3",
+                        "value" : "DALLAS TX 75373-9168",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key36",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address1",
+                        "physicalName" : "u_mailing_adr1",
+                        "value" : "UNIVERSAL RADIOLOGY PARTN",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key37",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address2",
+                        "physicalName" : "u_mailing_adr2",
+                        "value" : "PO BOX 739168",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key34",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "PDF",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-09T09:05:29.789+0000"),
+            "dateModified" : ISODate("2026-10-09T09:05:29.789+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        },
+        {
+            "metadata" : {
+                "emailAlertReq" : "Y",
+                "fileDescription" : "Nice Payment Advice",
+                "docSentTo" : "",
+                "subCategory" : "PR",
+                "fileName" : "15197098_002829867.pdf",
+                "originalPrintTrail" : "3746",
+                "postCardInd" : true,
+                "privilege" : "Claim Status",
+                "tin" : "934163254",
+                "CONFIGKEY" : "FDSPP3624",
+                "sendToDocVault" : false,
+                "EFT_Ind" : "Y",
+                "tenant" : "Link",
+                "multClaimNumber" : "000593350-02-007",
+                "npi" : "1467225235",
+                "errorList" : [
+                    "Missing or invalid data: u_sub_category"
+                ],
+                "sendEmailNotifications" : false,
+                "providerEmailId" : "",
+                "sendPENAPIRequest" : false,
+                "multMemberId" : "0593350-01",
+                "createdDate" : "2026-08-27T00:00:00.000Z",
+                "physicianName" : "UNIVERSAL RADIOLOGY PARTN",
+                "CheckAmt" : "00000000000117.80",
+                "fileSize" : NumberInt(53094),
+                "createApplication" : "NICE-PRA",
+                "CheckTraceNumber" : "61133061",
+                "PassThruData" : "Y7100500000000019603",
+                "mpin" : "009062150",
+                "category" : "Payment Document",
+                "fileType" : "PDF",
+                "sendToShutterfly" : false,
+                "expiryDate" : "2028-10-08T09:10:10.649Z"
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-12T09:05:29.789+0000"),
+            "dateModified" : ISODate("2026-10-12T09:10:10.650+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "AVAILABLE",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        }
+    ],
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-10-12T09:05:29.789+0000"),
+    "dateModified" : ISODate("2026-10-12T09:26:28.134+0000"),
+    "status" : "AVAILABLE",
+    "_class" : "com.optum.fds.paperless.mongo.DocumentMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+    "_id" : ObjectId("6ac8ae550715d79deb8f2655"),
+    "metadata" : {
+        "emailAlertReq" : "N",
+        "fileDescription" : "Nice Payment Advice",
+        "docSentTo" : "DocLib",
+        "subCategory" : "P5",
+        "fileName" : "15196172_000246540.pdf",
+        "originalPrintTrail" : "3746",
+        "postCardInd" : true,
+        "privilege" : "Claim Status",
+        "tin" : "330704304",
+        "CONFIGKEY" : "FDSPP3624",
+        "sendToDocVault" : true,
+        "EFT_Ind" : "N",
+        "tenant" : "Link",
+        "multClaimNumber" : "002138367-01-332",
+        "errorList" : [
+            "Missing or invalid data: u_mpin"
+        ],
+        "filePath" : "UHC West Payment Packages/Detailed Pmt Docs",
+        "sendEmailNotifications" : false,
+        "providerEmailId" : "",
+        "sendPENAPIRequest" : false,
+        "multMemberId" : "2138367-01",
+        "createdDate" : "2026-09-18T00:00:00.000Z",
+        "physicianName" : "HMS AAF INLAND EMPIRE",
+        "CheckAmt" : "00000000000335.93",
+        "fileSize" : NumberInt(78152),
+        "createApplication" : "NICE-PRA",
+        "CheckTraceNumber" : "10254189",
+        "PassThruData" : "N7100700000008714157",
+        "mpin" : "",
+        "category" : "Payment Document",
+        "fileType" : "PDF",
+        "sendToShutterfly" : false,
+        "expiryDate" : "2028-10-08T09:10:05.342Z",
+        "prepostStarted" : true,
+        "corporateMpin" : "004824211",
+        "prepostEnded" : true,
+        "docLibAPIResponse" : true,
+        "docLibUploadDate" : "2026-10-09T09:16:00.244Z"
+    },
+    "spaceId" : NumberInt(10302),
+    "doc360DocumentId" : "65d7ff5c-c977-47d5-8610-3db0699bc36c",
+    "doc360DocClass" : "u_nice_claims_payment",
+    "revisions" : [
+        {
+            "metadata" : {
+                "applicationId" : "6dd32954-4b5c-49eb-95c9-cb4321d69b02",
+                "applicationDescription" : "Doc360 Batch Ingestion/Go Forward Ingestion (GFI)",
+                "consumerId" : null,
+                "consumerNamespace" : null,
+                "documentClass" : "u_nice_claims_payment",
+                "documentClassDescription" : "NICE CLAIMS PAYMENT",
+                "globalDocumentId" : "65d7ff5c-c977-47d5-8610-3db0699bc36c",
+                "chronicleId" : "65d7ff5c-c977-47d5-8610-3db0699bc36c",
+                "versionLabel" : "1.0",
+                "indexName" : "u_nice_claims_payment_2026-09_v2",
+                "activityDate" : "2026-10-09T09:05:23.374Z",
+                "userId" : "GFI",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "15196172_000246540.pdf",
+                "messages" : null,
+                "uuid" : "984c22f9-747b-4483-a6f0-f5f24c3b296b",
+                "batchId" : "8000662638",
+                "compoundDocId" : "8786d4dff3624a21a7636ebd4635d42f",
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "sflyextend",
+                "attributes" : [
+                    {
+                        "alias" : "key20",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "EFT Indicator",
+                        "physicalName" : "u_eft_ind",
+                        "value" : "N",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key4",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Claim Number",
+                        "physicalName" : "u_clm_nbr",
+                        "value" : "002138367-01-332",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail ID",
+                        "physicalName" : "u_trl_id",
+                        "value" : "3746",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key5",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee ID",
+                        "physicalName" : "u_payee_id",
+                        "value" : "CLM10000586875",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payee Name",
+                        "physicalName" : "u_payment_nm",
+                        "value" : "HMS AAF INLAND EMPIRE",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key9",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Control Number",
+                        "physicalName" : "u_ptnt_ctrl_nbr",
+                        "value" : "988AAGAJ9K6-AY4HZ",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key19",
+                        "type" : "Date",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Document Creation Date",
+                        "physicalName" : "u_doc_creation_dt",
+                        "value" : "2026-09-18T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key30",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Pass Thru Data",
+                        "physicalName" : "u_pass_thru_data",
+                        "value" : "N7100700000008714157",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key10",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient First Name",
+                        "physicalName" : "u_fst_nm",
+                        "value" : "CYNTHIA",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key12",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail Description",
+                        "physicalName" : "u_trl_desc",
+                        "value" : "NICECLM PROVIDER PRA",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID ",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "65d7ff5c-c977-47d5-8610-3db0699bc36c",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key14",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Number",
+                        "physicalName" : "u_payment_nbr",
+                        "value" : "10254189",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Date",
+                        "physicalName" : "u_payment_dt",
+                        "value" : "2026-09-18T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key35",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "78152",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Bank Code",
+                        "physicalName" : "u_bank_cd",
+                        "value" : "CACLMCHK",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key3",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Payment Amount",
+                        "physicalName" : "u_payment_amt",
+                        "value" : "00000000000335.93",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key18",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Config Key",
+                        "physicalName" : "u_config_key",
+                        "value" : "FDSPP3624",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key6",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Tax ID Number",
+                        "physicalName" : "u_tin",
+                        "value" : "330704304",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key21",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Email Alert Req",
+                        "physicalName" : "u_email_alert_req",
+                        "value" : "N",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key11",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient Last Name",
+                        "physicalName" : "u_lst_nm",
+                        "value" : "ALVARADO",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key28",
+                        "type" : "MultiText",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Member ID",
+                        "physicalName" : "u_mbr_id",
+                        "value" : "2138367-01",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key38",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address3",
+                        "physicalName" : "u_mailing_adr3",
+                        "value" : "NEW YORK NY 10087-8750",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key36",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address1",
+                        "physicalName" : "u_mailing_adr1",
+                        "value" : "HMS AAF INLAND EMPIRE",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key37",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "PRUN Address2",
+                        "physicalName" : "u_mailing_adr2",
+                        "value" : "PO BOX 28750",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key34",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "PDF",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key32",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Sub Category",
+                        "physicalName" : "u_sub_category",
+                        "value" : "P5",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-09T09:05:25.547+0000"),
+            "dateModified" : ISODate("2026-10-09T09:05:25.547+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        },
+        {
+            "metadata" : {
+                "emailAlertReq" : "N",
+                "fileDescription" : "Nice Payment Advice",
+                "docSentTo" : "",
+                "subCategory" : "P5",
+                "fileName" : "15196172_000246540.pdf",
+                "originalPrintTrail" : "3746",
+                "postCardInd" : true,
+                "privilege" : "Claim Status",
+                "tin" : "330704304",
+                "CONFIGKEY" : "FDSPP3624",
+                "sendToDocVault" : false,
+                "EFT_Ind" : "N",
+                "tenant" : "Link",
+                "multClaimNumber" : "002138367-01-332",
+                "errorList" : [
+                    "Missing or invalid data: u_mpin"
+                ],
+                "filePath" : "UHC West Payment Packages/Detailed Pmt Docs",
+                "sendEmailNotifications" : false,
+                "providerEmailId" : "",
+                "sendPENAPIRequest" : false,
+                "multMemberId" : "2138367-01",
+                "createdDate" : "2026-09-18T00:00:00.000Z",
+                "physicianName" : "HMS AAF INLAND EMPIRE",
+                "CheckAmt" : "00000000000335.93",
+                "fileSize" : NumberInt(78152),
+                "createApplication" : "NICE-PRA",
+                "CheckTraceNumber" : "10254189",
+                "PassThruData" : "N7100700000008714157",
+                "mpin" : "",
+                "category" : "Payment Document",
+                "fileType" : "PDF",
+                "sendToShutterfly" : false,
+                "expiryDate" : "2028-10-08T09:10:04.157Z"
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-09T09:05:25.547+0000"),
+            "dateModified" : ISODate("2026-10-09T09:10:04.158+0000"),
+            "spaceId" : NumberInt(10302),
+            "status" : "AVAILABLE",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        }
+    ],
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-10-09T09:05:25.547+0000"),
+    "dateModified" : ISODate("2026-10-09T09:16:33.296+0000"),
+    "status" : "AVAILABLE",
+    "_class" : "com.optum.fds.paperless.mongo.DocumentMetaData"
+}
+
+
