@@ -1,0 +1,2280 @@
+{
+    "_id" : ObjectId("6ad8f459460596d5baea7e0f"),
+    "hook" : {
+        "name" : "processConvertMetadataHook",
+        "hook_type" : "cron",
+        "hook_object" : "cronObject",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "process_key" : "processConvertMetadata",
+                "search_criteria" : "{\"spaceId\" : 10059, \"status\" : \"NEW\"}",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"120\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}",
+                "spaceId" : "10059",
+                "maxDocumentsOccurs" : NumberInt(1000),
+                "clientName" : "PriorAuthCCSManualDoc360",
+                "metadataValidationNotification" : true
+            }
+        }
+    },
+    "hookRecordType" : "hook",
+    "method" : "cron",
+    "spaceId" : NumberInt(10059),
+    "target" : "hooks",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "1",
+    "clientId" : NumberInt(685),
+    "name" : "processConvertMetadataHook",
+    "status" : "AVAILABLE",
+    "transactionId" : "a7e06083-e5a1-4809-8293-0620dc8b1a4a",
+    "_class" : "com.optum.fs.mongo.HookMetaData",
+    "dateCreated" : ISODate("2026-10-21T03:22:05.820+0000"),
+    "dateModified" : ISODate("2026-10-21T03:22:05.820+0000")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+prepost hook
+
+
+{
+    "_id" : ObjectId("616d921ce621bb7b03d3d312"),
+    "hook" : {
+        "name" : "preposthook",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "search_window" : {
+                    "start_date_offset" : {
+                        "time_window" : "96",
+                        "format" : "Hours"
+                    },
+                    "end_date_offset" : {
+                        "time_window" : "0",
+                        "format" : "Hours"
+                    }
+                },
+                "search_criteria" : "{\"spaceId\" : 10059, \"status\" : \"AVAILABLE\", $and: [{$or: [{ fdsDocumentId: { $exists: true, $ne: null } }, { doc360DocumentId: { $exists: true, $ne: null } }]},{ \"metadata.prepostStarted\": { $exists: false } }, { \"metadata.prepostEnded\": { $exists: false } }]}",
+                "corporateMPIN" : {
+                    "process_key" : "retrieveCorporateMPINv2Process",
+                    "provSearchUrl" : "https://gateway-stage-dmz.optum.com/api/alpha/pdr/pes/physicians-and-facilities/v4.0/search",
+                    "inpSpaceId" : "10059",
+                    "pesGrantType" : "client_credentials",
+                    "appName" : "CCSManual",
+                    "count" : "1",
+                    "attributeSet" : "summary_0002",
+                    "validateCorprateMPIN" : "false",
+                    "pesAppId" : "neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx",
+                    "pesAppSecret" : "xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze",
+                    "pesAuthUrl" : "https://gateway-stage-dmz.optum.com/auth/oauth2/token"
+                },
+                "providerEmailAddress" : {
+                    "process_key" : "retrieveProviderEmailAddressProcess",
+                    "providerSpaceIdV2" : "8928",
+                    "skipEFTIndFlag" : "",
+                    "useFDSCloud" : false,
+                    "pdo_client_id" : "neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx",
+                    "pdo_client_secret" : "xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze",
+                    "pdo_token_url" : "https://gateway-stage-dmz.optum.com/auth/oauth2/cached/token",
+                    "pdoFetchPreferencesUrl" : "https://gateway-stage-dmz.optum.com/api/stage/pdr/pdo/v1/preferences",
+                    "fdsCloudAuthUrl" : "https://auth.stage.federateddataservices.com/oauth2/token",
+                    "cloud_client_id" : "2iphjca5o7topvt6er130ae2l1",
+                    "cloud_client_secret" : "12ojo0fv2jqvg436st4ebkjilohi23d3rnmqaoq3jlg0pumb9fe8",
+                    "cloud_grant_type" : "client_credentials",
+                    "fdsCloudGetDocumentUrl" : "https://api.stage.federateddataservices.com/core/v2.5/api/documents/{spaceId}",
+                    "fetchSecondaryEmail" : false
+                },
+                "requiredFieldRule" : {
+                    "process_key" : "requiredFieldRuleProcess",
+                    "rules" : [
+                        {
+                            "sendToShutterfly" : false,
+                            "criteria" : "emailAlertReq==\"N\"",
+                            "requiredFields" : [
+                                "tin",
+                                "corporateMpin"
+                            ]
+                        },
+                        {
+                            "sendToShutterfly" : true,
+                            "criteria" : "emailAlertReq!=\"N\"",
+                            "requiredFields" : [
+                                "tin",
+                                "corporateMpin",
+                                "mpin",
+                                "providerEmailId"
+                            ]
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "hookRecordType" : "hook",
+    "spaceId" : NumberInt(10059),
+    "target" : "documents",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "jg00aijptyt6rokvkumdnnjhaa6ywxj4",
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2021-10-18T15:26:20.060+0000"),
+    "dateModified" : ISODate("2021-10-18T15:26:20.060+0000"),
+    "status" : "AVAILABLE",
+    "name" : "preposthook",
+    "_class" : "com.optum.fds.paperless.mongo.HookMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Doclib hook:
+{
+    "_id" : ObjectId("60dd34dd0f9a1400508bbf5c"),
+    "hook" : {
+        "name" : "hookDocvaultRestApi_post_10059",
+        "executionOrder" : "0",
+        "eval_time" : "POST_PROCESS",
+        "hook_type" : "standard",
+        "hook_object" : "objectOne",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "search_criteria" : "{ \"spaceId\" : 10059,\"status\" : \"AVAILABLE\", \"metadata.sendToDocVault\":true, \"metadata.prepostEnded\": {$exists: true}, $or : [ {\"metadata.docLibAPIResponse\" : { \"$exists\" : false }},{\"metadata.docLibAPIResponse\"  : false} ]}",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}",
+                "process_key" : "postDocumentDocvaultForElgsProcess",
+                "clientId" : "federated-data",
+                "clientSecret" : "6ea70261-fe0c-4a08-b176-e11347d3f0ce",
+                "docvaultOauthUrl" : "https://api-gateway.linkhealth.com/oauth/token",
+                "uri" : "https://api-gateway.linkhealth.com/docvault-api-stage/v1/document",
+                "docLibOauthUrl" : "https://gateway-stage.optum.com/auth/oauth2/token",
+                "docLibClientId" : "neUlmovjH6xAE9GJtOiWvPLklS2b9Sqx",
+                "docLibClientSecret" : "xsiScNF2ihKkgbN8319G0fUs0WBhw5QF4Ze",
+                "docLibRestUrl" : "https://gateway-stage.optum.com/api/stage/pdr/uhcpdoclib/v3/metadata",
+                "template_id" : "5ea5195f934e6ee9694a511f",
+                "PENAPIUrl" : "http://fds-paperless-pen-api-fds-pen-stage.origin-ctc-core.optum.com/Pen/emailRecord",
+                "appId" : "jg00aijptyt6rokvkumdnnjhaa6ywxj4",
+                "appSecret" : "vnwzz7wazvfdjr3aaddxfcfbk59y82hq",
+                "pen_template_id" : "5e95abe91abb65a70f5a3d0c",
+                "template_name" : "filterReqFieldForDocvault",
+                "maxRetries" : NumberInt(2),
+                "primary" : "docLib",
+                "retrySleepTime" : NumberInt(500),
+                "turnPEN" : false,
+                "maxDocumentsOccurs" : NumberInt(300),
+                "fdsDocumentsUrl" : "https://fs2-stagedmz-ose3.optum.com/v2/documents",
+                "slaTime" : NumberInt(24),
+                "batchSize" : NumberInt(50),
+                "docLibAPIMultiCloudUrl" : "https://api-stg.uhg.com/api/pdr/uhcpdoclib/v1/metadata",
+                "docLibAwsAppId" : "3c88a4a8-840c-4fbe-b3c7-37122ad0f3e9",
+                "docLibAwsAppSecret" : "H63IEjoXZazLDvuEsslnMmKDTMVXWq2t6Lr",
+                "docLibAwsGrantType" : "client_credentials",
+                "docLibAwsOauthUrl" : "https://api-stg.uhg.com/oauth2/token",
+                "docLibAwsScope" : "pdr/uhcpdoclib:read"
+            }
+        },
+        "trigger" : {
+            "criteria" : "metadata.sendToDocVault==true && metadata.sendPENAPIRequest==false && metadata.sendEmailNotifications==false && metadata.stopProcessing!=true",
+            "on_event" : {
+                "method" : "post",
+                "target" : "documents"
+            },
+            "days_offset" : NumberInt(0)
+        }
+    },
+    "hookRecordType" : "hook",
+    "method" : "post",
+    "spaceId" : NumberInt(10059),
+    "target" : "documents",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "jg00aijptyt6rokvkumdnnjhaa6ywxj4",
+    "clientId" : NumberInt(685),
+    "dateCreated" : ISODate("2021-07-01T03:22:05.820+0000"),
+    "dateModified" : ISODate("2021-07-01T03:22:05.820+0000"),
+    "name" : "hookDocvaultRestApi_post_10059",
+    "status" : "AVAILABLE",
+    "transactionId" : "bc2c1175-b2f6-4b0d-8f8d-03066b84e267",
+    "_class" : "com.optum.fs.mongo.HookMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PEN hook:
+{
+    "_id" : ObjectId("60414090f41eb20051896692"),
+    "hook" : {
+        "name" : "ProviderEmailNotificationHook",
+        "hook_type" : "cron",
+        "hook_object" : "cronObject",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "process_key" : "providerEmailNotificationProcess",
+                "PENAPIUrl" : "https://fds-paperless-pen-api-stage.optum.com/Pen/emailRecord",
+                "appId" : "jg00aijptyt6rokvkumdnnjhaa6ywxj4",
+                "appSecret" : "vnwzz7wazvfdjr3aaddxfcfbk59y82hq",
+                "search_criteria" : "{\"spaceId\" : 10059, \"metadata.sendEmailNotifications\" : false, \"metadata.providerEmailId\" : {$ne : \"\"}, \"metadata.docLibAPIResponse\" : true, \"metadata.sendPENAPIRequest\" : false, \"metadata.eDeliveryError\" : { $not : {$regex : 'providerEmailId'}} }",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}",
+                "template_id" : "5f2364f8ae66ce6a9bb515cf",
+                "template_name" : "emailRequestToPEN",
+                "fdsDocumentsUrl" : "https://fs2-stagedmz-ose3.optum.com/v2/documents",
+                "document_update_flag_path" : "sendPENAPIRequest",
+                "document_update_flag_value" : true,
+                "maxRetries" : NumberInt(2),
+                "retrySleepTime" : NumberInt(500),
+                "maxDocumentsOccurs" : NumberInt(1000),
+                "PENAPIMultiCloudUrl" : "https://api-stg.uhg.com/api/provider/demographics/pen-service/1.0.0/Pen/emailRecord",
+                "PENAppId" : "d4681586-981e-4d49-99a8-7152961f26fd",
+                "PENAppSecret" : "ETuF8R5j0wdbpH443AUZyD0rVSXW24YJ6Kq",
+                "PENGrantType" : "client_credentials",
+                "PENOauthUrl" : "https://api-stg.uhg.com/oauth2/token",
+                "PENScope" : "https://api.uhg.com/.default"
+            }
+        },
+        "trigger" : {
+            "date_field" : "date",
+            "days_offset" : NumberInt(0),
+            "cronExpression" : "0 0 2,10,18 * * ?",
+            "on_event" : {
+                "method" : "cron",
+                "target" : "hooks"
+            },
+            "criteria" : "true"
+        },
+        "executionOrder" : NumberInt(0)
+    },
+    "hookRecordType" : "hook",
+    "method" : "cron",
+    "spaceId" : NumberInt(10059),
+    "target" : "hooks",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "jg00aijptyt6rokvkumdnnjhaa6ywxj4",
+    "clientId" : NumberInt(697),
+    "dateCreated" : ISODate("2021-03-04T20:18:24.561+0000"),
+    "dateModified" : ISODate("2021-08-31T10:00:06.544+0000"),
+    "name" : "ProviderEmailNotificationHook",
+    "status" : "AVAILABLE",
+    "transactionId" : "f2ac999a-3e79-480e-a549-e812f7890082",
+    "_class" : "com.optum.fs.mongo.HookMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+shutterfly
+{
+    "_id" : ObjectId("6ae25449234fe5d4fdea7e10"),
+    "hook" : {
+        "name" : "sendDocumentsToShutterflyProcessCCSManualCronExpressionHook",
+        "hook_type" : "cron",
+        "hook_object" : "cronObject",
+        "action" : {
+            "type" : "workflow",
+            "config" : {
+                "process_key" : "sendDocumentsToShutterflyProcess",
+                "search_criteria" : "{\"spaceId\" : 10059, \"status\" : \"AVAILABLE\", \"doc360DocumentId\": {\"$exists\": true}, \"metadata.rprntSentToSF\" : { \"$exists\" : false }, \"metadata.sendToShutterfly\" : true, \"metadata.postCardInd\" : true}",
+                "search_window" : "{\"start_date_offset\":{\"time_window\":\"72\",\"format\":\"Hours\"},\"end_date_offset\":{\"time_window\":\"0\",\"format\":\"Hours\"}}",
+                "sftp_hostname" : "ecgpi.healthtechnologygroup.com",
+                "sftp_username" : "is10am6",
+                "sftp_pw" : "74kn02ZM",
+                "sftp_archive_dir" : "/batch/priorauth_ccs_bravo_archive",
+                "grant_type" : "authorization_code",
+                "fdsAuthUrl" : "http://ppl-prun-services-nonprod.hcck8s-ctc-np1.optum.com",
+                "fdsDocumentUrl" : "http://ppl-prun-services-nonprod.hcck8s-ctc-np1.optum.com",
+                "document_update_flag_path" : "rprntSentToSF",
+                "document_update_flag_value" : true,
+                "document_format_field" : "dateEmailSent",
+                "environment" : "stage",
+                "spaceId" : "10059",
+                "appId" : "jg00aijptyt6rokvkumdnnjhaa6ywxj4",
+                "appSecret" : "vnwzz7wazvfdjr3aaddxfcfbk59y82hq",
+                "providerSpaceIdV2" : "8928",
+                "maxDocumentsOccurs" : NumberInt(300),
+                "bounceEmailCheckEFTIND" : false,
+                "startDateInDays" : NumberInt(-8),
+                "fdsCloudAuthUrl" : "https://auth.stage.federateddataservices.com/oauth2/token",
+                "cloud_client_id" : "2iphjca5o7topvt6er130ae2l1",
+                "cloud_client_secret" : "12ojo0fv2jqvg436st4ebkjilohi23d3rnmqaoq3jlg0pumb9fe8",
+                "cloud_grant_type" : "client_credentials",
+                "fdsCloudGetAttachmentUrl" : "https://api.stage.federateddataservices.com/core/v2.5/api/documents/{spaceId}/{documentId}/attachments/{attachmentId}",
+                "credentialList" : [
+                    {
+                        "10059" : {
+                            "clientId" : "jg00aijptyt6rokvkumdnnjhaa6ywxj4",
+                            "clientSecret" : "vnwzz7wazvfdjr3aaddxfcfbk59y82hq"
+                        }
+                    },
+                    {
+                        "8928" : {
+                            "clientId" : "89de2aa36a3b43f49395116255be8c0a",
+                            "clientSecret" : "6702871cb8f74150b88e086e4730c44d"
+                        }
+                    }
+                ],
+                "sftp_username_arc" : "is00amf",
+                "sftp_pw_arc" : "YW03eGag",
+                "sftp_dir" : "/in/shutterfly/dpi",
+                "addressBlockX" : 1.0,
+                "addressBlockY" : 1.84,
+                "identifierFontSize" : 8.0,
+                "originalPrintTrail" : "3259",
+                "receiverIdentifier" : "DPS$$$PKG",
+                "skipManipulatePdfFile" : false,
+                "createOriginalCompanionFile" : false,
+                "writeEncryptedPDF" : "false",
+                "X-Upstream-Env" : "int",
+                "doc360AppId" : "3c88a4a8-840c-4fbe-b3c7-37122ad0f3e9",
+                "doc360AppSecret" : "H63IEjoXZazLDvuEsslnMmKDTMVXWq2t6Lr",
+                "doc360GetAttachmentUrl" : "https://api-stg.uhg.com/api/ecs/doc360-getcontent/v1/document-contents",
+                "doc360OauthUrl" : "https://api-stg.uhg.com/oauth2/token",
+                "scope" : "ecs/doc360-getcontent:read",
+                "useDoc360" : true
+            }
+        }
+    },
+    "hookRecordType" : "hook",
+    "method" : "cron",
+    "spaceId" : NumberInt(10059),
+    "target" : "hooks",
+    "executionOrder" : NumberInt(0),
+    "locked" : false,
+    "appIdentifier" : "jg00aijptyt6rokvkumdnnjhaa6ywxj4",
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-08-16T14:57:42.690+0000"),
+    "dateModified" : ISODate("2026-08-16T14:57:42.690+0000"),
+    "status" : "AVAILABLE",
+    "name" : "sendDocumentsToShutterflyProcessCCSManualCronExpressionHook",
+    "_class" : "com.optum.fds.paperless.mongo.HookMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sample document 
+
+1) 
+
+{
+    "_id" : ObjectId("6ae19a6f27d0825488fb1931"),
+    "metadata" : {
+        "emailAlertReq" : "N",
+        "fileDescription" : "Prior Auth Notification",
+        "docSentTo" : "",
+        "subCategory" : "PRIOR AUTHORIZATION",
+        "fileName" : "export (10).csv",
+        "originalPrintTrail" : "TRL00000001",
+        "postCardInd" : true,
+        "memberName" : "JOHN A SMITH",
+        "privilege" : "Notification/Prior Authorization Status Inquiry/Update",
+        "tin" : "411234567",
+        "CONFIGKEY" : "CCSHS_CFG_01",
+        "sendToDocVault" : false,
+        "notificationNumber" : "NTFY0000123",
+        "providerName" : "DR. JANE MILLER",
+        "tenant" : "Link",
+        "memberId" : "165129233",
+        "MailToAddress1" : "JOHN A SMITH",
+        "npi" : "1234567893",
+        "filePath" : "Misc. Prior Auth/Other",
+        "sendEmailNotifications" : false,
+        "providerEmailId" : "",
+        "sendPENAPIRequest" : false,
+        "createdDate" : "2026-10-28T00:00:00.000Z",
+        "LetterHistoryID" : "LH000123456",
+        "fileSize" : NumberInt(7619),
+        "createApplication" : "USERLINGO",
+        "PassThruData" : "PASSTHRU_SAMPLE",
+        "MailToAddress6" : "55343",
+        "mpin" : "7654321",
+        "MailToAddress4" : "MINNETONKA",
+        "category" : "Prior Auth Notification",
+        "MailToAddress5" : "MN",
+        "MailToAddress2" : "9020 STONEY POINT PARKWAY",
+        "fileType" : "csv",
+        "MailToAddress3" : "SUITE 500",
+        "sendToShutterfly" : false,
+        "expiryDate" : "2028-10-27T06:50:00.052Z",
+        "prepostStarted" : true,
+        "eDeliveryError" : "Missing or invalid data: corporateMpin",
+        "prepostEnded" : true
+    },
+    "spaceId" : NumberInt(10059),
+    "doc360DocumentId" : "47ab7aed-dcae-4660-9ce6-3fd777f92973",
+    "doc360DocClass" : "u_ccs_health_services",
+    "revisions" : [
+        {
+            "metadata" : {
+                "applicationId" : "9d5a9ac5-3586-485e-ae1c-0a42bc6b2cf4",
+                "applicationDescription" : "UserLingo - HCP Specific",
+                "consumerId" : "2a4ab70e-3ef4-4d8f-b3cf-77a47a79af4a",
+                "consumerNamespace" : "userlingo_np",
+                "documentClass" : "u_ccs_health_services",
+                "documentClassDescription" : "CCS Health Services",
+                "globalDocumentId" : "47ab7aed-dcae-4660-9ce6-3fd777f92973",
+                "chronicleId" : null,
+                "versionLabel" : null,
+                "indexName" : "u_ccs_health_services_2026-10_v1",
+                "activityDate" : "2026-10-28T06:47:10.161Z",
+                "userId" : "ul_etd@optum.com",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "export (10).csv",
+                "messages" : null,
+                "uuid" : "a0a6ae6d-63e1-4c63-b554-e1ce29772ff0",
+                "batchId" : "38724244",
+                "compoundDocId" : "NO",
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "CREATE-API",
+                "attributes" : [
+                    {
+                        "alias" : "key35",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "NPI",
+                        "physicalName" : "u_npi",
+                        "value" : "1234567893",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key6",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "ELGS Letter Generation ID",
+                        "physicalName" : "u_elgs_ltr_gen_id",
+                        "value" : "LTRGEN20260901001",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key23",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Enterprise ID",
+                        "physicalName" : "u_enterprise_id",
+                        "value" : "465677",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Reference Number",
+                        "physicalName" : "u_srvc_ref_nbr",
+                        "value" : "SRN20260901001",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key34",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MPIN",
+                        "physicalName" : "u_mpin",
+                        "value" : "7654321",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key4",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Process/Letter Date",
+                        "physicalName" : "u_proc_date",
+                        "value" : "2026-09-01T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key5",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "ELGS Request ID",
+                        "physicalName" : "u_elgs_req_id",
+                        "value" : "REQ20260901001",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key42",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail ID",
+                        "physicalName" : "u_trl_id",
+                        "value" : "TRL00000001",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Subscriber ID",
+                        "physicalName" : "u_sbcr_id",
+                        "value" : "165129233",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Compound Sequence",
+                        "physicalName" : "u_compound_seq",
+                        "value" : "1",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Policy Number",
+                        "physicalName" : "u_pol_nbr",
+                        "value" : "MDCAID",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key28",
+                        "type" : "Date",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Document Creation Date",
+                        "physicalName" : "u_doc_creation_dt",
+                        "value" : "2026-10-28T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key3",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Attending Provider Tax ID",
+                        "physicalName" : "u_atd_prov_id",
+                        "value" : "411234567",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key37",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Pass Thru Data",
+                        "physicalName" : "u_pass_thru_data",
+                        "value" : "PASSTHRU_SAMPLE",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key38",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Physician Name",
+                        "physicalName" : "u_phy_nm",
+                        "value" : "DR. JANE MILLER",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key11",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Letter Type",
+                        "physicalName" : "u_ltr_typ",
+                        "value" : "HEALTH_SERVICES_NOTICE",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key44",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Recipient Name",
+                        "physicalName" : "u_rcip_nm",
+                        "value" : "JOHN A SMITH",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key12",
+                        "type" : "Text_Small",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "47ab7aed-dcae-4660-9ce6-3fd777f92973",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Original Creation Date",
+                        "physicalName" : "u_orig_creation_date",
+                        "value" : "2026-10-28T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Page Count",
+                        "physicalName" : "r_page_cnt",
+                        "value" : "1",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key27",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "City",
+                        "physicalName" : "u_cty",
+                        "value" : "MINNETONKA",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "7619",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key43",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Zip",
+                        "physicalName" : "u_zip",
+                        "value" : "55343",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key36",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Notification Number",
+                        "physicalName" : "u_ntfy_nbr",
+                        "value" : "NTFY0000123",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key25",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Config Key",
+                        "physicalName" : "u_config_key",
+                        "value" : "CCSHS_CFG_01",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key31",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Address 1",
+                        "physicalName" : "u_mail_to_adr1",
+                        "value" : "9020 STONEY POINT PARKWAY",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key29",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Email Alert Req",
+                        "physicalName" : "u_email_alert_req",
+                        "value" : "N",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key41",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "TIN",
+                        "physicalName" : "u_tin",
+                        "value" : "411234567",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key32",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Address 2",
+                        "physicalName" : "u_mail_to_adr2",
+                        "value" : "SUITE 500",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key33",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Member ID",
+                        "physicalName" : "u_mbr_id",
+                        "value" : "165129233",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key9",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Recipient Code",
+                        "physicalName" : "u_rcip_cd",
+                        "value" : "MBR",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key26",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Create Application",
+                        "physicalName" : "u_create_app",
+                        "value" : "USERLINGO",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key39",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "State",
+                        "physicalName" : "u_st",
+                        "value" : "MN",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key30",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Letter History ID",
+                        "physicalName" : "u_ltr_hist_id",
+                        "value" : "LH000123456",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Compound Document",
+                        "physicalName" : "u_compound_doc",
+                        "value" : "NO",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key24",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "csv",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key40",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Sub Category",
+                        "physicalName" : "u_sub_category",
+                        "value" : "PRIOR AUTHORIZATION",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Subscriber FN - space - LN",
+                        "physicalName" : "u_sbcr_full_nm",
+                        "value" : "JOHN A SMITH",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key10",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient FN - space - LN",
+                        "physicalName" : "u_ptnt_full_nm",
+                        "value" : "JOHN A SMITH",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Letter Subject",
+                        "physicalName" : "u_sbj_ln",
+                        "value" : "HEALTH SERVICES NOTIFICATION",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-28T06:47:11.738+0000"),
+            "dateModified" : ISODate("2026-10-28T06:47:11.738+0000"),
+            "spaceId" : NumberInt(10059),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        }
+    ],
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-10-28T06:47:11.738+0000"),
+    "dateModified" : ISODate("2026-10-28T06:50:00.053+0000"),
+    "status" : "AVAILABLE",
+    "_class" : "com.optum.fds.paperless.mongo.DocumentMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2) 
+{
+    "_id" : ObjectId("6ae12070e1f477fb325cce81"),
+    "metadata" : {
+        "emailAlertReq" : "N",
+        "fileDescription" : "Prior Auth Notification",
+        "docSentTo" : "",
+        "subCategory" : "N1",
+        "fileName" : "3307016118.3307016118.3307016119.pdf",
+        "originalPrintTrail" : "3612",
+        "postCardInd" : true,
+        "memberName" : "CHMIEL, OSKAR",
+        "privilege" : "Notification/Prior Authorization Status Inquiry/Update",
+        "CONFIGKEY" : "FDSELR3612",
+        "sendToDocVault" : false,
+        "notificationNumber" : "A004883997",
+        "providerName" : "OSKAR CHMIEL",
+        "tenant" : "Link",
+        "memberId" : "113697706",
+        "MailToAddress1" : "OSKAR CHMIEL",
+        "errorList" : [
+            "Missing or invalid data: u_tin",
+            "Missing or invalid data: u_mpin"
+        ],
+        "filePath" : "Community Plan Prior Auth/Approved",
+        "sendEmailNotifications" : false,
+        "providerEmailId" : "",
+        "sendPENAPIRequest" : false,
+        "createdDate" : "2026-10-27T22:06:39.000Z",
+        "LetterHistoryID" : "3307016118",
+        "fileSize" : NumberInt(634255),
+        "createApplication" : "CCS",
+        "PassThruData" : "3307016118_3307016118",
+        "MailToAddress6" : "11581",
+        "MailToAddress4" : "VALLEY STREAM",
+        "category" : "Prior Auth Notification",
+        "MailToAddress5" : "NY",
+        "MailToAddress2" : "20 LYNCREST ST",
+        "fileType" : "pdf",
+        "sendToShutterfly" : false,
+        "expiryDate" : "2028-10-26T22:10:00.131Z",
+        "prepostStarted" : true,
+        "eDeliveryError" : "Missing or invalid data: tin|Missing or invalid data: corporateMpin",
+        "prepostEnded" : true
+    },
+    "spaceId" : NumberInt(10059),
+    "doc360DocumentId" : "588a152a-69ea-4ce2-a7cd-9b917c7be75b",
+    "doc360DocClass" : "u_ccs_optumhealth",
+    "revisions" : [
+        {
+            "metadata" : {
+                "applicationId" : "72212539-9b5c-4767-a286-ef963388a675",
+                "applicationDescription" : "Enterprise Letter Generation System (ELGS) - HCP Specific",
+                "consumerId" : "a117f90d-b4f1-4262-8945-f16ca10e46b5",
+                "consumerNamespace" : "elgsnonprod",
+                "documentClass" : "u_ccs_optumhealth",
+                "documentClassDescription" : "CCS Optum Health",
+                "globalDocumentId" : "588a152a-69ea-4ce2-a7cd-9b917c7be75b",
+                "chronicleId" : null,
+                "versionLabel" : null,
+                "indexName" : "u_ccs_optumhealth_2026-10_v1",
+                "activityDate" : "2026-10-27T22:06:39.735Z",
+                "userId" : "elgsys@optum.com",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "3307016118.3307016118.3307016119.pdf",
+                "messages" : null,
+                "uuid" : "9b78e3d4-f7eb-4dbf-999b-c864a622a778",
+                "batchId" : "38701709",
+                "compoundDocId" : null,
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "CREATE-API",
+                "attributes" : [
+                    {
+                        "alias" : "key6",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "ELGS Letter Generation ID",
+                        "physicalName" : "u_elgs_ltr_gen_id",
+                        "value" : "3307016118",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Reference Number",
+                        "physicalName" : "u_srvc_ref_nbr",
+                        "value" : "A004883997",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key4",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Process/Letter Date",
+                        "physicalName" : "u_proc_date",
+                        "value" : "2026-10-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key5",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "ELGS Request ID",
+                        "physicalName" : "u_elgs_req_id",
+                        "value" : "3307016118",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key42",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail ID",
+                        "physicalName" : "u_trl_id",
+                        "value" : "3612",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Subscriber ID",
+                        "physicalName" : "u_sbcr_id",
+                        "value" : "113697706",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Policy Number",
+                        "physicalName" : "u_pol_nbr",
+                        "value" : "NYCHP",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key28",
+                        "type" : "Date",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Document Creation Date",
+                        "physicalName" : "u_doc_creation_dt",
+                        "value" : "2026-10-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key3",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Attending Provider Tax ID",
+                        "physicalName" : "u_atd_prov_id",
+                        "value" : "061181226",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key37",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Pass Thru Data",
+                        "physicalName" : "u_pass_thru_data",
+                        "value" : "3307016118_3307016118",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key38",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Physician Name",
+                        "physicalName" : "u_phy_nm",
+                        "value" : "OSKAR CHMIEL",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key44",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Recipient Name",
+                        "physicalName" : "u_rcip_nm",
+                        "value" : "OSKAR CHMIEL",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key12",
+                        "type" : "Text_Small",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "588a152a-69ea-4ce2-a7cd-9b917c7be75b",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Original Creation Date",
+                        "physicalName" : "u_orig_creation_date",
+                        "value" : "2026-10-27T22:06:39.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Page Count",
+                        "physicalName" : "r_page_cnt",
+                        "value" : "8",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key27",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "City",
+                        "physicalName" : "u_cty",
+                        "value" : "VALLEY STREAM",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : "",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "634255",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key43",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Zip",
+                        "physicalName" : "u_zip",
+                        "value" : "11581",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key36",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Notification Number",
+                        "physicalName" : "u_ntfy_nbr",
+                        "value" : "A004883997",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key25",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Config Key",
+                        "physicalName" : "u_config_key",
+                        "value" : "FDSELR3612",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key29",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Email Alert Req",
+                        "physicalName" : "u_email_alert_req",
+                        "value" : "N",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key31",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Address 1",
+                        "physicalName" : "u_mail_to_adr1",
+                        "value" : "20 LYNCREST ST",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key33",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Member ID",
+                        "physicalName" : "u_mbr_id",
+                        "value" : "113697706",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key26",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Create Application",
+                        "physicalName" : "u_create_app",
+                        "value" : "CCS",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key39",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "State",
+                        "physicalName" : "u_st",
+                        "value" : "NY",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key30",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Letter History ID",
+                        "physicalName" : "u_ltr_hist_id",
+                        "value" : "3307016118",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key24",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "pdf",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key40",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Sub Category",
+                        "physicalName" : "u_sub_category",
+                        "value" : "N1",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Subscriber FN - space -LN",
+                        "physicalName" : "u_sbcr_full_nm",
+                        "value" : "OSKAR CHMIEL",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key10",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient FN -space - LN",
+                        "physicalName" : "u_ptnt_full_nm",
+                        "value" : "CHMIEL, OSKAR",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Letter Subject",
+                        "physicalName" : "u_sbj_ln",
+                        "value" : "NEW YORK CHP",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-27T22:06:40.551+0000"),
+            "dateModified" : ISODate("2026-10-27T22:06:40.551+0000"),
+            "spaceId" : NumberInt(10059),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        }
+    ],
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-10-27T22:06:40.551+0000"),
+    "dateModified" : ISODate("2026-10-27T22:10:00.133+0000"),
+    "status" : "AVAILABLE",
+    "_class" : "com.optum.fds.paperless.mongo.DocumentMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3)
+{
+    "_id" : ObjectId("6ae12064e1f477fb325cce7d"),
+    "metadata" : {
+        "emailAlertReq" : "Y",
+        "fileDescription" : "Prior Auth Notification",
+        "docSentTo" : "DocLib",
+        "subCategory" : "A1",
+        "fileName" : "3307015463.3307015059.3307015060.pdf",
+        "originalPrintTrail" : "3612",
+        "postCardInd" : true,
+        "memberName" : "PEDROLI, JEDD",
+        "privilege" : "Notification/Prior Authorization Status Inquiry/Update",
+        "tin" : "150532221",
+        "CONFIGKEY" : "FDSELR3612",
+        "sendToDocVault" : true,
+        "notificationNumber" : "A004672320",
+        "providerName" : "PAUL TINSLEY",
+        "tenant" : "Link",
+        "memberId" : "161721070",
+        "MailToAddress1" : "PAUL TINSLEY",
+        "filePath" : "Commercial Prior Auth/Approved",
+        "sendEmailNotifications" : false,
+        "providerEmailId" : "",
+        "sendPENAPIRequest" : false,
+        "createdDate" : "2026-10-27T22:06:27.000Z",
+        "LetterHistoryID" : "3307015059",
+        "fileSize" : NumberInt(1116150),
+        "createApplication" : "CCS",
+        "PassThruData" : "3307015463_3307015059",
+        "MailToAddress6" : "13905",
+        "mpin" : "000300377",
+        "MailToAddress4" : "BINGHAMTON",
+        "category" : "Prior Auth Notification",
+        "MailToAddress5" : "NY",
+        "MailToAddress2" : "161 RIVERSIDE DR STE 205",
+        "fileType" : "pdf",
+        "sendToShutterfly" : true,
+        "expiryDate" : "2028-10-26T22:10:00.102Z",
+        "prepostStarted" : true,
+        "corporateMpin" : "005856811",
+        "eDeliveryError" : "Missing or invalid data: providerEmailId",
+        "prepostEnded" : true,
+        "docLibAPIResponse" : true,
+        "docLibUploadDate" : "2026-10-27T22:14:00.111Z",
+        "addedToResponseFile" : true,
+        "responseFileName" : "FDSFeedback_CCSManual_3612_20261027_222030.txt",
+        "absolutePath" : "/ingest/shutterfly/jg00aijptyt6rokvkumdnnjhaa6ywxj4/10059/20261028200949836/",
+        "isPostCard" : true,
+        "skipManipulatePdfFile" : true,
+        "rprntSentToSF" : true,
+        "shutterflyFileName" : "FDS_NO_RPRNT_361230821_10282026200984.txt"
+    },
+    "spaceId" : NumberInt(10059),
+    "doc360DocumentId" : "cb0395bd-a068-4da2-b7ad-2f00ee649737",
+    "doc360DocClass" : "u_ccs_compliance",
+    "revisions" : [
+        {
+            "metadata" : {
+                "applicationId" : "72212539-9b5c-4767-a286-ef963388a675",
+                "applicationDescription" : "Enterprise Letter Generation System (ELGS) - HCP Specific",
+                "consumerId" : "a117f90d-b4f1-4262-8945-f16ca10e46b5",
+                "consumerNamespace" : "elgsnonprod",
+                "documentClass" : "u_ccs_compliance",
+                "documentClassDescription" : "CCS Compliance",
+                "globalDocumentId" : "cb0395bd-a068-4da2-b7ad-2f00ee649737",
+                "chronicleId" : null,
+                "versionLabel" : null,
+                "indexName" : "u_ccs_compliance_2026-10_v1",
+                "activityDate" : "2026-10-27T22:06:27.234Z",
+                "userId" : "elgsys@optum.com",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "3307015463.3307015059.3307015060.pdf",
+                "messages" : null,
+                "uuid" : "c18832dc-ce41-4d91-9034-b9e84d2c9fe0",
+                "batchId" : "38701691",
+                "compoundDocId" : null,
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "CREATE-API",
+                "attributes" : [
+                    {
+                        "alias" : "key6",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "ELGS Letter Generation ID",
+                        "physicalName" : "u_elgs_ltr_gen_id",
+                        "value" : "3307015059",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Reference Number",
+                        "physicalName" : "u_srvc_ref_nbr",
+                        "value" : "A004672320",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key34",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MPIN",
+                        "physicalName" : "u_mpin",
+                        "value" : "000300377",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key4",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Process/Letter Date",
+                        "physicalName" : "u_proc_date",
+                        "value" : "2026-10-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key5",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "ELGS Request ID",
+                        "physicalName" : "u_elgs_req_id",
+                        "value" : "3307015463",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key41",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail ID",
+                        "physicalName" : "u_trl_id",
+                        "value" : "3612",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Subscriber ID",
+                        "physicalName" : "u_sbcr_id",
+                        "value" : "161721070",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Policy Number",
+                        "physicalName" : "u_pol_nbr",
+                        "value" : "WIOFEX",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key28",
+                        "type" : "Date",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Document Creation Date",
+                        "physicalName" : "u_doc_creation_dt",
+                        "value" : "2026-10-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key3",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Attending Provider Tax ID",
+                        "physicalName" : "u_atd_prov_id",
+                        "value" : "150532221",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key37",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Pass Thru Data",
+                        "physicalName" : "u_pass_thru_data",
+                        "value" : "3307015463_3307015059",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key38",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Physician Name",
+                        "physicalName" : "u_phy_nm",
+                        "value" : "PAUL TINSLEY",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key43",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Recipient Name",
+                        "physicalName" : "u_rcip_nm",
+                        "value" : "PAUL TINSLEY",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key12",
+                        "type" : "Text_Small",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "cb0395bd-a068-4da2-b7ad-2f00ee649737",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Original Creation Date",
+                        "physicalName" : "u_orig_creation_date",
+                        "value" : "2026-10-27T22:06:27.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Page Count",
+                        "physicalName" : "r_page_cnt",
+                        "value" : "14",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key27",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "City",
+                        "physicalName" : "u_cty",
+                        "value" : "BINGHAMTON",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "1116150",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key42",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Zip",
+                        "physicalName" : "u_zip",
+                        "value" : "13905",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key36",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Notification Number",
+                        "physicalName" : "u_ntfy_nbr",
+                        "value" : "A004672320",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key25",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Config Key",
+                        "physicalName" : "u_config_key",
+                        "value" : "FDSELR3612",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key40",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "TIN",
+                        "physicalName" : "u_tin",
+                        "value" : "150532221",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key29",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Email Alert Req",
+                        "physicalName" : "u_email_alert_req",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key31",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Address 1",
+                        "physicalName" : "u_mail_to_adr1",
+                        "value" : "161 RIVERSIDE DR STE 205",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key33",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Member ID",
+                        "physicalName" : "u_mbr_id",
+                        "value" : "161721070",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key26",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Create Application",
+                        "physicalName" : "u_create_app",
+                        "value" : "CCS",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key39",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "State",
+                        "physicalName" : "u_st",
+                        "value" : "NY",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key30",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Letter History ID",
+                        "physicalName" : "u_ltr_hist_id",
+                        "value" : "3307015059",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key24",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "pdf",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key44",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Sub Category",
+                        "physicalName" : "u_sub_category",
+                        "value" : "A1",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Subscriber FN - space - LN",
+                        "physicalName" : "u_sbcr_full_nm",
+                        "value" : "JEDD PEDROLI",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key10",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient FN - space - LN",
+                        "physicalName" : "u_ptnt_full_nm",
+                        "value" : "PEDROLI, JEDD",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Letter Subject",
+                        "physicalName" : "u_sbj_ln",
+                        "value" : "APPROVAL",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-27T22:06:28.509+0000"),
+            "dateModified" : ISODate("2026-10-27T22:06:28.509+0000"),
+            "spaceId" : NumberInt(10059),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        }
+    ],
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-10-27T22:06:28.509+0000"),
+    "dateModified" : ISODate("2026-10-27T22:14:01.037+0000"),
+    "status" : "AVAILABLE",
+    "_class" : "com.optum.fds.paperless.mongo.DocumentMetaData"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4)
+
+
+{
+    "_id" : ObjectId("6ae0bbcce1f477fb325cc469"),
+    "metadata" : {
+        "emailAlertReq" : "Y",
+        "fileDescription" : "Prior Auth Notification",
+        "docSentTo" : "",
+        "subCategory" : "MEDICAL NECESSITY REVIEW",
+        "fileName" : "Software Quality Assurance.pdf",
+        "originalPrintTrail" : "TRL-20261027-963852",
+        "postCardInd" : true,
+        "memberName" : "ROBERT JOHNSON",
+        "privilege" : "Notification/Prior Authorization Status Inquiry/Update",
+        "tin" : "86-4587213",
+        "CONFIGKEY" : "CORRESPONDENCE_PROD_V1",
+        "sendToDocVault" : false,
+        "notificationNumber" : "NTF-20261027-654987",
+        "providerName" : "MICHAEL ANDERSON",
+        "tenant" : "Link",
+        "memberId" : "MBR987654321",
+        "npi" : "1234567893",
+        "errorList" : [
+            "Missing or invalid data: u_rcip_nm(SEVERE)",
+            "Missing or invalid data: u_doc_creation_dt"
+        ],
+        "filePath" : "Misc. Prior Auth/Other",
+        "sendEmailNotifications" : false,
+        "providerEmailId" : "",
+        "sendPENAPIRequest" : false,
+        "createdDate" : "2026-10-27T14:57:15.000Z",
+        "LetterHistoryID" : "LH-20261027-785412",
+        "fileSize" : NumberInt(47002),
+        "createApplication" : "LINX",
+        "PassThruData" : "CASE_ID=CSE-847291|LOB=MEDICARE",
+        "MailToAddress6" : "85016",
+        "mpin" : "MPIN458721",
+        "MailToAddress4" : "PHOENIX",
+        "category" : "Prior Auth Notification",
+        "MailToAddress5" : "AZ",
+        "MailToAddress2" : "1450 EAST CAMELBACK ROAD",
+        "fileType" : "pdf",
+        "MailToAddress3" : "SUITE 250",
+        "sendToShutterfly" : false,
+        "expiryDate" : "2028-10-26T15:00:00.063Z"
+    },
+    "spaceId" : NumberInt(10059),
+    "doc360DocumentId" : "0b054ce2-44fb-4dfb-a1fe-4b5689b868a6",
+    "doc360DocClass" : "u_ccs_compliance",
+    "revisions" : [
+        {
+            "metadata" : {
+                "applicationId" : "601cf5bc-3bf4-46fa-bbf8-63a2b4902081",
+                "applicationDescription" : "Doc360 UI",
+                "consumerId" : null,
+                "consumerNamespace" : null,
+                "documentClass" : "u_ccs_compliance",
+                "documentClassDescription" : "CCS Compliance",
+                "globalDocumentId" : "0b054ce2-44fb-4dfb-a1fe-4b5689b868a6",
+                "chronicleId" : null,
+                "versionLabel" : null,
+                "indexName" : "u_ccs_compliance_2026-10_v1",
+                "activityDate" : "2026-10-27T14:57:15.569Z",
+                "userId" : "sudhanshu_yadav12@optum.com",
+                "status" : "SUCCESS",
+                "eventType" : "CREATE",
+                "contentFileName" : "Software Quality Assurance.pdf",
+                "messages" : null,
+                "uuid" : "0f47c85b-4c65-48b6-938d-34618ab1be0a",
+                "batchId" : "38685399",
+                "compoundDocId" : "Y",
+                "source" : "API",
+                "sourceSystem" : "R",
+                "sourceApplicationName" : "CREATE-API",
+                "attributes" : [
+                    {
+                        "alias" : "key35",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "NPI",
+                        "physicalName" : "u_npi",
+                        "value" : "1234567893",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key6",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "ELGS Letter Generation ID",
+                        "physicalName" : "u_elgs_ltr_gen_id",
+                        "value" : "LTRGEN-20261027-847561",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key23",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Enterprise ID",
+                        "physicalName" : "u_enterprise_id",
+                        "value" : "90384756",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key0",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Reference Number",
+                        "physicalName" : "u_srvc_ref_nbr",
+                        "value" : "REF-20260928-852741",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key34",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "MPIN",
+                        "physicalName" : "u_mpin",
+                        "value" : "MPIN458721",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key4",
+                        "type" : "DateRange",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Process/Letter Date",
+                        "physicalName" : "u_proc_date",
+                        "value" : "2026-10-27T00:00:00.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key5",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "ELGS Request ID",
+                        "physicalName" : "u_elgs_req_id",
+                        "value" : "REQ-20261027-458921",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key41",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Trail ID",
+                        "physicalName" : "u_trl_id",
+                        "value" : "TRL-20261027-963852",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key2",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Subscriber ID",
+                        "physicalName" : "u_sbcr_id",
+                        "value" : "SUB456789123",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Compound Sequence",
+                        "physicalName" : "u_compound_seq",
+                        "value" : "001",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key7",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Policy Number",
+                        "physicalName" : "u_pol_nbr",
+                        "value" : "POL-MA-45892173",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key37",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Pass Thru Data",
+                        "physicalName" : "u_pass_thru_data",
+                        "value" : "CASE_ID=CSE-847291|LOB=MEDICARE",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key38",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Physician Name",
+                        "physicalName" : "u_phy_nm",
+                        "value" : "MICHAEL ANDERSON",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key11",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Letter Type",
+                        "physicalName" : "u_ltr_typ",
+                        "value" : "COVERAGE DETERMINATION LETTER",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key12",
+                        "type" : "Text_Small",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Global Doc ID",
+                        "physicalName" : "u_gbl_doc_id",
+                        "value" : "0b054ce2-44fb-4dfb-a1fe-4b5689b868a6",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Original Creation Date",
+                        "physicalName" : "u_orig_creation_date",
+                        "value" : "2026-10-27T14:57:15.000Z",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : null,
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Page Count",
+                        "physicalName" : "r_page_cnt",
+                        "value" : "1",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key27",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "City",
+                        "physicalName" : "u_cty",
+                        "value" : "PHOENIX",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Size",
+                        "physicalName" : "r_content_size",
+                        "value" : "47002",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key42",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Zip",
+                        "physicalName" : "u_zip",
+                        "value" : "85016",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key36",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Notification Number",
+                        "physicalName" : "u_ntfy_nbr",
+                        "value" : "NTF-20261027-654987",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key25",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Config Key",
+                        "physicalName" : "u_config_key",
+                        "value" : "CORRESPONDENCE_PROD_V1",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key29",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Email Alert Req",
+                        "physicalName" : "u_email_alert_req",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key31",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Address 1",
+                        "physicalName" : "u_mail_to_adr1",
+                        "value" : "1450 EAST CAMELBACK ROAD",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key40",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "TIN",
+                        "physicalName" : "u_tin",
+                        "value" : "86-4587213",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key32",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Address 2",
+                        "physicalName" : "u_mail_to_adr2",
+                        "value" : "SUITE 250",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key33",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Member ID",
+                        "physicalName" : "u_mbr_id",
+                        "value" : "MBR987654321",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key26",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Create Application",
+                        "physicalName" : "u_create_app",
+                        "value" : "LINX",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key39",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "State",
+                        "physicalName" : "u_st",
+                        "value" : "AZ",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key30",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Letter History ID",
+                        "physicalName" : "u_ltr_hist_id",
+                        "value" : "LH-20261027-785412",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Compound Document",
+                        "physicalName" : "u_compound_doc",
+                        "value" : "Y",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key24",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Content Type",
+                        "physicalName" : "a_content_type",
+                        "value" : "pdf",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key44",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Sub Category",
+                        "physicalName" : "u_sub_category",
+                        "value" : "MEDICAL NECESSITY REVIEW",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key1",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Subscriber FN - space - LN",
+                        "physicalName" : "u_sbcr_full_nm",
+                        "value" : "ROBERT JOHNSON",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key10",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Patient FN - space - LN",
+                        "physicalName" : "u_ptnt_full_nm",
+                        "value" : "ROBERT JOHNSON",
+                        "oldValue" : null
+                    },
+                    {
+                        "alias" : "key8",
+                        "type" : "Text",
+                        "federateSearchAlias" : null,
+                        "federateSearchLabelName" : null,
+                        "labelName" : "Letter Subject",
+                        "physicalName" : "u_sbj_ln",
+                        "value" : "COVERAGE DETERMINATION DECISION NOTICE",
+                        "oldValue" : null
+                    }
+                ]
+            },
+            "clientId" : NumberInt(0),
+            "dateCreated" : ISODate("2026-10-27T14:57:16.902+0000"),
+            "dateModified" : ISODate("2026-10-27T14:57:16.902+0000"),
+            "spaceId" : NumberInt(10059),
+            "status" : "NEW",
+            "_class" : "com.optum.fds.paperless.domain.revision.DocumentRevision"
+        }
+    ],
+    "clientId" : NumberInt(0),
+    "dateCreated" : ISODate("2026-10-27T14:57:16.902+0000"),
+    "dateModified" : ISODate("2026-10-27T15:00:00.064+0000"),
+    "status" : "SEVERE_ERROR",
+    "_class" : "com.optum.fds.paperless.mongo.DocumentMetaData"
+}
